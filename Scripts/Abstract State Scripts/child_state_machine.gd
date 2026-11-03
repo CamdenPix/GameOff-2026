@@ -1,5 +1,5 @@
 @abstract
-class_name ChildStateMachine extends Node
+class_name ChildStateMachine extends State
 @export 
 var debug_state_label : Label
 
@@ -18,18 +18,19 @@ var current_state: State
 
 @export var deactive_state: State
 @export var base_state: State
+var localOldStateMachine: ChildStateMachine
 
-func enter() ->void:
+func enter(oldStateMachine: State) ->void:
+	localOldStateMachine = oldStateMachine
 	pass
 
-func exit() ->void:
+func exit(newStateMachine: State) ->void:
 	pass
 
 func init(parent: Player) -> void:
 	for child in get_children():
 		child.parent = parent
 
-	# Initialize to the default state
 	change_state(starting_state)
 
 func change_state(new_state: State) -> void:
@@ -40,12 +41,6 @@ func change_state(new_state: State) -> void:
 	if no_debug_labels == false:
 		debug_state_label.text = new_state.to_string()
 	current_state.enter(old_state)
-	
-
-func request_state_change(newState:State) ->void:
-	if newState == null:
-		return
-	pass
 
 
 func process_physics(delta: float) -> ChildStateMachine:

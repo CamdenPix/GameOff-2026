@@ -27,6 +27,7 @@ var localOldState: State
 
 func _ready() -> void:
 	Calculate_Movement_Parameters()
+
 func enter(oldState: State) -> void:
 	#parent.animations.play(animation_name)
 	pass

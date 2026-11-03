@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ddhw6f00iyp61"]
+
+[ext_resource type="Script" uid="uid://dnsp2xc5r75m3" path="res://Scripts/Player/player_parent_state_machine.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://chc56cy76um8y" path="res://scenes/player.gd" id="1_dqkch"]
+[ext_resource type="Script" uid="uid://ca8ix522mmcvv" path="res://Scripts/Player/Bird/bird_state_machine.gd" id="2_g2els"]
+[ext_resource type="Script" uid="uid://cydbmyrb042lj" path="res://Scripts/Player/Bird/grounded_jump.gd" id="3_qhqgy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qdonj"]
+
+[node name="Player" type="CharacterBody2D" unique_id=139764919]
+script = ExtResource("1_dqkch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503420747]
+shape = SubResource("CapsuleShape2D_qdonj")
+
+[node name="ParentStateMachine" type="Node" parent="." unique_id=661096403 node_paths=PackedStringArray("debug_state_machine_label", "starting_state_machine", "deactive_state", "base_state")]
+script = ExtResource("1_3vyb7")
+debug_state_machine_label = NodePath("../ParentStateMachineLabel")
+starting_state_machine = NodePath("BirdStateMachine")
+deactive_state = NodePath("BirdStateMachine")
+base_state = NodePath("BirdStateMachine")
+
+[node name="BirdStateMachine" type="Node" parent="ParentStateMachine" unique_id=1290409226 node_paths=PackedStringArray("starting_state", "deactive_state", "base_state")]
+script = ExtResource("2_g2els")
+no_debug_labels = true
+starting_state = NodePath("Grounded Jump")
+deactive_state = NodePath("Grounded Jump")
+base_state = NodePath("Grounded Jump")
+
+[node name="Grounded Jump" type="Node" parent="ParentStateMachine/BirdStateMachine" unique_id=893226061]
+script = ExtResource("3_qhqgy")
+
+[node name="Flap Wing" type="Node" parent="ParentStateMachine/BirdStateMachine" unique_id=1672023302]
+
+[node name="MonkeyStateMachine" type="Node" parent="ParentStateMachine" unique_id=1617720625]
+
+[node name="Walk" type="Node" parent="ParentStateMachine/MonkeyStateMachine" unique_id=1718026456]
+
+[node name="Jump" type="Node" parent="ParentStateMachine/MonkeyStateMachine" unique_id=2125297960]
+
+[node name="Climb" type="Node" parent="ParentStateMachine/MonkeyStateMachine" unique_id=811446954]
+
+[node name="DeactiveStateMachine" type="Node" parent="ParentStateMachine" unique_id=1196446141]
+
+[node name="ParentStateMachineLabel" type="Label" parent="." unique_id=502794606]
+offset_left = -22.0
+offset_top = -52.0
+offset_right = 18.0
+offset_bottom = -26.0
+
+[node name="Input" type="Label" parent="." unique_id=164288899]
+offset_left = -22.0
+offset_top = -52.0
+offset_right = 18.0
+offset_bottom = -26.0
