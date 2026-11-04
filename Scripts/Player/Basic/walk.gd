@@ -1,20 +1,49 @@
 @icon("res://assets/chip-svgrepo-com.svg")
 extends State
-
+@export var dash_threshold: float = .3
+@export var dashing_state: State
+@export var jumping_state: State
+@export var falling_state: State
+@export var coyote_timer: Timer
+var coyote_timer_fall: bool = false
 func enter(oldState: State) -> void:
 	#parent.animations.play(animation_name)
 	
 	pass
 
 func exit(newState: State) -> void:
+	coyote_timer.stop()
+	coyote_timer_fall = false
 	pass
 
 func process_input(event: InputEvent) -> State:
+	if Input.is_action_just_pressed("jump"):
+		return jumping_state
 	return null
 
 func process_frame(delta: float) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.velocity = Input.get_vector("left","right","down","up") * 20 
+	var raw_input: Vector2 = Input.get_vector("left","right","up","down") 
+	parent.velocity.x = raw_input.x * Speed
+	#if abs(raw_input.x) > dash_threshold:
+		#return dashing_state
+	
+	if parent.is_on_floor():
+		coyote_timer.stop()
+		parent.velocity.y -= Fall_Gravity * delta
+	else:
+		if coyote_timer_fall:
+			return falling_state
+		# this just makes sure the timer runs only if the timer hasnt started
+		if coyote_timer.time_left == coyote_timer.wait_time:
+			coyote_timer.start()
+		
 	return null
+
+
+func _on_timer_timeout() -> void:
+	coyote_timer_fall = true
+	pass
+	
