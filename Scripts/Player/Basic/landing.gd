@@ -1,5 +1,5 @@
 @icon("res://assets/chip-svgrepo-com.svg")
-extends State
+class_name LandingState extends State
 @export var timer: Timer
 @export var idle_state: State
 @export var walking_state: State

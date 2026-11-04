@@ -1,7 +1,7 @@
 @icon("res://assets/chip-svgrepo-com.svg")
-extends State
-@export var walking_state: State
-@export var jumping_state: State
+class_name IdleState extends State
+@export var walking_state: WalkingState
+@export var jumping_state: JumpingState
 func enter(oldState: State) -> void:
 	#parent.animations.play(animation_name)
 	

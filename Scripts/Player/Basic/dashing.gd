@@ -1,5 +1,5 @@
 @icon("res://assets/chip-svgrepo-com.svg")
-extends State
+class_name DashingState extends State
 
 func enter(oldState: State) -> void:
 	#parent.animations.play(animation_name)

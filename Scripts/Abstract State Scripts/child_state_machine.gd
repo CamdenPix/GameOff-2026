@@ -44,28 +44,34 @@ func change_state(new_state: State) -> void:
 
 func process_physics(delta: float) -> ChildStateMachine:
 	
-	var new_state_or_state_machine = current_state.process_physics(delta)
-	if new_state_or_state_machine is State:
-		change_state(new_state_or_state_machine)
-	if new_state_or_state_machine is ChildStateMachine:
-		return new_state_or_state_machine
+	var new_state = current_state.process_physics(delta)
+	if new_state is State:
+		change_state(new_state)
+	var new_animal = animal_process_physics(delta)
+	if new_animal is ChildStateMachine:
+		return new_animal
 	return
 
 func process_input(event: InputEvent) -> ChildStateMachine:
 	
-	var new_state_or_state_machine = current_state.process_input(event)
+	var new_state = current_state.process_input(event)
 
-	
-	if new_state_or_state_machine is State:
-		change_state(new_state_or_state_machine)
-	if new_state_or_state_machine is ChildStateMachine:
-		return new_state_or_state_machine
+	if new_state is State:
+		change_state(new_state)
+	var new_animal = animal_process_input(event)
+	if new_animal is ChildStateMachine:
+		return new_animal
 	return
 
 func process_frame(delta: float) -> ChildStateMachine:
-	var new_state_or_state_machine = current_state.process_frame(delta)
-	if new_state_or_state_machine is State:
-		change_state(new_state_or_state_machine)
-	if new_state_or_state_machine is ChildStateMachine:
-		return new_state_or_state_machine
+	var new_state = current_state.process_frame(delta)
+	if new_state is State:
+		change_state(new_state)
+	
+	var new_animal = animal_process_frame(delta)
+	if new_animal is ChildStateMachine:
+		return new_animal
 	return
+@abstract func animal_process_physics(delta:float) -> ChildStateMachine
+@abstract func animal_process_input(event: InputEvent) -> ChildStateMachine
+@abstract func animal_process_frame(delta: float ) -> ChildStateMachine

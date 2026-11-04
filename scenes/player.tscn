@@ -20,7 +20,9 @@
 [ext_resource type="Script" uid="uid://qnmwbc3twpqd" path="res://Scripts/Player/Deactive/deactive_state_machine.gd" id="12_f1ej7"]
 [ext_resource type="Script" uid="uid://ek1v2tl8c2h8" path="res://Scripts/Player/Deactive/deactive.gd" id="13_oprun"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4r5pv"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60mlk"]
+radius = 32.0
+height = 128.0
 
 [node name="Player" type="CharacterBody2D" unique_id=139764919 node_paths=PackedStringArray("parent_state_machine", "velocity_label")]
 script = ExtResource("1_dqkch")
@@ -28,7 +30,7 @@ parent_state_machine = NodePath("ParentStateMachine")
 velocity_label = NodePath("VelocityLabel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503420747]
-shape = SubResource("CapsuleShape2D_4r5pv")
+shape = SubResource("CapsuleShape2D_60mlk")
 
 [node name="ParentStateMachine" type="Node" parent="." unique_id=661096403 node_paths=PackedStringArray("debug_state_machine_label", "starting_state_machine", "deactive_state", "base_state")]
 script = ExtResource("1_3vyb7")
@@ -37,8 +39,9 @@ starting_state_machine = NodePath("BasicCharacterStateMachine")
 deactive_state = NodePath("BasicCharacterStateMachine")
 base_state = NodePath("BasicCharacterStateMachine")
 
-[node name="BasicCharacterStateMachine" type="Node" parent="ParentStateMachine" unique_id=1185985780 node_paths=PackedStringArray("debug_state_label", "starting_state", "deactive_state", "base_state")]
+[node name="BasicCharacterStateMachine" type="Node" parent="ParentStateMachine" unique_id=1185985780 node_paths=PackedStringArray("Bird", "debug_state_label", "starting_state", "deactive_state", "base_state")]
 script = ExtResource("3_tuyoq")
+Bird = NodePath("../Bird")
 debug_state_label = NodePath("../../StateLabel")
 starting_state = NodePath("Walk")
 deactive_state = NodePath("Walk")
@@ -50,6 +53,7 @@ dashing_state = NodePath("../Dashing")
 jumping_state = NodePath("../Jumping")
 falling_state = NodePath("../Falling")
 coyote_timer = NodePath("Timer")
+Jump_Distance = 100.0
 
 [node name="Timer" type="Timer" parent="ParentStateMachine/BasicCharacterStateMachine/Walk" unique_id=1532505563]
 wait_time = 0.3
@@ -58,11 +62,13 @@ one_shot = true
 [node name="Jumping" type="Node" parent="ParentStateMachine/BasicCharacterStateMachine" unique_id=2039866107 node_paths=PackedStringArray("falling_state")]
 script = ExtResource("5_oprun")
 falling_state = NodePath("../Falling")
-Jump_Height = 30.0
+Jump_Height = 70.0
+Jump_Distance = 100.0
 
 [node name="Falling" type="Node" parent="ParentStateMachine/BasicCharacterStateMachine" unique_id=280046023 node_paths=PackedStringArray("landing_state")]
 script = ExtResource("6_a8ls1")
 landing_state = NodePath("../Landing")
+Jump_Distance = 100.0
 
 [node name="Dashing" type="Node" parent="ParentStateMachine/BasicCharacterStateMachine" unique_id=164653841]
 script = ExtResource("7_qfm1y")
@@ -137,7 +143,7 @@ offset_right = 19.0
 offset_bottom = -69.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1874743154]
-scale = Vector2(0.14, 0.14)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_qlg0r")
 
 [node name="VelocityLabel" type="Label" parent="." unique_id=2068718348]
