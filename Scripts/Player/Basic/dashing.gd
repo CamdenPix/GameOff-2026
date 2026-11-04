@@ -17,5 +17,5 @@ func process_frame(delta: float) -> State:
 
 func process_physics(delta: float) -> State:
 	var raw_input: Vector2 = Input.get_vector("left","right","up","down") 
-	parent.velocity.x = raw_input.x * Speed
+	parent.velocity.x = raw_input.x * animal.Speed
 	return null

@@ -1,4 +1,5 @@
 @icon("res://assets/chip-svgrepo-com.svg")
+@abstract
 class_name WalkingState extends State
 @export var dash_threshold: float = .3
 @export var dashing_state: DashingState
@@ -6,6 +7,7 @@ class_name WalkingState extends State
 @export var falling_state: FallingState
 @export var coyote_timer: Timer
 var coyote_timer_fall: bool = false
+
 func enter(oldState: State) -> void:
 	#parent.animations.play(animation_name)
 	
@@ -27,13 +29,13 @@ func process_frame(delta: float) -> State:
 
 func process_physics(delta: float) -> State:
 	var raw_input: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down") 
-	parent.velocity.x = raw_input.x * Speed
+	parent.velocity.x = raw_input.x * animal.Speed
 	#if abs(raw_input.x) > dash_threshold:
 		#return dashing_state
 	
 	if parent.is_on_floor():
 		coyote_timer.stop()
-		parent.velocity.y += Fall_Gravity * delta
+		parent.velocity.y += animal.Fall_Gravity * delta
 	else:
 		if coyote_timer_fall:
 			return falling_state
@@ -43,8 +45,11 @@ func process_physics(delta: float) -> State:
 		
 	return null
 
-
 func _on_timer_timeout() -> void:
 	coyote_timer_fall = true
 	pass
-	
+@abstract func additiona_exit_logic(newState: State) -> void
+@abstract func additional_enter_logic(oldState: State) -> void
+@abstract func additional_process_physics_logic(delta:float) -> State
+@abstract func additional_process_frame_logic(delta:float) -> State
+@abstract func additional_process_input_logic(event: InputEvent) -> State

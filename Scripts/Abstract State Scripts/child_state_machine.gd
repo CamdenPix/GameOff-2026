@@ -13,11 +13,30 @@ var starting_state: State
 
 var current_state: State
 
-
+@export var animal_resource: Animal_Resource
 
 @export var deactive_state: State
 @export var base_state: State
 var localOldStateMachine: ChildStateMachine
+
+@export_category("Movement Parameters")
+@export var Jump_Peak_Time: float = .5
+@export var Jump_Fall_Time: float = .5
+@export var Jump_Height: float = 2.0
+@export var Jump_Distance: float = 4.0
+@export var Jump_Release_Shorthop:float = .6
+
+
+
+var Speed: float = 5.0
+var Jump_Velocity: float = 5.0
+var Jump_Gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var Fall_Gravity: float = 5.0
+
+
+func _ready() -> void:
+	animal = null
+	Calculate_Movement_Parameters()
 
 func enter(oldStateMachine: State) ->void:
 	localOldStateMachine = oldStateMachine
@@ -29,6 +48,7 @@ func exit(newStateMachine: State) ->void:
 func init(parent: Player) -> void:
 	for child in get_children():
 		child.parent = parent
+		child.animal = self
 
 	change_state(starting_state)
 
@@ -72,6 +92,14 @@ func process_frame(delta: float) -> ChildStateMachine:
 	if new_animal is ChildStateMachine:
 		return new_animal
 	return
+
+
+func Calculate_Movement_Parameters()->void:
+	Jump_Gravity = (2*Jump_Height)/pow(Jump_Peak_Time,2)
+	Fall_Gravity = (2*Jump_Height)/pow(Jump_Fall_Time,2)
+	Jump_Velocity = Jump_Gravity * Jump_Peak_Time
+	Speed = Jump_Distance/(Jump_Peak_Time+Jump_Fall_Time)
+
 @abstract func animal_process_physics(delta:float) -> ChildStateMachine
 @abstract func animal_process_input(event: InputEvent) -> ChildStateMachine
 @abstract func animal_process_frame(delta: float ) -> ChildStateMachine
