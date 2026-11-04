@@ -18,8 +18,8 @@ var current_state_machine: ChildStateMachine
 @export var base_state: ChildStateMachine
 
 func init(parent: Player) -> void:
-	for child in get_children():
-		print(child)
+	for child_state in get_children():
+		child_state.init(parent)
 	change_state_machine(starting_state_machine)
 
 func change_state_machine(new_state_machine: ChildStateMachine) -> void:

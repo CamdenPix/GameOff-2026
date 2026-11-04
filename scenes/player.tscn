@@ -4,11 +4,15 @@
 [ext_resource type="Script" uid="uid://chc56cy76um8y" path="res://scenes/player.gd" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://ca8ix522mmcvv" path="res://Scripts/Player/Bird/bird_state_machine.gd" id="2_g2els"]
 [ext_resource type="Script" uid="uid://cydbmyrb042lj" path="res://Scripts/Player/Bird/grounded_jump.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://pjou1r33qex5" path="res://Scripts/Player/Basic/basic_character_state_machine.gd" id="3_tuyoq"]
+[ext_resource type="Script" uid="uid://b0kfnbkbxgdum" path="res://Scripts/Player/Basic/walk.gd" id="4_fjrip"]
+[ext_resource type="Texture2D" uid="uid://cingnt5lrcoku" path="res://icon.svg" id="5_qlg0r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qdonj"]
 
-[node name="Player" type="CharacterBody2D" unique_id=139764919]
+[node name="Player" type="CharacterBody2D" unique_id=139764919 node_paths=PackedStringArray("parent_state_machine")]
 script = ExtResource("1_dqkch")
+parent_state_machine = NodePath("ParentStateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503420747]
 shape = SubResource("CapsuleShape2D_qdonj")
@@ -16,9 +20,18 @@ shape = SubResource("CapsuleShape2D_qdonj")
 [node name="ParentStateMachine" type="Node" parent="." unique_id=661096403 node_paths=PackedStringArray("debug_state_machine_label", "starting_state_machine", "deactive_state", "base_state")]
 script = ExtResource("1_3vyb7")
 debug_state_machine_label = NodePath("../ParentStateMachineLabel")
-starting_state_machine = NodePath("BirdStateMachine")
-deactive_state = NodePath("BirdStateMachine")
-base_state = NodePath("BirdStateMachine")
+starting_state_machine = NodePath("BasicCharacterStateMachine")
+deactive_state = NodePath("BasicCharacterStateMachine")
+base_state = NodePath("BasicCharacterStateMachine")
+
+[node name="BasicCharacterStateMachine" type="Node" parent="ParentStateMachine" unique_id=1185985780 node_paths=PackedStringArray("starting_state", "deactive_state", "base_state")]
+script = ExtResource("3_tuyoq")
+starting_state = NodePath("Walk")
+deactive_state = NodePath("Walk")
+base_state = NodePath("Walk")
+
+[node name="Walk" type="Node" parent="ParentStateMachine/BasicCharacterStateMachine" unique_id=170215105]
+script = ExtResource("4_fjrip")
 
 [node name="BirdStateMachine" type="Node" parent="ParentStateMachine" unique_id=1290409226 node_paths=PackedStringArray("starting_state", "deactive_state", "base_state")]
 script = ExtResource("2_g2els")
@@ -53,3 +66,7 @@ offset_left = -22.0
 offset_top = -52.0
 offset_right = 18.0
 offset_bottom = -26.0
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1874743154]
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("5_qlg0r")

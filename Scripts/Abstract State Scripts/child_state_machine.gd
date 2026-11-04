@@ -1,10 +1,9 @@
+
 @abstract
 class_name ChildStateMachine extends State
+
 @export 
 var debug_state_label : Label
-
-@export
-var debug_input_label : Label
 
 @export
 var no_debug_labels: bool = false
@@ -55,8 +54,7 @@ func process_physics(delta: float) -> ChildStateMachine:
 func process_input(event: InputEvent) -> ChildStateMachine:
 	
 	var new_state_or_state_machine = current_state.process_input(event)
-	if no_debug_labels == false:
-		debug_input_label.text = event.to_string()
+
 	
 	if new_state_or_state_machine is State:
 		change_state(new_state_or_state_machine)
