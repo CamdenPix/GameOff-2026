@@ -21,7 +21,7 @@ var Jump_Velocity: float = 5.0
 var Jump_Gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var Fall_Gravity: float = 5.0
 @export
-var parent: CharacterBody3D
+var parent: CharacterBody2D
 var localOldState: State
 
 

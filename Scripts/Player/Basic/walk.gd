@@ -1,3 +1,4 @@
+@icon("res://assets/chip-svgrepo-com.svg")
 extends State
 
 func enter(oldState: State) -> void:
@@ -15,5 +16,5 @@ func process_frame(delta: float) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	Input.get_vector("left","right","down","up")
+	parent.velocity = Input.get_vector("left","right","down","up") * 20 
 	return null
