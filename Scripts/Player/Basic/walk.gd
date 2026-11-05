@@ -7,9 +7,10 @@ class_name WalkingState extends State
 @export var falling_state: FallingState
 @export var coyote_timer: Timer
 var coyote_timer_fall: bool = false
+var speed_up_elapsed_time: float = 0.0
+var slow_down_elapsed_time: float = 0.0 
 
 func enter(oldState: State) -> void:
-	#parent.animations.play(animation_name)
 	
 	pass
 
@@ -52,35 +53,48 @@ func move(delta:float):
 	
 	var raw_input: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down")
 	if raw_input.length() == 0:
+		speed_up_elapsed_time -= delta
 		return 
 	var velocity_difference = abs(parent.velocity.x *raw_input.x) - animal.Ground_Max_Speed
-	#print(velocity_difference)
 	
 	# Ignore player at max speed
 	if velocity_difference == 0:
 		return
 		
-		
+	
+	
+	
 	# We speed up the player to get closer to max speed
 	if velocity_difference < 0:
+		speed_up_elapsed_time += delta
 		
-		var time_left_normalized = 1 - easeOutQuart(abs(parent.velocity.x *raw_input.x)/ animal.Ground_Max_Speed)
-		print("t left norm: ", time_left_normalized)
-		var time_left= animal.Ground_Accleration_Time * time_left_normalized
-		print('t_left: ', time_left)
-		#var time: int = Time.get_ticks_msec()
 		
-		var accel = easeOutQuart((time_left - delta) / animal.Ground_Accleration_Time)
-	
-		print("accel: ", accel)
-		parent.velocity.x += accel * raw_input.x
-		#print(easeOutQuart(t))
-		#var mapped_out_accel = 1 - easeOutQuart(t)
-		#var mapped_out_accel * 
+		var time_left = animal.Ground_Accleration_Time - speed_up_elapsed_time
+		var progress = clamp(speed_up_elapsed_time / animal.Ground_Accleration_Time, 0.0, 1.0)
+		
+		var smooth_progress = easeOutQuart(progress)
+		var smooth_speed = smooth_progress * animal.Ground_Max_Speed
+
+
+		var difference = (smooth_speed * raw_input.x) - parent.velocity.x
+		parent.velocity.x += difference
+		
 		return
 		
 	# Slow player down to max speed
 	if velocity_difference > 0:
+		print('slow downnn')
+		slow_down_elapsed_time += delta
+		
+		var time_left = animal.Ground_Decceleration_Time - slow_down_elapsed_time
+		var progress = clamp(slow_down_elapsed_time / animal.Ground_Decceleration_Time, 0.0, 1.0)
+		
+		var smooth_progress = easeOutExpo(progress)
+		var smooth_speed = smooth_progress * animal.Ground_Max_Speed
+
+
+		var difference = (smooth_speed * raw_input.x) - parent.velocity.x
+		parent.velocity.x += difference
 		return
 	
 	var temp_speed = parent.velocity.x 
