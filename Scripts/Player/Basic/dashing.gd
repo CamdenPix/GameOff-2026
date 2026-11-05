@@ -4,8 +4,6 @@ class_name DashingState extends State
 
 func enter(oldState: State) -> void:
 	additional_enter_logic(oldState)
-	#parent.animations.play(animation_name)
-	
 	pass
 
 func exit(newState: State) -> void:
@@ -22,7 +20,9 @@ func process_frame(delta: float) -> State:
 
 func process_physics(delta: float) -> State:
 	additional_process_physics_logic(delta)
-	var raw_input: Vector2 = Input.get_vector("left","right","up","down") 
+	var raw_input = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0)
 	parent.velocity.x = raw_input.x * animal.Speed
 	return null
 @abstract func additional_exit_logic(newState: State) -> void

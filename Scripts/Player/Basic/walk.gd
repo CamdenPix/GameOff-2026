@@ -56,13 +56,16 @@ func _on_timer_timeout() -> void:
 func move(delta:float):
 	
 	additional_move_logic(delta)
-	var raw_input: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down")
+	var raw_input = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0)
+	#var raw_input: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down")
 	var velocity_difference = abs(parent.velocity.x *raw_input.x) - animal.Ground_Max_Speed
-	
+	print(raw_input)
 	if raw_input.length() == 0:
 		speed_up_elapsed_time -= delta
 		
-	
+	var direction = raw_input
 	
 	# Slow player down to max speed
 	if velocity_difference > 0:

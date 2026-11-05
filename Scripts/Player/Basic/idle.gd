@@ -16,7 +16,9 @@ func exit(newState: State) -> void:
 
 func process_input(event: InputEvent) -> State:
 	additional_process_input_logic(event)
-	var raw_input: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down") 
+	var raw_input = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0)
 	if raw_input:
 		return walking_state
 	if Input.is_action_just_pressed("jump"):

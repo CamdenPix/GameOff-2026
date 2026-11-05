@@ -23,7 +23,9 @@ func process_frame(delta: float) -> State:
 
 func process_physics(delta: float) -> State:
 	additional_process_physics_logic(delta)
-	var raw_input: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down") 
+	var raw_input = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0)
 	parent.velocity.x = raw_input.x * animal.AirSpeed
 	if parent.velocity.y + animal.Jump_Gravity * delta < 0:
 		parent.velocity.y += animal.Jump_Gravity * delta
