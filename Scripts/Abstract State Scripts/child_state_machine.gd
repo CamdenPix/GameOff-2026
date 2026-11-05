@@ -30,6 +30,7 @@ var localOldStateMachine: ChildStateMachine
 @export var Ground_Accleration_Time: float = 5.0
 @export var Ground_Max_Speed: float = 150
 @export var Ground_Past_Max_Speed_Decceleration: float = 40
+@export var Ground_Speed_Curve: Curve
 
 
 var AirSpeed: float = 5.0
@@ -38,6 +39,7 @@ var Jump_Gravity: float = ProjectSettings.get_setting("physics/3d/default_gravit
 var Fall_Gravity: float = 5.0
 var Ground_Acceleration: float = 20
 
+#0,.8,.53,1
 
 var current_state: State
 

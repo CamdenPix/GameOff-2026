@@ -20,14 +20,7 @@ func exit(newState: State) -> void:
 
 func process_input(event: InputEvent) -> State:
 	additional_process_input_logic(event)
-	print('event')
-	var raw_input = Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0)
-	if raw_input:
-		return walking_state
-	else:
-		parent.velocity.x = 0
+	
 	return null
 
 func process_frame(delta: float) -> State:
@@ -36,6 +29,14 @@ func process_frame(delta: float) -> State:
 
 func process_physics(delta: float) -> State:
 	additional_process_physics_logic(delta)
+	var raw_input = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0)
+	if raw_input:
+		return walking_state
+	else:
+		parent.velocity.x = 0
+	
 	return return_idle_state
 
 
