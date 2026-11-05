@@ -17,8 +17,11 @@ func exit(newState: State) -> void:
 
 func process_input(event: InputEvent) -> State:
 	var raw_input: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down") 
+	
 	if raw_input:
 		return walking_state
+	else:
+		parent.velocity.x = 0
 	return null
 
 func process_frame(delta: float) -> State:

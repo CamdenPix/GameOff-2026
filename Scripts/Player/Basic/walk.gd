@@ -28,8 +28,7 @@ func process_frame(delta: float) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	var raw_input: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down") 
-	parent.velocity.x = raw_input.x * animal.Speed
+	move(delta)
 	#if abs(raw_input.x) > dash_threshold:
 		#return dashing_state
 	
@@ -48,7 +47,56 @@ func process_physics(delta: float) -> State:
 func _on_timer_timeout() -> void:
 	coyote_timer_fall = true
 	pass
-@abstract func additiona_exit_logic(newState: State) -> void
+	
+func move(delta:float):
+	
+	var raw_input: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down")
+	if raw_input.length() == 0:
+		return 
+	var velocity_difference = abs(parent.velocity.x *raw_input.x) - animal.Ground_Max_Speed
+	#print(velocity_difference)
+	
+	# Ignore player at max speed
+	if velocity_difference == 0:
+		return
+		
+		
+	# We speed up the player to get closer to max speed
+	if velocity_difference < 0:
+		
+		var time_left_normalized = 1 - easeOutQuart(abs(parent.velocity.x *raw_input.x)/ animal.Ground_Max_Speed)
+		print("t left norm: ", time_left_normalized)
+		var time_left= animal.Ground_Accleration_Time * time_left_normalized
+		print('t_left: ', time_left)
+		#var time: int = Time.get_ticks_msec()
+		
+		var accel = easeOutQuart((time_left - delta) / animal.Ground_Accleration_Time)
+	
+		print("accel: ", accel)
+		parent.velocity.x += accel * raw_input.x
+		#print(easeOutQuart(t))
+		#var mapped_out_accel = 1 - easeOutQuart(t)
+		#var mapped_out_accel * 
+		return
+		
+	# Slow player down to max speed
+	if velocity_difference > 0:
+		return
+	
+	var temp_speed = parent.velocity.x 
+	additional_move_logic(delta)
+
+func easeOutQuart(x: float) -> float:
+	return 1 - pow(1 - x, 4);
+
+func easeOutExpo(x: float) -> float:
+	if x == 1:
+		return 1
+	
+	return 1 - pow(2, -10 * x);
+
+@abstract func additional_move_logic(delta:float) -> void
+@abstract func additional_exit_logic(newState: State) -> void
 @abstract func additional_enter_logic(oldState: State) -> void
 @abstract func additional_process_physics_logic(delta:float) -> State
 @abstract func additional_process_frame_logic(delta:float) -> State
