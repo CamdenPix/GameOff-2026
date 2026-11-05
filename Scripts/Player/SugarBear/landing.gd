@@ -1,6 +1,6 @@
 extends LandingState
 
-func additiona_exit_logic(newState: State) -> void:
+func additional_exit_logic(newState: State) -> void:
 	return
 func additional_enter_logic(oldState: State) -> void:
 	return

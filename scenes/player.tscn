@@ -65,8 +65,9 @@ Jump_Peak_Time = 0.75
 Jump_Fall_Time = 1.0
 Jump_Height = 40.0
 Jump_Distance = 100.0
-Ground_Accleration_Time = 10.0
+Ground_Accleration_Time = 1.0
 Ground_Max_Speed = 100.0
+Ground_Past_Max_Speed_Decceleration = 3.0
 
 [node name="Walk" type="Node" parent="ParentStateMachine/SugarBear" unique_id=305116382 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "coyote_timer")]
 script = ExtResource("7_y4r1p")
