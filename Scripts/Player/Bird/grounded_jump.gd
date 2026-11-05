@@ -1,3 +1,4 @@
+@icon("res://assets/chip-svgrepo-com.svg")
 extends State
 
 func enter(oldState: State) -> void:

@@ -1,0 +1,5 @@
+I used open game art for res://assets/Debug Tiles.png
+
+and svg repo for these :
+	res://assets/chip-svgrepo-com.svg
+	res://assets/animal-footprint-svgrepo-com.svg

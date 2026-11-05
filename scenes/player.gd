@@ -1,6 +1,18 @@
 class_name Player extends CharacterBody2D
 @export var parent_state_machine: ParentStateMachine
-
+@export var velocity_label: Label
 
 func _ready() -> void:
 	parent_state_machine.init(self)
+	
+func _physics_process(delta: float) -> void:
+	var text_velocity: String = "X: " + str(velocity.x) + "\n Y:" + str(velocity.y)
+	velocity_label.text =  text_velocity
+	parent_state_machine.process_physics(delta)
+	move_and_slide()
+	
+func _input(event: InputEvent) -> void:
+	parent_state_machine.process_input(event)
+
+func _process(delta: float) -> void:
+	parent_state_machine.process_frame(delta)

@@ -4,69 +4,144 @@
 [ext_resource type="Script" uid="uid://chc56cy76um8y" path="res://scenes/player.gd" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://ca8ix522mmcvv" path="res://Scripts/Player/Bird/bird_state_machine.gd" id="2_g2els"]
 [ext_resource type="Script" uid="uid://cydbmyrb042lj" path="res://Scripts/Player/Bird/grounded_jump.gd" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://pjou1r33qex5" path="res://Scripts/Player/Basic/basic_character_state_machine.gd" id="3_tuyoq"]
-[ext_resource type="Script" uid="uid://b0kfnbkbxgdum" path="res://Scripts/Player/Basic/walk.gd" id="4_fjrip"]
+[ext_resource type="Script" uid="uid://cwjt0dqonkxtr" path="res://Scripts/Abstract State Scripts/animal_resource.gd" id="4_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://cingnt5lrcoku" path="res://icon.svg" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://dysklje3t01br" path="res://Scripts/Player/Bird/flap_wing.gd" id="7_ur7pv"]
+[ext_resource type="Script" uid="uid://5tdjqwwbdmx1" path="res://Scripts/Player/SugarBear/Walk.gd" id="7_y4r1p"]
+[ext_resource type="Script" uid="uid://snt05gduaxdv" path="res://Scripts/Player/SugarBear/dashing.gd" id="8_d2wvv"]
+[ext_resource type="Script" uid="uid://cc5inuve0unp2" path="res://Scripts/Player/SugarBear/sugar_bear_state_machine.gd" id="8_y4r1p"]
+[ext_resource type="Script" uid="uid://3jkatjcbd1hb" path="res://Scripts/Player/SugarBear/jumping.gd" id="9_jej6c"]
+[ext_resource type="Script" uid="uid://l4fgobvcx73j" path="res://Scripts/Player/SugarBear/falling.gd" id="10_f1ej7"]
+[ext_resource type="Script" uid="uid://7bb5jq47ukrj" path="res://Scripts/Player/SugarBear/idle.gd" id="11_f1ej7"]
+[ext_resource type="Script" uid="uid://qnmwbc3twpqd" path="res://Scripts/Player/Deactive/deactive_state_machine.gd" id="12_f1ej7"]
+[ext_resource type="Script" uid="uid://cpij4htxn7v7b" path="res://Scripts/Player/SugarBear/landing.gd" id="12_oprun"]
+[ext_resource type="Script" uid="uid://ek1v2tl8c2h8" path="res://Scripts/Player/Deactive/deactive.gd" id="13_oprun"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qdonj"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60mlk"]
+radius = 32.0
+height = 128.0
 
-[node name="Player" type="CharacterBody2D" unique_id=139764919 node_paths=PackedStringArray("parent_state_machine")]
+[sub_resource type="Resource" id="Resource_qfm1y"]
+script = ExtResource("4_a8ls1")
+metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
+
+[node name="Player" type="CharacterBody2D" unique_id=139764919 node_paths=PackedStringArray("parent_state_machine", "velocity_label")]
 script = ExtResource("1_dqkch")
 parent_state_machine = NodePath("ParentStateMachine")
+velocity_label = NodePath("VelocityLabel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503420747]
-shape = SubResource("CapsuleShape2D_qdonj")
+shape = SubResource("CapsuleShape2D_60mlk")
 
 [node name="ParentStateMachine" type="Node" parent="." unique_id=661096403 node_paths=PackedStringArray("debug_state_machine_label", "starting_state_machine", "deactive_state", "base_state")]
 script = ExtResource("1_3vyb7")
-debug_state_machine_label = NodePath("../ParentStateMachineLabel")
-starting_state_machine = NodePath("BasicCharacterStateMachine")
-deactive_state = NodePath("BasicCharacterStateMachine")
-base_state = NodePath("BasicCharacterStateMachine")
+debug_state_machine_label = NodePath("../AnimalLabel")
+starting_state_machine = NodePath("SugarBear")
+deactive_state = NodePath("DeactiveStateMachine")
+base_state = NodePath("SugarBear")
 
-[node name="BasicCharacterStateMachine" type="Node" parent="ParentStateMachine" unique_id=1185985780 node_paths=PackedStringArray("starting_state", "deactive_state", "base_state")]
-script = ExtResource("3_tuyoq")
-starting_state = NodePath("Walk")
-deactive_state = NodePath("Walk")
-base_state = NodePath("Walk")
-
-[node name="Walk" type="Node" parent="ParentStateMachine/BasicCharacterStateMachine" unique_id=170215105]
-script = ExtResource("4_fjrip")
-
-[node name="BirdStateMachine" type="Node" parent="ParentStateMachine" unique_id=1290409226 node_paths=PackedStringArray("starting_state", "deactive_state", "base_state")]
+[node name="Bird" type="Node" parent="ParentStateMachine" unique_id=1290409226 node_paths=PackedStringArray("debug_state_label", "starting_state", "deactive_state", "base_state")]
 script = ExtResource("2_g2els")
-no_debug_labels = true
+debug_state_label = NodePath("../../StateLabel")
 starting_state = NodePath("Grounded Jump")
 deactive_state = NodePath("Grounded Jump")
 base_state = NodePath("Grounded Jump")
 
-[node name="Grounded Jump" type="Node" parent="ParentStateMachine/BirdStateMachine" unique_id=893226061]
+[node name="Grounded Jump" type="Node" parent="ParentStateMachine/Bird" unique_id=893226061]
 script = ExtResource("3_qhqgy")
 
-[node name="Flap Wing" type="Node" parent="ParentStateMachine/BirdStateMachine" unique_id=1672023302]
+[node name="Flap Wing" type="Node" parent="ParentStateMachine/Bird" unique_id=1672023302]
+script = ExtResource("7_ur7pv")
 
-[node name="MonkeyStateMachine" type="Node" parent="ParentStateMachine" unique_id=1617720625]
+[node name="SugarBear" type="Node" parent="ParentStateMachine" unique_id=1617720625 node_paths=PackedStringArray("Bird", "debug_state_label", "starting_state", "deactive_state", "base_state")]
+script = ExtResource("8_y4r1p")
+Bird = NodePath("../Bird")
+animal_resource = SubResource("Resource_qfm1y")
+debug_state_label = NodePath("../../StateLabel")
+starting_state = NodePath("Walk")
+deactive_state = NodePath("Idle")
+base_state = NodePath("Jumping")
+Jump_Peak_Time = 0.75
+Jump_Fall_Time = 1.0
+Jump_Height = 40.0
+Jump_Distance = 100.0
+Ground_Accleration_Time = 1.0
+Ground_Max_Speed = 100.0
+Ground_Past_Max_Speed_Decceleration = 3.0
 
-[node name="Walk" type="Node" parent="ParentStateMachine/MonkeyStateMachine" unique_id=1718026456]
+[node name="Walk" type="Node" parent="ParentStateMachine/SugarBear" unique_id=305116382 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "coyote_timer")]
+script = ExtResource("7_y4r1p")
+dashing_state = NodePath("../Dashing")
+jumping_state = NodePath("../Jumping")
+falling_state = NodePath("../Falling")
+coyote_timer = NodePath("Timer")
 
-[node name="Jump" type="Node" parent="ParentStateMachine/MonkeyStateMachine" unique_id=2125297960]
+[node name="Timer" type="Timer" parent="ParentStateMachine/SugarBear/Walk" unique_id=1749590410]
+wait_time = 0.3
+one_shot = true
 
-[node name="Climb" type="Node" parent="ParentStateMachine/MonkeyStateMachine" unique_id=811446954]
+[node name="Dashing" type="Node" parent="ParentStateMachine/SugarBear" unique_id=861785742]
+script = ExtResource("8_d2wvv")
 
-[node name="DeactiveStateMachine" type="Node" parent="ParentStateMachine" unique_id=1196446141]
+[node name="Jumping" type="Node" parent="ParentStateMachine/SugarBear" unique_id=1989321256 node_paths=PackedStringArray("falling_state")]
+script = ExtResource("9_jej6c")
+falling_state = NodePath("../Falling")
 
-[node name="ParentStateMachineLabel" type="Label" parent="." unique_id=502794606]
+[node name="Falling" type="Node" parent="ParentStateMachine/SugarBear" unique_id=1879153389 node_paths=PackedStringArray("landing_state")]
+script = ExtResource("10_f1ej7")
+landing_state = NodePath("../Landing")
+
+[node name="Idle" type="Node" parent="ParentStateMachine/SugarBear" unique_id=971343740 node_paths=PackedStringArray("walking_state", "jumping_state")]
+script = ExtResource("11_f1ej7")
+walking_state = NodePath("../Walk")
+jumping_state = NodePath("../Jumping")
+
+[node name="Landing" type="Node" parent="ParentStateMachine/SugarBear" unique_id=1779215012 node_paths=PackedStringArray("idle_timer", "idle_state", "walking_state")]
+script = ExtResource("12_oprun")
+idle_timer = NodePath("Timer")
+idle_state = NodePath("../Idle")
+walking_state = NodePath("../Walk")
+
+[node name="Timer" type="Timer" parent="ParentStateMachine/SugarBear/Landing" unique_id=1157127932]
+
+[node name="DeactiveStateMachine" type="Node" parent="ParentStateMachine" unique_id=1196446141 node_paths=PackedStringArray("starting_state", "deactive_state", "base_state")]
+script = ExtResource("12_f1ej7")
+no_debug_labels = true
+starting_state = NodePath("Deactive")
+deactive_state = NodePath("Deactive")
+base_state = NodePath("Deactive")
+
+[node name="Deactive" type="Node" parent="ParentStateMachine/DeactiveStateMachine" unique_id=1954404007]
+script = ExtResource("13_oprun")
+
+[node name="AnimalLabel" type="Label" parent="." unique_id=502794606]
+z_index = 999
 offset_left = -22.0
 offset_top = -52.0
 offset_right = 18.0
 offset_bottom = -26.0
 
-[node name="Input" type="Label" parent="." unique_id=164288899]
-offset_left = -22.0
-offset_top = -52.0
-offset_right = 18.0
-offset_bottom = -26.0
+[node name="StateLabel" type="Label" parent="." unique_id=164288899]
+z_index = 999
+offset_left = -21.0
+offset_top = -95.0
+offset_right = 19.0
+offset_bottom = -69.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1874743154]
-scale = Vector2(0.14, 0.14)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_qlg0r")
+
+[node name="VelocityLabel" type="Label" parent="." unique_id=2068718348]
+z_index = 999
+offset_left = 32.0
+offset_top = -13.0
+offset_right = 72.0
+offset_bottom = 10.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=736987907]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=258571584]
+
+[connection signal="timeout" from="ParentStateMachine/SugarBear/Walk/Timer" to="ParentStateMachine/SugarBear/Walk" method="_on_timer_timeout"]
+[connection signal="timeout" from="ParentStateMachine/SugarBear/Landing/Timer" to="ParentStateMachine/SugarBear/Landing" method="_on_timer_timeout"]
