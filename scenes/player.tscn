@@ -56,16 +56,18 @@ starting_state_machine = NodePath("SugarBear")
 deactive_state = NodePath("DeactiveStateMachine")
 base_state = NodePath("SugarBear")
 
-[node name="Bird" type="Node" parent="ParentStateMachine" unique_id=1290409226 node_paths=PackedStringArray("debug_state_label", "starting_state", "deactive_state", "base_state")]
+[node name="Bird" type="Node" parent="ParentStateMachine" unique_id=1290409226 node_paths=PackedStringArray("sugar_bear", "debug_state_label", "starting_state", "deactive_state", "base_state")]
 script = ExtResource("2_g2els")
+sugar_bear = NodePath("../SugarBear")
 animal_resource = SubResource("Resource_qdonj")
 debug_state_label = NodePath("../../StateLabel")
 starting_state = NodePath("Jumping")
 deactive_state = NodePath("Idle")
 base_state = NodePath("Jumping")
 
-[node name="Flap Wing" type="Node" parent="ParentStateMachine/Bird" unique_id=1672023302]
+[node name="Flap Wing" type="Node" parent="ParentStateMachine/Bird" unique_id=1672023302 node_paths=PackedStringArray("falling_state")]
 script = ExtResource("7_ur7pv")
+falling_state = NodePath("../Falling")
 
 [node name="Walking" type="Node" parent="ParentStateMachine/Bird" unique_id=1249936798 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "coyote_timer")]
 script = ExtResource("7_qfm1y")
@@ -84,13 +86,14 @@ walking_state = NodePath("../Walking")
 
 [node name="Timer" type="Timer" parent="ParentStateMachine/Bird/Landing" unique_id=183789261]
 
-[node name="Jumping" type="Node" parent="ParentStateMachine/Bird" unique_id=630225543 node_paths=PackedStringArray("Flapping", "falling_state")]
+[node name="Jumping" type="Node" parent="ParentStateMachine/Bird" unique_id=630225543 node_paths=PackedStringArray("flapping_state", "falling_state")]
 script = ExtResource("9_4r5pv")
-Flapping = NodePath("../Flap Wing")
+flapping_state = NodePath("../Flap Wing")
 falling_state = NodePath("../../SugarBear/Falling")
 
-[node name="Falling" type="Node" parent="ParentStateMachine/Bird" unique_id=1876470443 node_paths=PackedStringArray("landing_state")]
+[node name="Falling" type="Node" parent="ParentStateMachine/Bird" unique_id=1876470443 node_paths=PackedStringArray("flapping_state", "landing_state")]
 script = ExtResource("10_i4ail")
+flapping_state = NodePath("../Flap Wing")
 landing_state = NodePath("../Landing")
 
 [node name="Idle" type="Node" parent="ParentStateMachine/Bird" unique_id=556276015 node_paths=PackedStringArray("walking_state", "jumping_state")]
