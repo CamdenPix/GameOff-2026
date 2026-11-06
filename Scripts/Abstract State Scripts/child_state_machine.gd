@@ -2,6 +2,8 @@
 @abstract
 class_name ChildStateMachine extends State
 
+signal request_animal(current_animal: ChildStateMachine, new_animal: ChildStateMachine)
+
 @export var animal_resource: Animal_Resource
 
 @export 

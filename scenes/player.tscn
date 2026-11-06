@@ -21,19 +21,28 @@
 [ext_resource type="Script" uid="uid://qnmwbc3twpqd" path="res://Scripts/Player/Deactive/deactive_state_machine.gd" id="12_f1ej7"]
 [ext_resource type="Script" uid="uid://cpij4htxn7v7b" path="res://Scripts/Player/SugarBear/landing.gd" id="12_oprun"]
 [ext_resource type="Script" uid="uid://ek1v2tl8c2h8" path="res://Scripts/Player/Deactive/deactive.gd" id="13_oprun"]
+[ext_resource type="Script" uid="uid://bxh0gc13ppu0l" path="res://Scripts/Player/animal_changer.gd" id="22_a38lo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60mlk"]
 radius = 32.0
 height = 128.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a38lo"]
+radius = 32.0
+height = 128.0
+
 [sub_resource type="Resource" id="Resource_qdonj"]
 script = ExtResource("4_a8ls1")
-collision_shape = SubResource("CapsuleShape2D_60mlk")
+collision_shape = SubResource("CapsuleShape2D_a38lo")
 metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ni07"]
+radius = 32.0
+height = 128.0
 
 [sub_resource type="Resource" id="Resource_qfm1y"]
 script = ExtResource("4_a8ls1")
-collision_shape = SubResource("CapsuleShape2D_60mlk")
+collision_shape = SubResource("CapsuleShape2D_4ni07")
 metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
 
 [sub_resource type="Curve" id="Curve_a8ls1"]
@@ -156,8 +165,9 @@ walking_state = NodePath("../Walking")
 
 [node name="Timer" type="Timer" parent="ParentStateMachine/SugarBear/Landing" unique_id=1157127932]
 
-[node name="DeactiveStateMachine" type="Node" parent="ParentStateMachine" unique_id=1196446141 node_paths=PackedStringArray("starting_state", "deactive_state", "base_state")]
+[node name="DeactiveStateMachine" type="Node" parent="ParentStateMachine" unique_id=1196446141 node_paths=PackedStringArray("debug_state_label", "starting_state", "deactive_state", "base_state")]
 script = ExtResource("12_f1ej7")
+debug_state_label = NodePath("../../StateLabel")
 no_debug_labels = true
 starting_state = NodePath("Deactive")
 deactive_state = NodePath("Deactive")
@@ -191,9 +201,8 @@ offset_top = -13.0
 offset_right = 72.0
 offset_bottom = 10.0
 
-[node name="Area2D" type="Area2D" parent="." unique_id=736987907]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=258571584]
+[node name="AnimalChanger" type="Node" parent="." unique_id=1659009958]
+script = ExtResource("22_a38lo")
 
 [connection signal="timeout" from="ParentStateMachine/SugarBear/Walking/Timer" to="ParentStateMachine/SugarBear/Walking" method="_on_timer_timeout"]
 [connection signal="timeout" from="ParentStateMachine/SugarBear/Landing/Timer" to="ParentStateMachine/SugarBear/Landing" method="_on_timer_timeout"]
