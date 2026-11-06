@@ -8,10 +8,10 @@ class_name WalkingState extends State
 @export var coyote_timer: Timer
 var coyote_timer_fall: bool = false
 var speed_up_elapsed_time: float = 0.0
-var slow_down_elapsed_time: float = 0.0 
 
 func enter(oldState: State) -> void:
 	additional_enter_logic(oldState)
+	speed_up_elapsed_time = get_progress()
 	pass
 
 func exit(newState: State) -> void:
@@ -23,7 +23,6 @@ func exit(newState: State) -> void:
 func process_input(event: InputEvent) -> State:
 	additional_process_input_logic(event)
 	if Input.is_action_just_pressed("jump"):
-		print('jump')
 		return jumping_state
 	return null
 
@@ -61,7 +60,7 @@ func move(delta:float):
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0)
 	#var raw_input: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down")
 	var velocity_difference = abs(parent.velocity.x *raw_input.x) - animal.Ground_Max_Speed
-	print(raw_input)
+	#print(raw_input)
 	if raw_input.length() == 0:
 		speed_up_elapsed_time -= delta
 		
@@ -89,7 +88,6 @@ func move(delta:float):
 		
 		var time_left = animal.Ground_Accleration_Time - speed_up_elapsed_time
 		var progress = clamp(speed_up_elapsed_time / animal.Ground_Accleration_Time, 0.0, 1.0)
-		
 		var smooth_progress = easeOutQuart(progress)
 		var smooth_speed = smooth_progress * animal.Ground_Max_Speed
 
@@ -99,9 +97,21 @@ func move(delta:float):
 		
 		return
 		
+func get_progress() -> float:
+	var difference = abs(parent.velocity.x) - animal.Ground_Max_Speed
+	if difference > 0:
+		return 1.0
+	else:
+		var value_noramlized = abs(parent.velocity.x) / animal.Ground_Max_Speed
+		var y = easeOutQuartInverse(value_noramlized)
+		return y
+	return 0.0
 
 func easeOutQuart(x: float) -> float:
 	return 1 - pow(1 - x, 4);
+
+func easeOutQuartInverse(y: float) -> float:
+	return 1.0 - pow(1.0 - y, 0.25)
 
 func easeOutExpo(x: float) -> float:
 	if x == 1:

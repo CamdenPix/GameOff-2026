@@ -19,6 +19,7 @@ var starting_state: State
 @export var base_state: State
 var localOldStateMachine: ChildStateMachine
 
+
 @export_category("Movement Parameters")
 @export var Jump_Peak_Time: float = .5
 @export var Jump_Fall_Time: float = .5
@@ -30,6 +31,7 @@ var localOldStateMachine: ChildStateMachine
 @export var Ground_Accleration_Time: float = 5.0
 @export var Ground_Max_Speed: float = 150
 @export var Ground_Past_Max_Speed_Decceleration: float = 40
+@export var Ground_Speed_Curve: Curve
 
 
 var AirSpeed: float = 5.0
@@ -38,10 +40,13 @@ var Jump_Gravity: float = ProjectSettings.get_setting("physics/3d/default_gravit
 var Fall_Gravity: float = 5.0
 var Ground_Acceleration: float = 20
 
+#0,.8,.53,1
 
 var current_state: State
 
 func _ready() -> void:
+	if debug_state_label == null and no_debug_labels == true:
+		push_error(self.name + ': Hey man the debug state label or no debug label needs to be set')
 	animal = null
 	Calculate_Movement_Parameters()
 
@@ -53,6 +58,7 @@ func exit(newStateMachine: State) ->void:
 	pass
 
 func init(parent: Player) -> void:
+	remote_view_animal_name = self.name
 	for child in get_children():
 		child.parent = parent
 		child.animal = self
@@ -64,6 +70,9 @@ func change_state(new_state: State) -> void:
 		current_state.exit(new_state)
 	var old_state = current_state
 	current_state = new_state
+	
+	if new_state == null:
+		push_error('animal: ' + self.name + 'had a new state be null. if this happened at start of the game check if starting state, deactive state and base state are set')
 	if no_debug_labels == false:
 		debug_state_label.text = new_state.to_string()
 	current_state.enter(old_state)

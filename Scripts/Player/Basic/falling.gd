@@ -27,6 +27,7 @@ func process_physics(delta: float) -> State:
 	var raw_input = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0) 
+	
 	parent.velocity.x = raw_input.x * animal.AirSpeed
 	parent.velocity.y += animal.Fall_Gravity * delta
 	if parent.is_on_floor():
