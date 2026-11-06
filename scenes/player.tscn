@@ -3,15 +3,20 @@
 [ext_resource type="Script" uid="uid://dnsp2xc5r75m3" path="res://Scripts/Player/player_parent_state_machine.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://chc56cy76um8y" path="res://scenes/player.gd" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://ca8ix522mmcvv" path="res://Scripts/Player/Bird/bird_state_machine.gd" id="2_g2els"]
-[ext_resource type="Script" uid="uid://cydbmyrb042lj" path="res://Scripts/Player/Bird/grounded_jump.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://cwjt0dqonkxtr" path="res://Scripts/Abstract State Scripts/animal_resource.gd" id="4_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://cingnt5lrcoku" path="res://icon.svg" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://b83weq6rd5bpa" path="res://Scripts/Player/Bird/walk.gd" id="7_qfm1y"]
 [ext_resource type="Script" uid="uid://dysklje3t01br" path="res://Scripts/Player/Bird/flap_wing.gd" id="7_ur7pv"]
 [ext_resource type="Script" uid="uid://5tdjqwwbdmx1" path="res://Scripts/Player/SugarBear/Walk.gd" id="7_y4r1p"]
 [ext_resource type="Script" uid="uid://snt05gduaxdv" path="res://Scripts/Player/SugarBear/dashing.gd" id="8_d2wvv"]
+[ext_resource type="Script" uid="uid://b8kuwukqb6kpx" path="res://Scripts/Player/Bird/landing.gd" id="8_fulsm"]
 [ext_resource type="Script" uid="uid://cc5inuve0unp2" path="res://Scripts/Player/SugarBear/sugar_bear_state_machine.gd" id="8_y4r1p"]
+[ext_resource type="Script" uid="uid://xw647mn6prgr" path="res://Scripts/Player/Bird/jumping.gd" id="9_4r5pv"]
 [ext_resource type="Script" uid="uid://3jkatjcbd1hb" path="res://Scripts/Player/SugarBear/jumping.gd" id="9_jej6c"]
 [ext_resource type="Script" uid="uid://l4fgobvcx73j" path="res://Scripts/Player/SugarBear/falling.gd" id="10_f1ej7"]
+[ext_resource type="Script" uid="uid://bqlswfisxixr7" path="res://Scripts/Player/Bird/falling.gd" id="10_i4ail"]
+[ext_resource type="Script" uid="uid://hebwg3stvyny" path="res://Scripts/Player/Bird/idle.gd" id="11_4ni07"]
+[ext_resource type="Script" uid="uid://b7ue0y67rwff" path="res://Scripts/Player/Bird/dashing.gd" id="11_a38lo"]
 [ext_resource type="Script" uid="uid://7bb5jq47ukrj" path="res://Scripts/Player/SugarBear/idle.gd" id="11_f1ej7"]
 [ext_resource type="Script" uid="uid://qnmwbc3twpqd" path="res://Scripts/Player/Deactive/deactive_state_machine.gd" id="12_f1ej7"]
 [ext_resource type="Script" uid="uid://cpij4htxn7v7b" path="res://Scripts/Player/SugarBear/landing.gd" id="12_oprun"]
@@ -21,13 +26,20 @@
 radius = 32.0
 height = 128.0
 
+[sub_resource type="Resource" id="Resource_qdonj"]
+script = ExtResource("4_a8ls1")
+collision_shape = SubResource("CapsuleShape2D_60mlk")
+metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
+
 [sub_resource type="Resource" id="Resource_qfm1y"]
 script = ExtResource("4_a8ls1")
+collision_shape = SubResource("CapsuleShape2D_60mlk")
 metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
 
 [sub_resource type="Curve" id="Curve_a8ls1"]
 _data = [Vector2(0, 0), 0.0, 2.85, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+metadata/_snap_enabled = true
 
 [node name="Player" type="CharacterBody2D" unique_id=139764919 node_paths=PackedStringArray("parent_state_machine", "velocity_label")]
 script = ExtResource("1_dqkch")
@@ -46,23 +58,55 @@ base_state = NodePath("SugarBear")
 
 [node name="Bird" type="Node" parent="ParentStateMachine" unique_id=1290409226 node_paths=PackedStringArray("debug_state_label", "starting_state", "deactive_state", "base_state")]
 script = ExtResource("2_g2els")
+animal_resource = SubResource("Resource_qdonj")
 debug_state_label = NodePath("../../StateLabel")
-starting_state = NodePath("Grounded Jump")
-deactive_state = NodePath("Grounded Jump")
-base_state = NodePath("Grounded Jump")
-
-[node name="Grounded Jump" type="Node" parent="ParentStateMachine/Bird" unique_id=893226061]
-script = ExtResource("3_qhqgy")
+starting_state = NodePath("Jumping")
+deactive_state = NodePath("Idle")
+base_state = NodePath("Jumping")
 
 [node name="Flap Wing" type="Node" parent="ParentStateMachine/Bird" unique_id=1672023302]
 script = ExtResource("7_ur7pv")
+
+[node name="Walking" type="Node" parent="ParentStateMachine/Bird" unique_id=1249936798 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "coyote_timer")]
+script = ExtResource("7_qfm1y")
+dashing_state = NodePath("../Dashing")
+jumping_state = NodePath("../Jumping")
+falling_state = NodePath("../../SugarBear/Falling")
+coyote_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="ParentStateMachine/Bird/Walking" unique_id=1651982010]
+
+[node name="Landing" type="Node" parent="ParentStateMachine/Bird" unique_id=164240551 node_paths=PackedStringArray("idle_timer", "idle_state", "walking_state")]
+script = ExtResource("8_fulsm")
+idle_timer = NodePath("Timer")
+idle_state = NodePath("../Idle")
+walking_state = NodePath("../Walking")
+
+[node name="Timer" type="Timer" parent="ParentStateMachine/Bird/Landing" unique_id=183789261]
+
+[node name="Jumping" type="Node" parent="ParentStateMachine/Bird" unique_id=630225543 node_paths=PackedStringArray("Flapping", "falling_state")]
+script = ExtResource("9_4r5pv")
+Flapping = NodePath("../Flap Wing")
+falling_state = NodePath("../../SugarBear/Falling")
+
+[node name="Falling" type="Node" parent="ParentStateMachine/Bird" unique_id=1876470443 node_paths=PackedStringArray("landing_state")]
+script = ExtResource("10_i4ail")
+landing_state = NodePath("../Landing")
+
+[node name="Idle" type="Node" parent="ParentStateMachine/Bird" unique_id=556276015 node_paths=PackedStringArray("walking_state", "jumping_state")]
+script = ExtResource("11_4ni07")
+walking_state = NodePath("../Walking")
+jumping_state = NodePath("../Jumping")
+
+[node name="Dashing" type="Node" parent="ParentStateMachine/Bird" unique_id=1597557432]
+script = ExtResource("11_a38lo")
 
 [node name="SugarBear" type="Node" parent="ParentStateMachine" unique_id=1617720625 node_paths=PackedStringArray("Bird", "debug_state_label", "starting_state", "deactive_state", "base_state")]
 script = ExtResource("8_y4r1p")
 Bird = NodePath("../Bird")
 animal_resource = SubResource("Resource_qfm1y")
 debug_state_label = NodePath("../../StateLabel")
-starting_state = NodePath("Walk")
+starting_state = NodePath("Walking")
 deactive_state = NodePath("Idle")
 base_state = NodePath("Jumping")
 Jump_Peak_Time = 0.75
@@ -74,14 +118,14 @@ Ground_Max_Speed = 100.0
 Ground_Past_Max_Speed_Decceleration = 3.0
 Ground_Speed_Curve = SubResource("Curve_a8ls1")
 
-[node name="Walk" type="Node" parent="ParentStateMachine/SugarBear" unique_id=305116382 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "coyote_timer")]
+[node name="Walking" type="Node" parent="ParentStateMachine/SugarBear" unique_id=305116382 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "coyote_timer")]
 script = ExtResource("7_y4r1p")
 dashing_state = NodePath("../Dashing")
 jumping_state = NodePath("../Jumping")
 falling_state = NodePath("../Falling")
 coyote_timer = NodePath("Timer")
 
-[node name="Timer" type="Timer" parent="ParentStateMachine/SugarBear/Walk" unique_id=1749590410]
+[node name="Timer" type="Timer" parent="ParentStateMachine/SugarBear/Walking" unique_id=1749590410]
 wait_time = 0.3
 one_shot = true
 
@@ -98,14 +142,14 @@ landing_state = NodePath("../Landing")
 
 [node name="Idle" type="Node" parent="ParentStateMachine/SugarBear" unique_id=971343740 node_paths=PackedStringArray("walking_state", "jumping_state")]
 script = ExtResource("11_f1ej7")
-walking_state = NodePath("../Walk")
+walking_state = NodePath("../Walking")
 jumping_state = NodePath("../Jumping")
 
 [node name="Landing" type="Node" parent="ParentStateMachine/SugarBear" unique_id=1779215012 node_paths=PackedStringArray("idle_timer", "idle_state", "walking_state")]
 script = ExtResource("12_oprun")
 idle_timer = NodePath("Timer")
 idle_state = NodePath("../Idle")
-walking_state = NodePath("../Walk")
+walking_state = NodePath("../Walking")
 
 [node name="Timer" type="Timer" parent="ParentStateMachine/SugarBear/Landing" unique_id=1157127932]
 
@@ -148,5 +192,5 @@ offset_bottom = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=258571584]
 
-[connection signal="timeout" from="ParentStateMachine/SugarBear/Walk/Timer" to="ParentStateMachine/SugarBear/Walk" method="_on_timer_timeout"]
+[connection signal="timeout" from="ParentStateMachine/SugarBear/Walking/Timer" to="ParentStateMachine/SugarBear/Walking" method="_on_timer_timeout"]
 [connection signal="timeout" from="ParentStateMachine/SugarBear/Landing/Timer" to="ParentStateMachine/SugarBear/Landing" method="_on_timer_timeout"]
