@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://qnmwbc3twpqd" path="res://Scripts/Player/Deactive/deactive_state_machine.gd" id="12_f1ej7"]
 [ext_resource type="Script" uid="uid://cpij4htxn7v7b" path="res://Scripts/Player/SugarBear/landing.gd" id="12_oprun"]
 [ext_resource type="Script" uid="uid://ek1v2tl8c2h8" path="res://Scripts/Player/Deactive/deactive.gd" id="13_oprun"]
+[ext_resource type="Script" uid="uid://bxh0gc13ppu0l" path="res://Scripts/Player/animal_changer.gd" id="22_a38lo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60mlk"]
 radius = 32.0
@@ -28,12 +29,10 @@ height = 128.0
 
 [sub_resource type="Resource" id="Resource_qdonj"]
 script = ExtResource("4_a8ls1")
-collision_shape = SubResource("CapsuleShape2D_60mlk")
 metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
 
 [sub_resource type="Resource" id="Resource_qfm1y"]
 script = ExtResource("4_a8ls1")
-collision_shape = SubResource("CapsuleShape2D_60mlk")
 metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
 
 [sub_resource type="Curve" id="Curve_a8ls1"]
@@ -41,12 +40,22 @@ _data = [Vector2(0, 0), 0.0, 2.85, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 metadata/_snap_enabled = true
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a38lo"]
+radius = 32.0
+height = 96.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ni07"]
+radius = 32.0
+height = 128.0
+
 [node name="Player" type="CharacterBody2D" unique_id=139764919 node_paths=PackedStringArray("parent_state_machine", "velocity_label")]
+collision_layer = 2
 script = ExtResource("1_dqkch")
 parent_state_machine = NodePath("ParentStateMachine")
 velocity_label = NodePath("VelocityLabel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503420747]
+visible = false
 shape = SubResource("CapsuleShape2D_60mlk")
 
 [node name="ParentStateMachine" type="Node" parent="." unique_id=661096403 node_paths=PackedStringArray("debug_state_machine_label", "starting_state_machine", "deactive_state", "base_state")]
@@ -56,9 +65,10 @@ starting_state_machine = NodePath("SugarBear")
 deactive_state = NodePath("DeactiveStateMachine")
 base_state = NodePath("SugarBear")
 
-[node name="Bird" type="Node" parent="ParentStateMachine" unique_id=1290409226 node_paths=PackedStringArray("sugar_bear", "debug_state_label", "starting_state", "deactive_state", "base_state")]
+[node name="Bird" type="Node" parent="ParentStateMachine" unique_id=1290409226 node_paths=PackedStringArray("sugar_bear", "animal_changer", "debug_state_label", "starting_state", "deactive_state", "base_state")]
 script = ExtResource("2_g2els")
 sugar_bear = NodePath("../SugarBear")
+animal_changer = NodePath("../../AnimalChanger")
 animal_resource = SubResource("Resource_qdonj")
 debug_state_label = NodePath("../../StateLabel")
 starting_state = NodePath("Jumping")
@@ -104,9 +114,10 @@ jumping_state = NodePath("../Jumping")
 [node name="Dashing" type="Node" parent="ParentStateMachine/Bird" unique_id=1597557432]
 script = ExtResource("11_a38lo")
 
-[node name="SugarBear" type="Node" parent="ParentStateMachine" unique_id=1617720625 node_paths=PackedStringArray("Bird", "debug_state_label", "starting_state", "deactive_state", "base_state")]
+[node name="SugarBear" type="Node" parent="ParentStateMachine" unique_id=1617720625 node_paths=PackedStringArray("Bird", "animal_changer", "debug_state_label", "starting_state", "deactive_state", "base_state")]
 script = ExtResource("8_y4r1p")
 Bird = NodePath("../Bird")
+animal_changer = NodePath("../../AnimalChanger")
 animal_resource = SubResource("Resource_qfm1y")
 debug_state_label = NodePath("../../StateLabel")
 starting_state = NodePath("Walking")
@@ -156,8 +167,9 @@ walking_state = NodePath("../Walking")
 
 [node name="Timer" type="Timer" parent="ParentStateMachine/SugarBear/Landing" unique_id=1157127932]
 
-[node name="DeactiveStateMachine" type="Node" parent="ParentStateMachine" unique_id=1196446141 node_paths=PackedStringArray("starting_state", "deactive_state", "base_state")]
+[node name="DeactiveStateMachine" type="Node" parent="ParentStateMachine" unique_id=1196446141 node_paths=PackedStringArray("debug_state_label", "starting_state", "deactive_state", "base_state")]
 script = ExtResource("12_f1ej7")
+debug_state_label = NodePath("../../StateLabel")
 no_debug_labels = true
 starting_state = NodePath("Deactive")
 deactive_state = NodePath("Deactive")
@@ -191,9 +203,26 @@ offset_top = -13.0
 offset_right = 72.0
 offset_bottom = 10.0
 
-[node name="Area2D" type="Area2D" parent="." unique_id=736987907]
+[node name="AnimalChanger" type="Node" parent="." unique_id=1659009958 node_paths=PackedStringArray("player_collision_shape")]
+script = ExtResource("22_a38lo")
+player_collision_shape = NodePath("../CollisionShape2D")
+debug_view = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=258571584]
+[node name="BirdAreaChecker" type="Area2D" parent="AnimalChanger" unique_id=296623289]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimalChanger/BirdAreaChecker" unique_id=1533521332]
+shape = SubResource("CapsuleShape2D_a38lo")
+
+[node name="SugarBearAreaChecker" type="Area2D" parent="AnimalChanger" unique_id=1475541209]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimalChanger/SugarBearAreaChecker" unique_id=523033124]
+shape = SubResource("CapsuleShape2D_4ni07")
+
+[node name="ForwardCast" type="RayCast2D" parent="AnimalChanger" unique_id=1988924099]
+target_position = Vector2(40, 0)
+
+[node name="BackCast" type="RayCast2D" parent="AnimalChanger" unique_id=1950531249]
+target_position = Vector2(-40, 0)
 
 [connection signal="timeout" from="ParentStateMachine/SugarBear/Walking/Timer" to="ParentStateMachine/SugarBear/Walking" method="_on_timer_timeout"]
 [connection signal="timeout" from="ParentStateMachine/SugarBear/Landing/Timer" to="ParentStateMachine/SugarBear/Landing" method="_on_timer_timeout"]

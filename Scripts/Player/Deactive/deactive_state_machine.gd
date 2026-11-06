@@ -1,4 +1,4 @@
-extends ChildStateMachine
+class_name Deactive extends ChildStateMachine
 
 func animal_process_physics(delta:float) -> ChildStateMachine:
 	return
