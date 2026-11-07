@@ -8,6 +8,7 @@ class_name WalkingState extends State
 @export var coyote_timer: Timer
 var coyote_timer_fall: bool = false
 var speed_up_elapsed_time: float = 0.0
+const accelerationExponent: int = 2
 
 func enter(oldState: State) -> void:
 	additional_enter_logic(oldState)
@@ -88,7 +89,7 @@ func move(delta:float):
 		
 		var time_left = animal.Ground_Accleration_Time - speed_up_elapsed_time
 		var progress = clamp(speed_up_elapsed_time / animal.Ground_Accleration_Time, 0.0, 1.0)
-		var smooth_progress = easeOutQuart(progress)
+		var smooth_progress = easingFunctions.easeOutQuart(progress, accelerationExponent)
 		var smooth_speed = smooth_progress * animal.Ground_Max_Speed
 
 
@@ -103,21 +104,9 @@ func get_progress() -> float:
 		return 1.0
 	else:
 		var value_noramlized = abs(parent.velocity.x) / animal.Ground_Max_Speed
-		var y = easeOutQuartInverse(value_noramlized)
+		var y = easingFunctions.easeOutQuartInverse(value_noramlized, accelerationExponent)
 		return y
 	return 0.0
-
-func easeOutQuart(x: float) -> float:
-	return 1 - pow(1 - x, 4);
-
-func easeOutQuartInverse(y: float) -> float:
-	return 1.0 - pow(1.0 - y, 0.25)
-
-func easeOutExpo(x: float) -> float:
-	if x == 1:
-		return 1
-	
-	return 1 - pow(2, -10 * x);
 
 @abstract func additional_move_logic(delta:float) -> void
 @abstract func additional_exit_logic(newState: State) -> void
