@@ -54,19 +54,14 @@ func _on_timer_timeout() -> void:
 	pass
 	
 func move(delta:float):
-	
 	additional_move_logic(delta)
 	var raw_input = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0)
-	#var raw_input: Vector2 = Input.get_vector("move_left","move_right","move_up","move_down")
-	var velocity_difference = abs(parent.velocity.x *raw_input.x) - animal.Ground_Max_Speed
-	#print(raw_input)
 	if raw_input.length() == 0:
 		speed_up_elapsed_time -= delta
+	var velocity_difference = abs(parent.velocity.x*raw_input.x) - animal.Ground_Max_Speed
 		
-	var direction = raw_input
-	
 	# Slow player down to max speed
 	if velocity_difference > 0:
 		speed_up_elapsed_time = animal.Ground_Accleration_Time
@@ -76,28 +71,19 @@ func move(delta:float):
 			parent.velocity.x -= animal.Ground_Past_Max_Speed_Decceleration
 		else:
 			parent.velocity.x += animal.Ground_Past_Max_Speed_Decceleration
-		
 	
-	# Ignore player at max speed
-	if velocity_difference == 0:
-		return
-		
 	# We speed up the player to get closer to max speed
 	if velocity_difference < 0:
 		speed_up_elapsed_time += delta
-		
-		
 		var time_left = animal.Ground_Accleration_Time - speed_up_elapsed_time
 		var progress = clamp(speed_up_elapsed_time / animal.Ground_Accleration_Time, 0.0, 1.0)
 		var smooth_progress = easingFunctions.easeOutQuart(progress, accelerationExponent)
 		var smooth_speed = smooth_progress * animal.Ground_Max_Speed
-
-
 		var difference = (smooth_speed * raw_input.x) - parent.velocity.x
 		parent.velocity.x += difference
 		
-		return
-		
+	return
+
 func get_progress() -> float:
 	var difference = abs(parent.velocity.x) - animal.Ground_Max_Speed
 	if difference > 0:
