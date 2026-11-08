@@ -35,11 +35,6 @@ metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
 script = ExtResource("4_a8ls1")
 metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
 
-[sub_resource type="Curve" id="Curve_a8ls1"]
-_data = [Vector2(0, 0), 0.0, 2.85, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-metadata/_snap_enabled = true
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a38lo"]
 radius = 32.0
 height = 96.0
@@ -127,10 +122,7 @@ Jump_Peak_Time = 0.75
 Jump_Fall_Time = 1.0
 Jump_Height = 40.0
 Jump_Distance = 100.0
-Ground_Accleration_Time = 1.0
-Ground_Max_Speed = 100.0
 Ground_Past_Max_Speed_Decceleration = 3.0
-Ground_Speed_Curve = SubResource("Curve_a8ls1")
 
 [node name="Walking" type="Node" parent="ParentStateMachine/SugarBear" unique_id=305116382 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "coyote_timer")]
 script = ExtResource("7_y4r1p")
