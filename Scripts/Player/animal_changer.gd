@@ -75,6 +75,9 @@ func request_new_animal(current_animal: ChildStateMachine, new_animal: ChildStat
 		body_possible_return_values.FLOOR:
 			pass
 		body_possible_return_values.WALL:
+			
+			### Move the new animal shape to the left by shape difference x / 2
+			## THEN check if its empty 
 			pass
 		body_possible_return_values.FLOOR_AND_WALL:
 			pass

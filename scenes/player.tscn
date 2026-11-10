@@ -242,12 +242,14 @@ parent = NodePath("..")
 
 [node name="BirdAreaChecker" type="Area2D" parent="AnimalChanger" unique_id=296623289]
 visible = false
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimalChanger/BirdAreaChecker" unique_id=1533521332]
 shape = SubResource("CapsuleShape2D_l71n6")
 
 [node name="SugarBearAreaChecker" type="Area2D" parent="AnimalChanger" unique_id=1475541209]
 visible = false
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimalChanger/SugarBearAreaChecker" unique_id=523033124]
 shape = SubResource("CapsuleShape2D_ke2ow")
