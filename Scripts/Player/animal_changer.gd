@@ -20,15 +20,14 @@ signal change_shape
 #@export var area_checker_collision_shape: CollisionShape2D
 @export var hurtbox_collision_shape: CollisionShape2D
 @export var player_collision_shape: CollisionShape2D
-@export var horizontal_pixel_collison_margin: float = 3
-@export var vertical_pixel_collsion_margin:float = 3
+@export var horizontal_wall_collison_margin: float = 3
 
 @export var right_cast: RayCast2D
 @export var left_cast: RayCast2D
-@export var up_cast: RayCast2D
-@export var down_cast: RayCast2D
 
 @export var parent: Player
+
+@export var animation_player: AnimationPlayer
 
 var sugar_bear_area_bodies: Array[Node2D] = []
 var bird_area_bodies: Array[Node2D] = []
@@ -39,16 +38,24 @@ enum body_possible_return_values {
 	WALL,
 	FLOOR_AND_WALL,
 }
-
+enum wall_possible_return_values {
+	LEFT,
+	RIGHT,
+	NONE,
+	BOTH
+}
 var tranistion_list: Array[AnimalTransition]
 
+	
 
 func _ready() -> void:
-	for first_animal in animals_list:
-		for second_animal in animals_list:
-			if first_animal == second_animal:
-				continue
-			create_left_and_right_transition_area2d(first_animal, second_animal)
+	pass
+	#request_new_animal(bird, sugar_bear)
+	#for first_animal in animals_list:
+		#for second_animal in animals_list:
+			#if first_animal == second_animal:
+				#continue
+			#create_left_and_right_transition_area2d(first_animal, second_animal)
 
 func find_animal_transition(start_animal: ChildStateMachine, end_animal: ChildStateMachine) -> AnimalTransition:
 	
@@ -83,10 +90,13 @@ func create_left_and_right_transition_area2d(start_animal: ChildStateMachine, en
 	var start_animal_shape_rect: Rect2 = start_animal_collision_shape.get_rect()
 	
 	var shape_difference: Vector2 = start_animal_shape_rect.size - end_animal_shape_rect.size 
-	var horizontal_distance_away: float = shape_difference.x 
+	var horizontal_distance_away: float = abs(shape_difference.x )
 	
 	var left_area : Area2D = Area2D.new()
 	var right_area : Area2D = Area2D.new()
+	
+	left_area.name ="left " +  start_animal.name + " to " + end_animal.name
+	right_area.name ="right " +  start_animal.name + " to " + end_animal.name
 	
 	add_child(left_area)
 	add_child(right_area)
@@ -152,24 +162,39 @@ func request_new_animal(current_animal: ChildStateMachine, new_animal: ChildStat
 	
 	var check : body_possible_return_values = check_for_walls_floors()
 	var transition:AnimalTransition = find_animal_transition(current_animal, new_animal)
-	
+	print(body_possible_return_values.find_key(check),", from: ", current_animal.name + ', to: '+ new_animal.name)
+	print(shape_difference)
 	match check:
 		### the player isnt touching ANYTHING
 		body_possible_return_values.NONE:
-			change_collision_shapes(new_animal_collision_shape)
+			change_collision_shapes(new_animal_collision_shape, shape_difference)
+			#animation_player.play('test animation')
 			return true
 			
 		body_possible_return_values.FLOOR:
-			change_collision_shapes(new_animal_collision_shape)
-			parent.global_position.y += shape_difference.y
+			
+			if shape_difference.y > 0:
+				parent.global_position.y -= shape_difference.y/2
+			change_collision_shapes(new_animal_collision_shape, shape_difference)
+			#animation_player.play('test animation')
+			
 			return true
 		body_possible_return_values.WALL:
-			
-			### Move the new animal shape to the left by shape difference x / 2
-			## THEN check if its empty 
-			pass
+			#var wall_side: wall_possible_return_values = check_wall_side()
+			if shape_difference.x > 0:
+				parent.global_position.x += shape_difference.x 
+			change_collision_shapes(new_animal_collision_shape, shape_difference)
+			#animation_player.play('test animation')
+		
+			return true
 		body_possible_return_values.FLOOR_AND_WALL:
-			pass
+			if shape_difference.y > 0:
+				parent.global_position.y -= shape_difference.y/2
+			if shape_difference.x > 0:
+				parent.global_position.x += shape_difference.x 
+			change_collision_shapes(new_animal_collision_shape, shape_difference)
+			#animation_player.play('test animation')
+			return true
 	
 	
 
@@ -177,9 +202,40 @@ func request_new_animal(current_animal: ChildStateMachine, new_animal: ChildStat
 	
 	return false
 
-func change_collision_shapes(new_shape: Shape2D):
-	hurtbox_collision_shape.shape = new_shape
-	player_collision_shape.shape = new_shape
+func check_wall_side() -> wall_possible_return_values:
+	var right_collider = right_cast.get_collider()
+	var left_collider = left_cast.get_collider()
+	
+	if left_collider is TileMapLayer and right_collider == null:
+		return wall_possible_return_values.LEFT
+		
+	if right_collider is TileMapLayer and left_collider == null:
+		return wall_possible_return_values.RIGHT
+	if right_collider is TileMapLayer and left_collider is TileMapLayer:
+		return wall_possible_return_values.BOTH
+		
+	return wall_possible_return_values.NONE
+	
+
+func change_collision_shapes(new_shape: Shape2D, shape_difference: Vector2):
+	#var new_hurtbox_collision: CollisionShape2D = CollisionShape2D.new()
+	#new_hurtbox_collision.shape = new_shape
+	#var hurtbox_area: Area2D = hurtbox_collision_shape.get_parent()
+	#hurtbox_collision_shape.queue_free()
+	#hurtbox_area.add_child(new_hurtbox_collision)
+	#hurtbox_collision_shape = new_hurtbox_collision
+	#
+	#var new_player_collision: CollisionShape2D = CollisionShape2D.new()
+	#new_player_collision.shape = new_shape
+	#player_collision_shape.queue_free()
+	#parent.add_child(new_player_collision)
+	#player_collision_shape = new_player_collision
+	
+	hurtbox_collision_shape.set_shape(new_shape) 
+	
+	player_collision_shape.set_shape(new_shape)
+	right_cast.target_position.x = shape_difference.x + horizontal_wall_collison_margin
+	left_cast.target_position.x = (shape_difference.x + horizontal_wall_collison_margin) * -1
 	
 
 func check_for_walls_floors() -> body_possible_return_values:
@@ -193,27 +249,17 @@ func check_for_walls_floors() -> body_possible_return_values:
 	
 	return body_possible_return_values.NONE
 
+#
+#func shape_difference_check(shape_difference: Vector2) -> bool:
+	#
+	### if the shape difference is positive then the new shape is bigger
+	#if shape_difference.x > 0:
+		#move_horizontal_raycasts_and_check(shape_difference.x)
+			#
+			#
+	#
+	#return false
 
-func shape_difference_check(shape_difference: Vector2) -> bool:
-	
-	## if the shape difference is positive then the new shape is bigger
-	if shape_difference.x > 0:
-		move_horizontal_raycasts_and_check(shape_difference.x)
-			
-			
-	
-	return false
-
-func move_horizontal_raycasts_and_check(x_difference: float):
-	var half_x_difference: float = x_difference / 2
-	right_cast.position.x = half_x_difference
-	left_cast.position.x = -half_x_difference
-	
-	right_cast.target_position.x = horizontal_pixel_collison_margin
-	left_cast.target_position.x = -horizontal_pixel_collison_margin
-	
-	
-	return false
 
 func _on_sugar_bear_area_checker_body_entered(body: Node2D) -> void:
 	sugar_bear_area_bodies.append(body)

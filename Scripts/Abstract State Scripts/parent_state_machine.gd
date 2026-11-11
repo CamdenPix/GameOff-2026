@@ -27,6 +27,7 @@ func change_state_machine(new_state_machine: ChildStateMachine) -> void:
 	if current_state_machine:
 		animal_request.emit(current_state_machine, new_state_machine)
 		if animal_changer.request_new_animal(current_state_machine, new_state_machine) == false:
+			print('Failed to swtich states')
 			return
 	if current_state_machine:
 		current_state_machine.exit(new_state_machine)
