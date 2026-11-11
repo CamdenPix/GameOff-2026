@@ -2,14 +2,12 @@
 @abstract
 class_name ChildStateMachine extends State
 
-@export var animal_changer: AnimalChanger
-
 
 ####################
 ###		Don't put abstract states as a explict type for godot in signals. 
 ###		Idk why but it doesnt work
 #######################
-signal animal_request(current_animal, new_animal)
+
 
 @export var animal_resource: Animal_Resource
 

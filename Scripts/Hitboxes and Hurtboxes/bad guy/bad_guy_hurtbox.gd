@@ -1,0 +1,1 @@
+class_name Bad_Guy_Hurtbox extends Hurtbox

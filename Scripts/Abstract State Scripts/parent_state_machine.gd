@@ -12,7 +12,8 @@ var starting_state_machine: ChildStateMachine
 
 var current_state_machine: ChildStateMachine
 
-
+@export var animal_changer: AnimalChanger
+signal animal_request(current_animal, new_animal)
 
 @export var deactive_state: ChildStateMachine
 @export var base_state: ChildStateMachine
@@ -23,6 +24,11 @@ func init(parent: Player) -> void:
 	change_state_machine(starting_state_machine)
 
 func change_state_machine(new_state_machine: ChildStateMachine) -> void:
+	if current_state_machine:
+		animal_request.emit(current_state_machine, new_state_machine)
+		if animal_changer.request_new_animal(current_state_machine, new_state_machine) == false:
+			print('Failed to swtich states')
+			return
 	if current_state_machine:
 		current_state_machine.exit(new_state_machine)
 	var old_state_machine = current_state_machine
