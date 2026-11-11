@@ -234,8 +234,9 @@ func change_collision_shapes(new_shape: Shape2D, shape_difference: Vector2):
 	hurtbox_collision_shape.set_shape(new_shape) 
 	
 	player_collision_shape.set_shape(new_shape)
-	right_cast.target_position.x = shape_difference.x + horizontal_wall_collison_margin
-	left_cast.target_position.x = (shape_difference.x + horizontal_wall_collison_margin) * -1
+	var new_shape_fucking_uh_horizontal: float = new_shape.get_rect().size.x/2
+	right_cast.target_position.x = new_shape_fucking_uh_horizontal + horizontal_wall_collison_margin
+	left_cast.target_position.x = (new_shape_fucking_uh_horizontal+ horizontal_wall_collison_margin) * -1
 	
 
 func check_for_walls_floors() -> body_possible_return_values:

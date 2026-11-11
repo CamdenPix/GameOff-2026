@@ -294,7 +294,6 @@ offset_right = 72.0
 offset_bottom = 10.0
 
 [node name="AnimalChanger" type="Node2D" parent="." unique_id=1149322701 node_paths=PackedStringArray("animals_list", "bird", "sugar_bear", "bird_area_checker", "bird_area_checker_collision_shape", "sugar_bear_area_checker", "sugar_bear_area_checker_collision_shape", "hurtbox_collision_shape", "player_collision_shape", "right_cast", "left_cast", "parent", "animation_player")]
-visible = false
 script = ExtResource("22_a38lo")
 animals_list = [NodePath("../ParentStateMachine/Bird"), NodePath("../ParentStateMachine/SugarBear")]
 bird = NodePath("../ParentStateMachine/Bird")
@@ -311,12 +310,14 @@ parent = NodePath("..")
 animation_player = NodePath("../AnimationPlayer")
 
 [node name="BirdAreaChecker" type="Area2D" parent="AnimalChanger" unique_id=296623289]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimalChanger/BirdAreaChecker" unique_id=1533521332]
 shape = ExtResource("6_ke2ow")
 
 [node name="SugarBearAreaChecker" type="Area2D" parent="AnimalChanger" unique_id=1475541209]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimalChanger/SugarBearAreaChecker" unique_id=523033124]
