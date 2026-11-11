@@ -16,7 +16,7 @@ func _ready() -> void:
 	from_animal_vertical_offset = from_animal.animal_resource.shape.get_rect().size.y / 2
 
 func _physics_process(delta: float) -> void:
-	print(area.position)
+	#print(area.position)
 	### use the raycast to keep the distance away from the ground
 	#area.position.y = parent.position.y +
 	if raycast_distance_away_from_ground.is_colliding():
