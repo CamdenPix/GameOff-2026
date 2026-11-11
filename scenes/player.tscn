@@ -41,91 +41,6 @@ _data = [Vector2(0, 0), 0.0, 2.85, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 metadata/_snap_enabled = true
 
-[sub_resource type="Animation" id="Animation_ke2ow"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../CollisionShape:shape:radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [64.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../../CollisionShape:shape:height")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [160.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../../CollisionShape:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ujl30"]
-resource_name = "test animation"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../CollisionShape:shape:radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [64.0, 16.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../../CollisionShape:shape:height")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [160.0, 32.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../../CollisionShape:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 62)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_31cv2"]
-_data = {
-&"RESET": SubResource("Animation_ke2ow"),
-&"test animation": SubResource("Animation_ujl30")
-}
-
 [node name="Player" type="CharacterBody2D" unique_id=139764919 node_paths=PackedStringArray("parent_state_machine", "velocity_label")]
 collision_layer = 2
 script = ExtResource("1_dqkch")
@@ -136,7 +51,6 @@ velocity_label = NodePath("VelocityLabel")
 shape = ExtResource("15_ujl30")
 
 [node name="Player_Hurtbox" type="Area2D" parent="." unique_id=1473979664 node_paths=PackedStringArray("iframe_timer")]
-visible = false
 script = ExtResource("2_4ni07")
 iframe_timer = NodePath("Timer")
 metadata/_custom_type_script = "uid://dulw1a8cl1ss"
@@ -293,7 +207,7 @@ offset_top = -13.0
 offset_right = 72.0
 offset_bottom = 10.0
 
-[node name="AnimalChanger" type="Node2D" parent="." unique_id=1149322701 node_paths=PackedStringArray("animals_list", "bird", "sugar_bear", "hurtbox_collision_shape", "player_collision_shape", "right_wall_cast", "left_wall_cast", "right_space_cast", "left_space_cast", "parent")]
+[node name="AnimalChanger" type="Node2D" parent="." unique_id=1149322701 node_paths=PackedStringArray("animals_list", "bird", "sugar_bear", "hurtbox_collision_shape", "player_collision_shape", "right_wall_cast", "left_wall_cast", "parent")]
 script = ExtResource("22_a38lo")
 animals_list = [NodePath("../ParentStateMachine/Bird"), NodePath("../ParentStateMachine/SugarBear")]
 bird = NodePath("../ParentStateMachine/Bird")
@@ -302,23 +216,7 @@ hurtbox_collision_shape = NodePath("../Player_Hurtbox/HurtboxShape")
 player_collision_shape = NodePath("../CollisionShape")
 right_wall_cast = NodePath("RightWallCheck")
 left_wall_cast = NodePath("LeftWallCheck")
-right_space_cast = NodePath("RightSpaceCast")
-left_space_cast = NodePath("LeftSpaceCast")
 parent = NodePath("..")
-
-[node name="BirdAreaChecker" type="Area2D" parent="AnimalChanger" unique_id=296623289]
-visible = false
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimalChanger/BirdAreaChecker" unique_id=1533521332]
-shape = ExtResource("6_ke2ow")
-
-[node name="SugarBearAreaChecker" type="Area2D" parent="AnimalChanger" unique_id=1475541209]
-visible = false
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimalChanger/SugarBearAreaChecker" unique_id=523033124]
-shape = ExtResource("15_ujl30")
 
 [node name="RightWallCheck" type="RayCast2D" parent="AnimalChanger" unique_id=1988924099]
 target_position = Vector2(40, 0)
@@ -328,23 +226,8 @@ collision_mask = 5
 target_position = Vector2(-40, 0)
 collision_mask = 5
 
-[node name="LeftSpaceCast" type="RayCast2D" parent="AnimalChanger" unique_id=1950487961]
-target_position = Vector2(-999, 0)
-
-[node name="RightSpaceCast" type="RayCast2D" parent="AnimalChanger" unique_id=982957331]
-visible = false
-target_position = Vector2(999, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1216596490]
-root_node = NodePath("../AnimalChanger/BirdAreaChecker/CollisionShape2D")
-libraries/ = SubResource("AnimationLibrary_31cv2")
-
 [connection signal="body_entered" from="Player_Hurtbox" to="Player_Hurtbox" method="_on_body_entered"]
 [connection signal="timeout" from="Player_Hurtbox/Timer" to="Player_Hurtbox" method="_on_timer_timeout"]
 [connection signal="timeout" from="ParentStateMachine/SugarBear/Walking/Timer" to="ParentStateMachine/SugarBear/Walking" method="_on_timer_timeout"]
 [connection signal="timeout" from="ParentStateMachine/SugarBear/Landing/Timer" to="ParentStateMachine/SugarBear/Landing" method="_on_timer_timeout"]
 [connection signal="change_shape" from="AnimalChanger" to="Player_Hurtbox" method="swap_form"]
-[connection signal="body_entered" from="AnimalChanger/BirdAreaChecker" to="AnimalChanger" method="_on_bird_area_checker_body_entered"]
-[connection signal="body_exited" from="AnimalChanger/BirdAreaChecker" to="AnimalChanger" method="_on_bird_area_checker_body_exited"]
-[connection signal="body_entered" from="AnimalChanger/SugarBearAreaChecker" to="AnimalChanger" method="_on_sugar_bear_area_checker_body_entered"]
-[connection signal="body_exited" from="AnimalChanger/SugarBearAreaChecker" to="AnimalChanger" method="_on_sugar_bear_area_checker_body_exited"]

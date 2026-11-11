@@ -20,8 +20,6 @@ signal change_shape
 @export var right_wall_cast: RayCast2D
 @export var left_wall_cast: RayCast2D
 
-@export var right_space_cast: RayCast2D
-@export var left_space_cast: RayCast2D
 
 @export var parent: Player
 
@@ -50,7 +48,7 @@ func _ready() -> void:
 		for second_animal in animals_list:
 			if first_animal == second_animal:
 				continue
-			create_left_and_right_transition_area2d(first_animal, second_animal)
+			create_transition_area2d(first_animal, second_animal)
 
 func find_animal_transition(start_animal: ChildStateMachine, end_animal: ChildStateMachine) -> AnimalTransition:
 	
@@ -60,7 +58,7 @@ func find_animal_transition(start_animal: ChildStateMachine, end_animal: ChildSt
 	
 	return null
 
-func create_left_and_right_transition_area2d(start_animal: ChildStateMachine, end_animal: ChildStateMachine):
+func create_transition_area2d(start_animal: ChildStateMachine, end_animal: ChildStateMachine):
 	if start_animal is Deactive:
 		return 
 	if end_animal is Deactive:
@@ -182,6 +180,8 @@ func request_new_animal(current_animal: ChildStateMachine, new_animal: ChildStat
 			
 			if shape_difference.y > 0:
 				parent.global_position.y -= shape_difference.y/2
+			if shape_difference.y < 0:
+				parent.global_position.y -= shape_difference.y/2
 			change_collision_shapes(new_animal_collision_shape, shape_difference)
 			
 			return true
@@ -258,3 +258,6 @@ func check_for_walls_floors() -> body_possible_return_values:
 	
 	
 	return body_possible_return_values.NONE
+
+
+	
