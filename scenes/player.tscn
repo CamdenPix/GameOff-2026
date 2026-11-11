@@ -293,21 +293,18 @@ offset_top = -13.0
 offset_right = 72.0
 offset_bottom = 10.0
 
-[node name="AnimalChanger" type="Node2D" parent="." unique_id=1149322701 node_paths=PackedStringArray("animals_list", "bird", "sugar_bear", "bird_area_checker", "bird_area_checker_collision_shape", "sugar_bear_area_checker", "sugar_bear_area_checker_collision_shape", "hurtbox_collision_shape", "player_collision_shape", "right_cast", "left_cast", "parent", "animation_player")]
+[node name="AnimalChanger" type="Node2D" parent="." unique_id=1149322701 node_paths=PackedStringArray("animals_list", "bird", "sugar_bear", "hurtbox_collision_shape", "player_collision_shape", "right_wall_cast", "left_wall_cast", "right_space_cast", "left_space_cast", "parent")]
 script = ExtResource("22_a38lo")
 animals_list = [NodePath("../ParentStateMachine/Bird"), NodePath("../ParentStateMachine/SugarBear")]
 bird = NodePath("../ParentStateMachine/Bird")
 sugar_bear = NodePath("../ParentStateMachine/SugarBear")
-bird_area_checker = NodePath("BirdAreaChecker")
-bird_area_checker_collision_shape = NodePath("BirdAreaChecker/CollisionShape2D")
-sugar_bear_area_checker = NodePath("SugarBearAreaChecker")
-sugar_bear_area_checker_collision_shape = NodePath("SugarBearAreaChecker/CollisionShape2D")
 hurtbox_collision_shape = NodePath("../Player_Hurtbox/HurtboxShape")
 player_collision_shape = NodePath("../CollisionShape")
-right_cast = NodePath("RightCast")
-left_cast = NodePath("LeftCast")
+right_wall_cast = NodePath("RightWallCheck")
+left_wall_cast = NodePath("LeftWallCheck")
+right_space_cast = NodePath("RightSpaceCast")
+left_space_cast = NodePath("LeftSpaceCast")
 parent = NodePath("..")
-animation_player = NodePath("../AnimationPlayer")
 
 [node name="BirdAreaChecker" type="Area2D" parent="AnimalChanger" unique_id=296623289]
 visible = false
@@ -323,13 +320,20 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimalChanger/SugarBearAreaChecker" unique_id=523033124]
 shape = ExtResource("15_ujl30")
 
-[node name="RightCast" type="RayCast2D" parent="AnimalChanger" unique_id=1988924099]
+[node name="RightWallCheck" type="RayCast2D" parent="AnimalChanger" unique_id=1988924099]
 target_position = Vector2(40, 0)
 collision_mask = 5
 
-[node name="LeftCast" type="RayCast2D" parent="AnimalChanger" unique_id=1950531249]
+[node name="LeftWallCheck" type="RayCast2D" parent="AnimalChanger" unique_id=1950531249]
 target_position = Vector2(-40, 0)
 collision_mask = 5
+
+[node name="LeftSpaceCast" type="RayCast2D" parent="AnimalChanger" unique_id=1950487961]
+target_position = Vector2(-999, 0)
+
+[node name="RightSpaceCast" type="RayCast2D" parent="AnimalChanger" unique_id=982957331]
+visible = false
+target_position = Vector2(999, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1216596490]
 root_node = NodePath("../AnimalChanger/BirdAreaChecker/CollisionShape2D")
