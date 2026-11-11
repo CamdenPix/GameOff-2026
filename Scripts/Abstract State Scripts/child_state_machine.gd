@@ -33,19 +33,21 @@ var localOldStateMachine: ChildStateMachine
 @export var Jump_Height: float = 2.0
 @export var Jump_Distance: float = 4.0
 @export var Jump_Release_Shorthop:float = .6
-#@export var Ground_Speed:float = 80
-@export var Ground_Decceleration_Time: float = 5.0
-@export var Ground_Accleration_Time: float = 5.0
-@export var Ground_Max_Speed: float = 150
+
+@export var Ground_Acceleration_Time: float = 3.0
+# How many times faster decceleration is
+@export var Ground_Decceleration_Ratio: float = 3.0
+@export var Ground_Max_Speed: float = 200.0
 @export var Ground_Past_Max_Speed_Decceleration: float = 40
 @export var Ground_Speed_Curve: Curve
 
 
-var AirSpeed: float = 5.0
+var AirSpeed: float = 7.5
+var MaxAirSpeed: float = 50.0
 var Jump_Velocity: float = 5.0
 var Jump_Gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var Fall_Gravity: float = 5.0
-var Ground_Acceleration: float = 20
+var Ground_Acceleration: float = 20.0
 
 #0,.8,.53,1
 
@@ -122,8 +124,6 @@ func Calculate_Movement_Parameters()->void:
 	Fall_Gravity = (2*Jump_Height)/pow(Jump_Fall_Time,2)
 	Jump_Velocity = Jump_Gravity * Jump_Peak_Time
 	AirSpeed = Jump_Distance/(Jump_Peak_Time+Jump_Fall_Time)
-	Ground_Accleration_Time 
-	Ground_Decceleration_Time
 
 @abstract func animal_process_physics(delta:float) -> ChildStateMachine
 @abstract func animal_process_input(event: InputEvent) -> ChildStateMachine
