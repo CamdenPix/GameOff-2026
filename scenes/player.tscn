@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://cpij4htxn7v7b" path="res://Scripts/Player/SugarBear/landing.gd" id="12_oprun"]
 [ext_resource type="Script" uid="uid://ek1v2tl8c2h8" path="res://Scripts/Player/Deactive/deactive.gd" id="13_oprun"]
 [ext_resource type="Shape2D" uid="uid://c1oj36uxowmh2" path="res://Scripts/Player/SugarBear/SugarBearCollisionShape.tres" id="15_ujl30"]
+[ext_resource type="Texture2D" uid="uid://ccde5ila3nc2d" path="res://assets/Penguin /test penguin 128x 64 5x orthgo camera zoom.png" id="21_a38lo"]
 [ext_resource type="Script" uid="uid://bxh0gc13ppu0l" path="res://Scripts/Player/animal_changer.gd" id="22_a38lo"]
 
 [sub_resource type="Resource" id="Resource_qdonj"]
@@ -130,10 +131,7 @@ Jump_Peak_Time = 0.75
 Jump_Fall_Time = 1.0
 Jump_Height = 40.0
 Jump_Distance = 100.0
-Ground_Accleration_Time = 1.0
-Ground_Max_Speed = 100.0
 Ground_Past_Max_Speed_Decceleration = 3.0
-Ground_Speed_Curve = SubResource("Curve_a8ls1")
 
 [node name="Walking" type="Node" parent="ParentStateMachine/SugarBear" unique_id=305116382 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "coyote_timer")]
 script = ExtResource("7_y4r1p")
@@ -182,6 +180,7 @@ base_state = NodePath("Deactive")
 script = ExtResource("13_oprun")
 
 [node name="AnimalLabel" type="Label" parent="." unique_id=502794606]
+visible = false
 z_index = 999
 offset_left = -22.0
 offset_top = -52.0
@@ -189,6 +188,7 @@ offset_right = 18.0
 offset_bottom = -26.0
 
 [node name="StateLabel" type="Label" parent="." unique_id=164288899]
+visible = false
 z_index = 999
 offset_left = -21.0
 offset_top = -95.0
@@ -196,9 +196,7 @@ offset_right = 19.0
 offset_bottom = -69.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1874743154]
-visible = false
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("5_qlg0r")
+texture = ExtResource("21_a38lo")
 
 [node name="VelocityLabel" type="Label" parent="." unique_id=2068718348]
 z_index = 999
@@ -209,6 +207,7 @@ offset_bottom = 10.0
 
 [node name="AnimalChanger" type="Node2D" parent="." unique_id=1149322701 node_paths=PackedStringArray("animals_list", "bird", "sugar_bear", "hurtbox_collision_shape", "player_collision_shape", "right_wall_cast", "left_wall_cast", "parent")]
 script = ExtResource("22_a38lo")
+
 animals_list = [NodePath("../ParentStateMachine/Bird"), NodePath("../ParentStateMachine/SugarBear")]
 bird = NodePath("../ParentStateMachine/Bird")
 sugar_bear = NodePath("../ParentStateMachine/SugarBear")
@@ -219,6 +218,7 @@ left_wall_cast = NodePath("LeftWallCheck")
 parent = NodePath("..")
 
 [node name="RightWallCheck" type="RayCast2D" parent="AnimalChanger" unique_id=1988924099]
+
 target_position = Vector2(40, 0)
 collision_mask = 5
 
