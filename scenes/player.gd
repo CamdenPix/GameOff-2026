@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
-@export var parent_state_machine: ParentStateMachine
-@export var velocity_label: Label
+@onready var velocity_label: Label = $VelocityLabel
+@onready var parent_state_machine: ParentStateMachine = $ParentStateMachine
 
 func _ready() -> void:
 	parent_state_machine.init(self)

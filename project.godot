@@ -89,6 +89,7 @@ move_down={
 2d_physics/layer_3="Bad Guys"
 2d_physics/layer_4="PlayerHitboxes"
 2d_physics/layer_5="BadGuyHitboxes"
+2d_physics/layer_6="CameraBorder"
 
 [physics]
 

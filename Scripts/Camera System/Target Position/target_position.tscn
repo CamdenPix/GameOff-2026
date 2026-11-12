@@ -1,15 +1,11 @@
 [gd_scene format=3 uid="uid://bfppf4or4forf"]
 
 [ext_resource type="Script" uid="uid://dlqi32tdamb60" path="res://Scripts/Camera System/Target Position/target_position.gd" id="1_28i87"]
-[ext_resource type="Texture2D" uid="uid://6aonaqm6vo5v" path="res://assets/Screenshot 2026-11-12 at 7.13.39 AM.png" id="2_8s171"]
 
 [node name="TargetPosition" type="Area2D" unique_id=806913057]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_28i87")
-
-[node name="Screenshot20261112At7_13_39Am" type="Sprite2D" parent="." unique_id=668517359]
-position = Vector2(0, 7.9999995)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_8s171")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
