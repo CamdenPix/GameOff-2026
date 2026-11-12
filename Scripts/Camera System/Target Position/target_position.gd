@@ -28,9 +28,10 @@ func _process(delta):
 		queue_redraw()
 
 func _draw() -> void:
-	default_font = ThemeDB.fallback_font
-	draw_string(default_font, Vector2(-40, 20), "Target \nPosition", HORIZONTAL_ALIGNMENT_CENTER, 100, 10)
-	if target:
-		draw_line( to_local(global_position), to_local(target.global_position), Color.LIGHT_CORAL, 3.8)
+	if Engine.is_editor_hint():
+		default_font = ThemeDB.fallback_font
+		draw_string(default_font, Vector2(-40, 20), "Target \nPosition", HORIZONTAL_ALIGNMENT_CENTER, 100, 10)
+		if target:
+			draw_line( to_local(global_position), to_local(target.global_position), Color.LIGHT_CORAL, 3.8)
 	pass
 	

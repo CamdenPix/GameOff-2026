@@ -3,6 +3,7 @@ class_name Director extends Node2D
 @export var camera: Camera2D
 @export var camera_state_machine: CameraStateMachine
 @export var camera_man: CameraMan
+@export var position_label: Label
 
 func _ready() -> void:
 	if parent and camera and camera_man and camera_state_machine:
@@ -10,6 +11,8 @@ func _ready() -> void:
 		camera_man.global_position = parent.global_position
 		
 func _physics_process(delta: float) -> void:
+	var string = str(camera_man.global_position) + '\n ' +  str(parent.global_position)
+	position_label.text = string
 	camera_state_machine.process_physics(delta)
 	
 func _process(delta: float) -> void:

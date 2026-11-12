@@ -42,7 +42,7 @@ shape = ExtResource("15_ujl30")
 metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_487ah"]
-size = Vector2(480, 270)
+size = Vector2(640, 360)
 
 [node name="Player" type="CharacterBody2D" unique_id=139764919]
 collision_layer = 2
@@ -224,13 +224,13 @@ collision_mask = 5
 target_position = Vector2(-40, 0)
 collision_mask = 5
 
-[node name="Director" type="Node2D" parent="." unique_id=1635443980 node_paths=PackedStringArray("parent", "camera", "camera_state_machine", "camera_man")]
-top_level = true
+[node name="Director" type="Node2D" parent="." unique_id=1635443980 node_paths=PackedStringArray("parent", "camera", "camera_state_machine", "camera_man", "position_label")]
 script = ExtResource("26_dt7fs")
 parent = NodePath("..")
 camera = NodePath("CameraMan/Camera2D")
 camera_state_machine = NodePath("StateMachine")
 camera_man = NodePath("CameraMan")
+position_label = NodePath("CameraMan/Position")
 
 [node name="StateMachine" type="Node" parent="Director" unique_id=743383579 node_paths=PackedStringArray("debug_state_label", "starting_state", "base_state")]
 script = ExtResource("27_wqfne")
@@ -254,12 +254,20 @@ shape = SubResource("RectangleShape2D_487ah")
 debug_color = Color(0.78039217, 0.18431373, 0.95686275, 0.18431373)
 
 [node name="Camera2D" type="Camera2D" parent="Director/CameraMan" unique_id=1629864533]
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 
 [node name="DebugStateLabel" type="Label" parent="Director/CameraMan" unique_id=118077162]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
+
+[node name="Position" type="Label" parent="Director/CameraMan" unique_id=1751491369]
+visible = false
+offset_left = -122.0
+offset_top = 21.0
+offset_right = -82.0
+offset_bottom = 44.0
 
 [connection signal="body_entered" from="Player_Hurtbox" to="Player_Hurtbox" method="_on_body_entered"]
 [connection signal="timeout" from="Player_Hurtbox/Timer" to="Player_Hurtbox" method="_on_timer_timeout"]
