@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://dulw1a8cl1ss" path="res://Scripts/Hitboxes and Hurtboxes/Player/player_hurtbox.gd" id="2_4ni07"]
 [ext_resource type="Script" uid="uid://ca8ix522mmcvv" path="res://Scripts/Player/Bird/bird_state_machine.gd" id="2_g2els"]
 [ext_resource type="Script" uid="uid://cwjt0dqonkxtr" path="res://Scripts/Abstract State Scripts/animal_resource.gd" id="4_a8ls1"]
-[ext_resource type="Texture2D" uid="uid://cingnt5lrcoku" path="res://icon.svg" id="5_qlg0r"]
 [ext_resource type="Shape2D" uid="uid://b3gbdf3m2n7a5" path="res://Scripts/Player/Bird/BirdCollisionShape.tres" id="6_ke2ow"]
 [ext_resource type="Script" uid="uid://b83weq6rd5bpa" path="res://Scripts/Player/Bird/walk.gd" id="7_qfm1y"]
 [ext_resource type="Script" uid="uid://dysklje3t01br" path="res://Scripts/Player/Bird/flap_wing.gd" id="7_ur7pv"]
@@ -36,11 +35,6 @@ metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
 script = ExtResource("4_a8ls1")
 shape = ExtResource("15_ujl30")
 metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
-
-[sub_resource type="Curve" id="Curve_a8ls1"]
-_data = [Vector2(0, 0), 0.0, 2.85, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-metadata/_snap_enabled = true
 
 [node name="Player" type="CharacterBody2D" unique_id=139764919 node_paths=PackedStringArray("parent_state_machine", "velocity_label")]
 collision_layer = 2
@@ -207,7 +201,6 @@ offset_bottom = 10.0
 
 [node name="AnimalChanger" type="Node2D" parent="." unique_id=1149322701 node_paths=PackedStringArray("animals_list", "bird", "sugar_bear", "hurtbox_collision_shape", "player_collision_shape", "right_wall_cast", "left_wall_cast", "parent")]
 script = ExtResource("22_a38lo")
-
 animals_list = [NodePath("../ParentStateMachine/Bird"), NodePath("../ParentStateMachine/SugarBear")]
 bird = NodePath("../ParentStateMachine/Bird")
 sugar_bear = NodePath("../ParentStateMachine/SugarBear")
@@ -218,13 +211,14 @@ left_wall_cast = NodePath("LeftWallCheck")
 parent = NodePath("..")
 
 [node name="RightWallCheck" type="RayCast2D" parent="AnimalChanger" unique_id=1988924099]
-
 target_position = Vector2(40, 0)
 collision_mask = 5
 
 [node name="LeftWallCheck" type="RayCast2D" parent="AnimalChanger" unique_id=1950531249]
 target_position = Vector2(-40, 0)
 collision_mask = 5
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1628008513]
 
 [connection signal="body_entered" from="Player_Hurtbox" to="Player_Hurtbox" method="_on_body_entered"]
 [connection signal="timeout" from="Player_Hurtbox/Timer" to="Player_Hurtbox" method="_on_timer_timeout"]

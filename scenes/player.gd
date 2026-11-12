@@ -16,3 +16,6 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	parent_state_machine.process_frame(delta)
+	
+func target_camera_position(target_position:Vector2):
+	pass
