@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4kluojwl8dv0"
-path="res://.godot/imported/test penguin.png-2b440b5cd6938de1f84104cdf4cd2aea.ctex"
+uid="uid://6aonaqm6vo5v"
+path="res://.godot/imported/Screenshot 2026-11-12 at 7.13.39 AM.png-2d93a0e03606fef7ffe2070747149ebc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Penguin /test penguin.png"
-dest_files=["res://.godot/imported/test penguin.png-2b440b5cd6938de1f84104cdf4cd2aea.ctex"]
+source_file="res://assets/Screenshot 2026-11-12 at 7.13.39 AM.png"
+dest_files=["res://.godot/imported/Screenshot 2026-11-12 at 7.13.39 AM.png-2d93a0e03606fef7ffe2070747149ebc.ctex"]
 
 [params]
 
