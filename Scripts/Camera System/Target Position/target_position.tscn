@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bfppf4or4forf"]
+
+[ext_resource type="Script" uid="uid://dlqi32tdamb60" path="res://Scripts/Camera System/Target Position/target_position.gd" id="1_28i87"]
+
+[node name="TargetPosition" type="Area2D" unique_id=806913057]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_28i87")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

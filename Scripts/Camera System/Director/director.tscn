@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dox0ua6c0pk1f"]
+
+[ext_resource type="Script" uid="uid://cf8isy1axm0ev" path="res://Scripts/Camera System/Director/director.gd" id="1_ln5bd"]
+[ext_resource type="Script" uid="uid://c8suh25xx5ay2" path="res://Scripts/Camera System/Director/camera_state_machine.gd" id="1_mhals"]
+[ext_resource type="Script" uid="uid://dq50c2245moow" path="res://Scripts/Camera System/Director/follow_player.gd" id="2_h4ixe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdonj"]
+size = Vector2(1920, 1080)
+
+[node name="Director" type="Node2D" unique_id=1555302720 node_paths=PackedStringArray("camera", "camera_state_machine", "camera_man")]
+script = ExtResource("1_ln5bd")
+camera = NodePath("CameraMan/Camera2D")
+camera_state_machine = NodePath("StateMachine")
+camera_man = NodePath("CameraMan")
+
+[node name="StateMachine" type="Node" parent="." unique_id=2019590112 node_paths=PackedStringArray("debug_state_label", "starting_state", "base_state")]
+script = ExtResource("1_mhals")
+debug_state_label = NodePath("../CameraMan/DebugStateLabel")
+starting_state = NodePath("FollowPlayer")
+base_state = NodePath("FollowPlayer")
+
+[node name="FollowPlayer" type="Node" parent="StateMachine" unique_id=1246305114]
+script = ExtResource("2_h4ixe")
+
+[node name="CameraMan" type="CharacterBody2D" parent="." unique_id=1425632413]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraMan" unique_id=308787967]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_qdonj")
+
+[node name="Camera2D" type="Camera2D" parent="CameraMan" unique_id=1867765341]
+
+[node name="DebugStateLabel" type="Label" parent="CameraMan" unique_id=583767441]
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
