@@ -1,3 +1,4 @@
+
 [gd_scene format=3 uid="uid://ddhw6f00iyp61"]
 
 [ext_resource type="Script" uid="uid://dnsp2xc5r75m3" path="res://Scripts/Player/player_parent_state_machine.gd" id="1_3vyb7"]
@@ -195,7 +196,6 @@ offset_right = 19.0
 offset_bottom = -69.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1874743154]
-texture = SubResource("CompressedTexture2D_l71n6")
 
 [node name="VelocityLabel" type="Label" parent="." unique_id=2068718348]
 z_index = 999
