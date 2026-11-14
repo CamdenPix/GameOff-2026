@@ -23,12 +23,8 @@
 [ext_resource type="Script" uid="uid://cpij4htxn7v7b" path="res://Scripts/Player/SugarBear/landing.gd" id="12_oprun"]
 [ext_resource type="Script" uid="uid://ek1v2tl8c2h8" path="res://Scripts/Player/Deactive/deactive.gd" id="13_oprun"]
 [ext_resource type="Shape2D" uid="uid://c1oj36uxowmh2" path="res://Scripts/Player/SugarBear/SugarBearCollisionShape.tres" id="15_ujl30"]
+[ext_resource type="Texture2D" uid="uid://ccde5ila3nc2d" path="res://assets/Penguin /test penguin 128x 64 5x orthgo camera zoom.png" id="21_a38lo"]
 [ext_resource type="Script" uid="uid://bxh0gc13ppu0l" path="res://Scripts/Player/animal_changer.gd" id="22_a38lo"]
-[ext_resource type="Script" uid="uid://cf8isy1axm0ev" path="res://Scripts/Camera System/Director/director.gd" id="26_dt7fs"]
-[ext_resource type="Script" uid="uid://c8suh25xx5ay2" path="res://Scripts/Camera System/Director/camera_state_machine.gd" id="27_wqfne"]
-[ext_resource type="Script" uid="uid://dq50c2245moow" path="res://Scripts/Camera System/Director/follow_player.gd" id="28_wnwbv"]
-[ext_resource type="Script" uid="uid://83xiyqey3mnc" path="res://Scripts/Camera System/Director/camera_man.gd" id="29_gl8cc"]
-[ext_resource type="Script" uid="uid://df34spxh2c31n" path="res://Scripts/Camera System/Camera Border/target_position.gd" id="29_wqfne"]
 
 [sub_resource type="Resource" id="Resource_qdonj"]
 script = ExtResource("4_a8ls1")
@@ -40,12 +36,14 @@ script = ExtResource("4_a8ls1")
 shape = ExtResource("15_ujl30")
 metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_487ah"]
-size = Vector2(640, 360)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l71n6"]
+load_path = "res://.godot/imported/test penguin 128x 64 5x orthgo camera zoom.png-c79949d890a2ff4830c264ab98feaa16.ctex"
 
-[node name="Player" type="CharacterBody2D" unique_id=139764919]
+[node name="Player" type="CharacterBody2D" unique_id=139764919 node_paths=PackedStringArray("parent_state_machine", "velocity_label")]
 collision_layer = 2
 script = ExtResource("1_dqkch")
+parent_state_machine = NodePath("ParentStateMachine")
+velocity_label = NodePath("VelocityLabel")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=623417396]
 shape = ExtResource("15_ujl30")
@@ -195,7 +193,7 @@ offset_right = 19.0
 offset_bottom = -69.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1874743154]
-texture = SubResource("CompressedTexture2D_l71n6")
+texture = ExtResource("21_a38lo")
 
 [node name="VelocityLabel" type="Label" parent="." unique_id=2068718348]
 z_index = 999
@@ -222,51 +220,6 @@ collision_mask = 5
 [node name="LeftWallCheck" type="RayCast2D" parent="AnimalChanger" unique_id=1950531249]
 target_position = Vector2(-40, 0)
 collision_mask = 5
-
-[node name="Director" type="Node2D" parent="." unique_id=1635443980 node_paths=PackedStringArray("parent", "camera", "camera_state_machine", "camera_man", "position_label")]
-script = ExtResource("26_dt7fs")
-parent = NodePath("..")
-camera = NodePath("CameraMan/Camera2D")
-camera_state_machine = NodePath("StateMachine")
-camera_man = NodePath("CameraMan")
-position_label = NodePath("CameraMan/Position")
-
-[node name="StateMachine" type="Node" parent="Director" unique_id=743383579 node_paths=PackedStringArray("debug_state_label", "starting_state", "base_state")]
-script = ExtResource("27_wqfne")
-debug_state_label = NodePath("../CameraMan/DebugStateLabel")
-starting_state = NodePath("FollowPlayer")
-base_state = NodePath("FollowPlayer")
-
-[node name="FollowPlayer" type="Node" parent="Director/StateMachine" unique_id=1949075103]
-script = ExtResource("28_wnwbv")
-
-[node name="TargetPosition" type="Node" parent="Director/StateMachine" unique_id=673148580]
-script = ExtResource("29_wqfne")
-
-[node name="CameraMan" type="CharacterBody2D" parent="Director" unique_id=914509694]
-collision_layer = 0
-collision_mask = 32
-script = ExtResource("29_gl8cc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Director/CameraMan" unique_id=494320844]
-shape = SubResource("RectangleShape2D_487ah")
-debug_color = Color(0.78039217, 0.18431373, 0.95686275, 0.18431373)
-
-[node name="Camera2D" type="Camera2D" parent="Director/CameraMan" unique_id=1629864533]
-zoom = Vector2(3, 3)
-
-[node name="DebugStateLabel" type="Label" parent="Director/CameraMan" unique_id=118077162]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Position" type="Label" parent="Director/CameraMan" unique_id=1751491369]
-visible = false
-offset_left = -122.0
-offset_top = 21.0
-offset_right = -82.0
-offset_bottom = 44.0
 
 [connection signal="body_entered" from="Player_Hurtbox" to="Player_Hurtbox" method="_on_body_entered"]
 [connection signal="timeout" from="Player_Hurtbox/Timer" to="Player_Hurtbox" method="_on_timer_timeout"]
