@@ -1,0 +1,245 @@
+[gd_scene format=4 uid="uid://wg7dwonl0lb4"]
+
+[ext_resource type="Texture2D" uid="uid://brsrpw768fk6x" path="res://assets/SpritesheetTesting.png" id="1_bq22p"]
+[ext_resource type="Script" uid="uid://csxu0cmeotaar" path="res://Scripts/Camera System/Camera Border/camera_border.gd" id="2_1getx"]
+[ext_resource type="PackedScene" uid="uid://ddhw6f00iyp61" path="res://scenes/player.tscn" id="3_6tyqo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1getx"]
+texture = ExtResource("1_bq22p")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+21:0/0 = 0
+22:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+21:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+24:2/0 = 0
+25:2/0 = 0
+26:2/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+21:3/0 = 0
+22:3/0 = 0
+23:3/0 = 0
+24:3/0 = 0
+25:3/0 = 0
+26:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+5:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+21:4/0 = 0
+22:4/0 = 0
+23:4/0 = 0
+24:4/0 = 0
+25:4/0 = 0
+26:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+5:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+16:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+19:5/0 = 0
+21:5/0 = 0
+22:5/0 = 0
+23:5/0 = 0
+24:5/0 = 0
+25:5/0 = 0
+26:5/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+5:8/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+5:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+5:11/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+10:16/0 = 0
+11:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+10:17/0 = 0
+11:17/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+2:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+6:20/0 = 0
+7:20/0 = 0
+10:20/0 = 0
+11:20/0 = 0
+0:21/0 = 0
+1:21/0 = 0
+2:21/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+5:21/0 = 0
+6:21/0 = 0
+7:21/0 = 0
+10:21/0 = 0
+11:21/0 = 0
+0:22/0 = 0
+1:22/0 = 0
+2:22/0 = 0
+3:22/0 = 0
+4:22/0 = 0
+5:22/0 = 0
+6:22/0 = 0
+7:22/0 = 0
+10:22/0 = 0
+11:22/0 = 0
+0:23/0 = 0
+1:23/0 = 0
+2:23/0 = 0
+3:23/0 = 0
+4:23/0 = 0
+5:23/0 = 0
+6:23/0 = 0
+7:23/0 = 0
+10:23/0 = 0
+11:23/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+5:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qdonj"]
+sources/0 = SubResource("TileSetAtlasSource_1getx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdonj"]
+size = Vector2(58, 210.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tyqo"]
+size = Vector2(276, 210.5)
+
+[node name="Level 1 Test" type="Node2D" unique_id=1550383208]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1300321206]
+tile_map_data = PackedByteArray("AAABAAEAAAABAAQAAAABAAIAAAABAAUAAAACAAEAAAACAAQAAAACAAIAAAACAAUAAAADAAEAAAABAAQAAAADAAIAAAABAAUAAAAEAAEAAAACAAQAAAAEAAIAAAACAAUAAAAFAAEAAAABAAQAAAAFAAIAAAABAAUAAAAGAAEAAAACAAQAAAAGAAIAAAACAAUAAAD//wEAAAABAAQAAAD//wIAAAABAAUAAAAAAAEAAAACAAQAAAAAAAIAAAACAAUAAAD9/wEAAAABAAQAAAD9/wIAAAABAAUAAAD+/wEAAAACAAQAAAD+/wIAAAACAAUAAAD7/wEAAAABAAQAAAD7/wIAAAABAAUAAAD8/wEAAAACAAQAAAD8/wIAAAACAAUAAAD5/wEAAAACAAQAAAD5/wIAAAABAAUAAAD6/wEAAAACAAQAAAD6/wIAAAACAAUAAAD3/wEAAAABAAUAAAD3/wIAAAABAAUAAAD4/wEAAAABAAQAAAD4/wIAAAACAAUAAAD1/wEAAAABAAUAAAD1/wIAAAABAAUAAAD2/wEAAAACAAUAAAD2/wIAAAACAAUAAAD1////AAABAAUAAAD1/wAAAAABAAUAAAD2////AAACAAUAAAD2/wAAAAACAAUAAAD1//3/AAABAAUAAAD1//7/AAABAAUAAAD2//3/AAACAAUAAAD2//7/AAACAAUAAAD1//v/AAABAAUAAAD1//z/AAABAAUAAAD2//v/AAACAAUAAAD2//z/AAACAAUAAAD1//r/AAABAAUAAAD2//r/AAACAAUAAAD1/wMAAAABAAUAAAD2/wMAAAACAAUAAAD1//n/AAABAAUAAAD2//n/AAACAAUAAAD1//j/AAABAAUAAAD2//j/AAACAAUAAAA=")
+tile_set = SubResource("TileSet_qdonj")
+rendering_quadrant_size = 32
+physics_quadrant_size = 32
+
+[node name="Camera Area" type="Node" parent="." unique_id=1957971329]
+
+[node name="CameraBorder" type="StaticBody2D" parent="Camera Area" unique_id=442086884]
+position = Vector2(-185, -68)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("2_1getx")
+metadata/_custom_type_script = "uid://csxu0cmeotaar"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera Area/CameraBorder" unique_id=1878118525]
+position = Vector2(0, 34.75)
+shape = SubResource("RectangleShape2D_qdonj")
+
+[node name="CameraBorder2" type="StaticBody2D" parent="Camera Area" unique_id=1580512142]
+position = Vector2(-185, -68)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("2_1getx")
+metadata/_custom_type_script = "uid://csxu0cmeotaar"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera Area/CameraBorder2" unique_id=2054493658]
+position = Vector2(168, 215)
+shape = SubResource("RectangleShape2D_6tyqo")
+
+[node name="Player" parent="." unique_id=139764919 instance=ExtResource("3_6tyqo")]
+position = Vector2(-72, -73)
