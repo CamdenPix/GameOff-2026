@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://brsrpw768fk6x" path="res://assets/SpritesheetTesting.png" id="1_bq22p"]
 [ext_resource type="Script" uid="uid://csxu0cmeotaar" path="res://Scripts/Camera System/Camera Border/camera_border.gd" id="2_1getx"]
+[ext_resource type="PackedScene" uid="uid://ddhw6f00iyp61" path="res://scenes/player.tscn" id="3_6tyqo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1getx"]
 texture = ExtResource("1_bq22p")
@@ -239,3 +240,6 @@ metadata/_custom_type_script = "uid://csxu0cmeotaar"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera Area/CameraBorder2" unique_id=2054493658]
 position = Vector2(168, 215)
 shape = SubResource("RectangleShape2D_6tyqo")
+
+[node name="Player" parent="." unique_id=139764919 instance=ExtResource("3_6tyqo")]
+position = Vector2(-72, -73)
