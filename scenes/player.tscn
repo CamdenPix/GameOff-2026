@@ -23,7 +23,6 @@
 [ext_resource type="Script" uid="uid://cpij4htxn7v7b" path="res://Scripts/Player/SugarBear/landing.gd" id="12_oprun"]
 [ext_resource type="Script" uid="uid://ek1v2tl8c2h8" path="res://Scripts/Player/Deactive/deactive.gd" id="13_oprun"]
 [ext_resource type="Shape2D" uid="uid://c1oj36uxowmh2" path="res://Scripts/Player/SugarBear/SugarBearCollisionShape.tres" id="15_ujl30"]
-[ext_resource type="Texture2D" uid="uid://ccde5ila3nc2d" path="res://assets/Penguin /test penguin 128x 64 5x orthgo camera zoom.png" id="21_a38lo"]
 [ext_resource type="Script" uid="uid://bxh0gc13ppu0l" path="res://Scripts/Player/animal_changer.gd" id="22_a38lo"]
 [ext_resource type="Script" uid="uid://cf8isy1axm0ev" path="res://Scripts/Camera System/Director/director.gd" id="26_dt7fs"]
 [ext_resource type="Script" uid="uid://c8suh25xx5ay2" path="res://Scripts/Camera System/Director/camera_state_machine.gd" id="27_wqfne"]
@@ -196,7 +195,7 @@ offset_right = 19.0
 offset_bottom = -69.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1874743154]
-texture = ExtResource("21_a38lo")
+texture = SubResource("CompressedTexture2D_l71n6")
 
 [node name="VelocityLabel" type="Label" parent="." unique_id=2068718348]
 z_index = 999
