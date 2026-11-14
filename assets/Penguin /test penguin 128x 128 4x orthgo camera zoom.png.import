@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://56fwkl8uohy0"
-path="res://.godot/imported/test penguin 512x 512 4x orthgo camera zoom.png-4f7d7f4a84475cd638b7a9ff7d51430a.ctex"
+uid="uid://b8gdstdtljuf2"
+path="res://.godot/imported/test penguin 128x 128 4x orthgo camera zoom.png-e38f298b00e9eadf3c1a5fafb6c5b761.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Penguin/test penguin 512x 512 4x orthgo camera zoom.png"
-dest_files=["res://.godot/imported/test penguin 512x 512 4x orthgo camera zoom.png-4f7d7f4a84475cd638b7a9ff7d51430a.ctex"]
+source_file="res://assets/Penguin /test penguin 128x 128 4x orthgo camera zoom.png"
+dest_files=["res://.godot/imported/test penguin 128x 128 4x orthgo camera zoom.png-e38f298b00e9eadf3c1a5fafb6c5b761.ctex"]
 
 [params]
 
