@@ -7,8 +7,6 @@ signal change_shape
 
 @export var animals_list : Array[ChildStateMachine]
 
-@export var bird: Bird
-@export var sugar_bear: SugarBear
 
 
 #@export var area_checker: Area2D

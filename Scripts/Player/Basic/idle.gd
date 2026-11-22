@@ -4,6 +4,7 @@ class_name IdleState extends State
 @export var walking_state: WalkingState
 @export var jumping_state: JumpingState
 func enter(oldState: State) -> void:
+	parent.velocity.x = 0
 	additional_enter_logic(oldState)
 	#parent.animations.play(animation_name)
 	
@@ -15,20 +16,25 @@ func exit(newState: State) -> void:
 
 
 func process_input(event: InputEvent) -> State:
-	additional_process_input_logic(event)
+	var possible_state : State = additional_process_input_logic(event)
+	if possible_state:
+		return possible_state
+	return null
 	
 	if Input.is_action_just_pressed("jump"):
 		return jumping_state
 	return null
 
 func process_frame(delta: float) -> State:
-	additional_process_frame_logic(delta)
-	
+	var possible_state : State = additional_process_frame_logic(delta)
+	if possible_state:
+		return possible_state
 	return null
 
 func process_physics(delta: float) -> State:
-	additional_process_physics_logic(delta)
-	
+	var possible_state : State = additional_process_physics_logic(delta)
+	if possible_state:
+		return possible_state
 	var raw_input = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0)

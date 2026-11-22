@@ -8,7 +8,7 @@ class_name ChildStateMachine extends State
 ###		Idk why but it doesnt work
 #######################
 
-
+@export var animation_requester: AnimationRequester
 @export var animal_resource: Animal_Resource
 
 @export 
@@ -79,7 +79,13 @@ func change_state(new_state: State) -> void:
 		current_state.exit(new_state)
 	var old_state = current_state
 	current_state = new_state
-	
+	if new_state.custom_animation_logic == false:
+		if new_state.animation_name == '':
+			push_error('state, ', new_state, ' is missing an animation name and custom animation is not set. Is this Intended?')
+		if animation_requester == null:
+			push_error('Animation requester is missing from animal')
+		else:
+			animation_requester.request_animation(new_state.animation_name, new_state, self)
 	if new_state == null:
 		push_error('animal: ' + self.name + 'had a new state be null. if this happened at start of the game check if starting state, deactive state and base state are set')
 	if no_debug_labels == false:

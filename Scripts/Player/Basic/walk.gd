@@ -5,37 +5,54 @@ class_name WalkingState extends State
 @export var dashing_state: DashingState
 @export var jumping_state: JumpingState
 @export var falling_state: FallingState
+@export var idle_state: IdleState
+@export var idle_timer: Timer
 @export var coyote_timer: Timer
 var coyote_timer_fall: bool = false
 var speed_up_elapsed_time: float = 0.0
 const accelerationExponent: int = 2
+var potiental_idle_state: State
+var idle_started: bool = false
 
 func enter(oldState: State) -> void:
+	idle_started = false
+	potiental_idle_state = null
 	additional_enter_logic(oldState)
 	speed_up_elapsed_time = get_progress()
 	pass
 
 func exit(newState: State) -> void:
+	idle_started = false
+	potiental_idle_state = null
 	additional_exit_logic(newState)
 	coyote_timer.stop()
 	coyote_timer_fall = false
 	pass
 
 func process_input(event: InputEvent) -> State:
-	additional_process_input_logic(event)
+	var possible_state : State = additional_process_input_logic(event)
+	if possible_state:
+		return possible_state
 	if Input.is_action_just_pressed("jump"):
 		return jumping_state
 	return null
 
 func process_frame(delta: float) -> State:
-	additional_process_frame_logic(delta)
+	var possible_state : State = additional_process_frame_logic(delta)
+	if possible_state:
+		return possible_state
 	return null
 
 func process_physics(delta: float) -> State:
-	additional_process_physics_logic(delta)
+	var possible_state : State = additional_process_physics_logic(delta)
+	if possible_state:
+		return possible_state
 	move(delta)
 	#if abs(raw_input.x) > dash_threshold:
 		#return dashing_state
+	
+	if potiental_idle_state:
+		return potiental_idle_state
 	
 	if parent.is_on_floor():
 		coyote_timer.stop()
@@ -60,11 +77,16 @@ func move(delta:float):
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0)
 	var direction = 0
 	if raw_input.length() == 0:
+		if idle_started == false:
+			idle_started = true
+			idle_timer.start()
 		speed_up_elapsed_time -= delta*animal.Ground_Decceleration_Ratio
 		if speed_up_elapsed_time < 0:
 			speed_up_elapsed_time = 0
 		direction = 1 if parent.velocity.x > 0 else -1
 	else:
+		idle_started = false
+		idle_timer.stop()
 		speed_up_elapsed_time += delta
 		if speed_up_elapsed_time > animal.Ground_Acceleration_Time:
 			speed_up_elapsed_time = animal.Ground_Acceleration_Time
@@ -82,6 +104,9 @@ func move(delta:float):
 		parent.velocity.x = easedProgress * animal.Ground_Max_Speed * direction
 	
 	return
+
+func _idle_timer_timeout() -> void:
+	potiental_idle_state = idle_state
 
 func get_progress() -> float:
 	var difference = abs(parent.velocity.x) - animal.Ground_Max_Speed

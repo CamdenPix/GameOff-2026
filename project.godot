@@ -17,6 +17,14 @@ boot_splash/bg_color=Color(0.19696802, 0.84071916, 0.7568201, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[debug]
+
+gdscript/warnings/unassigned_variable=0
+gdscript/warnings/unassigned_variable_op_assign=0
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_local_constant=0
+gdscript/warnings/unused_private_class_variable=0
+
 [display]
 
 window/size/viewport_width=1920
@@ -97,4 +105,5 @@ move_down={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

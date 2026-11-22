@@ -22,7 +22,7 @@ func init(parent: Player) -> void:
 	for child_state in get_children():
 		child_state.init(parent)
 	change_state_machine(starting_state_machine)
-
+	animal_changer.request_new_animal(current_state_machine, starting_state_machine)
 func change_state_machine(new_state_machine: ChildStateMachine) -> void:
 	if current_state_machine:
 		animal_request.emit(current_state_machine, new_state_machine)
