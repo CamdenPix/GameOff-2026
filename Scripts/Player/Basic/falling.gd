@@ -3,6 +3,7 @@
 class_name FallingState extends State
 
 @export var landing_state: LandingState
+@export var dashing_state: DashingState
 func enter(oldState: State) -> void:
 	additional_enter_logic(oldState)
 	#parent.animations.play(animation_name)
@@ -14,6 +15,8 @@ func exit(newState: State) -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
+	if Input.is_action_just_pressed("dash"):
+		return dashing_state
 	additional_process_input_logic(event)
 	return null
 
