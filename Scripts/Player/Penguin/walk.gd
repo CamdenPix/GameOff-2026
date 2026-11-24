@@ -11,11 +11,7 @@ func additional_process_physics_logic(delta:float) -> State:
 func additional_process_frame_logic(delta:float) -> State:
 	return
 func additional_process_input_logic(event: InputEvent) -> State:
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_T:
-			print("t")
-			#parent.velocity.x *= 2
-			return dashing_state
+	
 	return
 func additional_move_logic(delta:float) -> void:
 	return
