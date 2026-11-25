@@ -33,6 +33,16 @@ func change_state_machine(new_state_machine: ChildStateMachine) -> void:
 		current_state_machine.exit(new_state_machine)
 	var old_state_machine = current_state_machine
 	current_state_machine = new_state_machine
+	if old_state_machine:
+		if old_state_machine.current_state is JumpingState:
+			current_state_machine.change_state(current_state_machine.falling_state)
+			#current_state_machine.current_state = current_state_machine.falling_state
+		if old_state_machine.current_state is FallingState:
+			current_state_machine.change_state(current_state_machine.falling_state)
+			#current_state_machine.current_state = current_state_machine.falling_state
+		if old_state_machine.current_state is WalkingState:
+			current_state_machine.change_state(current_state_machine.falling_state)
+			#current_state_machine.current_state = current_state_machine.walking_state
 	if no_debug_labels == false:
 		debug_state_machine_label.text = new_state_machine.to_string()
 	current_state_machine.enter(old_state_machine)

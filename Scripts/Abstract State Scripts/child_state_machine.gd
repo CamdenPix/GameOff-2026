@@ -22,6 +22,9 @@ var no_debug_labels: bool = false
 @export
 var starting_state: State
 
+@export var falling_state: State
+@export var walking_state: State
+@export var dashing_state: State
 @export var deactive_state: State
 @export var base_state: State
 var localOldStateMachine: ChildStateMachine
@@ -52,6 +55,7 @@ var Ground_Acceleration: float = 20.0
 #0,.8,.53,1
 
 var current_state: State
+
 
 func _ready() -> void:
 	if debug_state_label == null and no_debug_labels == true:
