@@ -3,8 +3,6 @@ class_name Player extends CharacterBody2D
 @onready var parent_state_machine: ParentStateMachine = $ParentStateMachine
 @onready var camera_state_machine: CameraStateMachine = $Director/StateMachine
 @onready var target_position_state: TargetPositionState = $Director/StateMachine/TargetPosition
-@onready var sprite: AnimatedSprite2D = $Animation/AnimatedSprite2D
-
 
 func _ready() -> void:
 	parent_state_machine.init(self)
@@ -13,10 +11,6 @@ func _physics_process(delta: float) -> void:
 	var text_velocity: String = "X: " + str(velocity.x) + "\n Y:" + str(velocity.y)
 	velocity_label.text =  text_velocity
 	parent_state_machine.process_physics(delta)
-	#if velocity.x < 0:
-		#sprite.flip_h = true
-	#else:
-		#sprite.flip_h = false
 	move_and_slide()
 	
 func _input(event: InputEvent) -> void:
