@@ -30,25 +30,39 @@ func exit(newState: State) -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
-	additional_process_input_logic(event)
+	var possible_state : State = additional_process_input_logic(event)
+	if possible_state:
+		return possible_state
 	return null
 
 func process_frame(delta: float) -> State:
+	var possible_state : State = additional_process_frame_logic(delta)
+	if possible_state:
+		return possible_state
+
 	if(timerTimedout):
 		if parent.is_on_floor():
 			return walkingState
 		else:
 			return falling_state
-	additional_process_frame_logic(delta)
+	
 	return null
 
-func process_physics(delta: float) -> State:
-	additional_process_physics_logic(delta)
-	return null
+
 
 func _on_timer_timeout() -> void:
 	timerTimedout = true
 	pass
+
+	
+
+func process_physics(delta: float) -> State:
+	var possible_state : State = additional_process_physics_logic(delta)
+	if possible_state:
+		return possible_state
+	
+	
+	return null
 
 @abstract func additional_exit_logic(newState: State) -> void
 @abstract func additional_enter_logic(oldState: State) -> void

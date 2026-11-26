@@ -3,67 +3,593 @@
 [ext_resource type="Script" uid="uid://dnsp2xc5r75m3" path="res://Scripts/Player/player_parent_state_machine.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://chc56cy76um8y" path="res://scenes/player.gd" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://dulw1a8cl1ss" path="res://Scripts/Hitboxes and Hurtboxes/Player/player_hurtbox.gd" id="2_4ni07"]
-[ext_resource type="Script" uid="uid://ca8ix522mmcvv" path="res://Scripts/Player/Bird/bird_state_machine.gd" id="2_g2els"]
 [ext_resource type="Script" uid="uid://cwjt0dqonkxtr" path="res://Scripts/Abstract State Scripts/animal_resource.gd" id="4_a8ls1"]
-[ext_resource type="Script" uid="uid://b51is7o5imsnw" path="res://Scripts/Player/Penguin/penguin_state_machine.gd" id="5_ke2ow"]
-[ext_resource type="Script" uid="uid://kftxpb6y5e64" path="res://Scripts/Player/Penguin/sliding.gd" id="6_gl8cc"]
-[ext_resource type="Shape2D" uid="uid://b3gbdf3m2n7a5" path="res://Scripts/Player/Bird/BirdCollisionShape.tres" id="6_ke2ow"]
-[ext_resource type="Script" uid="uid://damiv7vinm2si" path="res://Scripts/Player/Penguin/Walk.gd" id="7_487ah"]
-[ext_resource type="Shape2D" uid="uid://dxrfbhs7kgvea" path="res://Scripts/Player/Penguin/PenguinCollisionShape.tres" id="7_md1ol"]
-[ext_resource type="Script" uid="uid://b83weq6rd5bpa" path="res://Scripts/Player/Bird/walk.gd" id="7_qfm1y"]
-[ext_resource type="Script" uid="uid://dysklje3t01br" path="res://Scripts/Player/Bird/flap_wing.gd" id="7_ur7pv"]
-[ext_resource type="Script" uid="uid://5tdjqwwbdmx1" path="res://Scripts/Player/SugarBear/Walk.gd" id="7_y4r1p"]
-[ext_resource type="Script" uid="uid://snt05gduaxdv" path="res://Scripts/Player/SugarBear/dashing.gd" id="8_d2wvv"]
-[ext_resource type="Script" uid="uid://b8kuwukqb6kpx" path="res://Scripts/Player/Bird/landing.gd" id="8_fulsm"]
-[ext_resource type="Script" uid="uid://ddwue352uf3cn" path="res://Scripts/Player/Penguin/landing.gd" id="8_md1ol"]
-[ext_resource type="Script" uid="uid://cc5inuve0unp2" path="res://Scripts/Player/SugarBear/sugar_bear_state_machine.gd" id="8_y4r1p"]
-[ext_resource type="Script" uid="uid://xw647mn6prgr" path="res://Scripts/Player/Bird/jumping.gd" id="9_4r5pv"]
-[ext_resource type="Script" uid="uid://584wmn7qsaw3" path="res://Scripts/Player/Penguin/jumping.gd" id="9_bj30b"]
-[ext_resource type="Script" uid="uid://3jkatjcbd1hb" path="res://Scripts/Player/SugarBear/jumping.gd" id="9_jej6c"]
-[ext_resource type="Script" uid="uid://l4fgobvcx73j" path="res://Scripts/Player/SugarBear/falling.gd" id="10_f1ej7"]
-[ext_resource type="Script" uid="uid://bqlswfisxixr7" path="res://Scripts/Player/Bird/falling.gd" id="10_i4ail"]
-[ext_resource type="Script" uid="uid://cy6ptmvr05sc5" path="res://Scripts/Player/Penguin/falling.gd" id="10_jc3p3"]
-[ext_resource type="Script" uid="uid://hebwg3stvyny" path="res://Scripts/Player/Bird/idle.gd" id="11_4ni07"]
-[ext_resource type="Script" uid="uid://b7ue0y67rwff" path="res://Scripts/Player/Bird/dashing.gd" id="11_a38lo"]
-[ext_resource type="Script" uid="uid://7bb5jq47ukrj" path="res://Scripts/Player/SugarBear/idle.gd" id="11_f1ej7"]
-[ext_resource type="Script" uid="uid://c8t2bwur3ytjd" path="res://Scripts/Player/Penguin/idle.gd" id="11_hax0n"]
+[ext_resource type="Script" uid="uid://dxeweak6lj7vg" path="res://Scripts/Player/SugarGlider/sugar_glider.gd" id="5_au8ao"]
+[ext_resource type="Shape2D" uid="uid://d0ywivw5wxq3" path="res://Scripts/Player/SugarGlider/SugarGliderShape.tres" id="6_gvmy4"]
+[ext_resource type="Script" uid="uid://7sorjn0owd70" path="res://Scripts/Player/SugarGlider/walk.gd" id="6_w5j5w"]
+[ext_resource type="Script" uid="uid://0oiier3e8h7" path="res://Scripts/Player/SugarGlider/dsah.gd" id="7_cbf1i"]
+[ext_resource type="Script" uid="uid://c27hq6moxwh2a" path="res://Scripts/Player/SugarGlider/jump.gd" id="8_4vfid"]
+[ext_resource type="Script" uid="uid://cs6frb5swdigj" path="res://Scripts/Player/SugarGlider/fall.gd" id="9_ljgr3"]
+[ext_resource type="Script" uid="uid://r13qqxqjydye" path="res://Scripts/Player/SugarGlider/idle.gd" id="10_fr8ja"]
+[ext_resource type="Script" uid="uid://bplsi4p0rjknw" path="res://Scripts/Player/SugarGlider/land.gd" id="11_gvmy4"]
 [ext_resource type="Script" uid="uid://qnmwbc3twpqd" path="res://Scripts/Player/Deactive/deactive_state_machine.gd" id="12_f1ej7"]
-[ext_resource type="Script" uid="uid://cpij4htxn7v7b" path="res://Scripts/Player/SugarBear/landing.gd" id="12_oprun"]
-[ext_resource type="Script" uid="uid://ddmqqqmfvvg1w" path="res://Scripts/Player/Penguin/dashing.gd" id="12_t4otl"]
 [ext_resource type="Script" uid="uid://ek1v2tl8c2h8" path="res://Scripts/Player/Deactive/deactive.gd" id="13_oprun"]
-[ext_resource type="Shape2D" uid="uid://c1oj36uxowmh2" path="res://Scripts/Player/SugarBear/SugarBearCollisionShape.tres" id="15_ujl30"]
 [ext_resource type="Script" uid="uid://bxh0gc13ppu0l" path="res://Scripts/Player/animal_changer.gd" id="22_a38lo"]
+[ext_resource type="Script" uid="uid://cpdmx1rkve6kg" path="res://Scripts/Player/Penguin/penguin_state_machine.gd" id="22_dqoq3"]
+[ext_resource type="Script" uid="uid://dfsx7hyey2hry" path="res://Scripts/Player/Penguin/walk.gd" id="23_y8tjj"]
+[ext_resource type="Script" uid="uid://dnhrse1kxmi5r" path="res://Scripts/Player/Penguin/dash.gd" id="24_4tsya"]
 [ext_resource type="Texture2D" uid="uid://cingnt5lrcoku" path="res://icon.svg" id="24_wqfne"]
+[ext_resource type="Script" uid="uid://sucecpdpgad6" path="res://Scripts/Player/Penguin/jump.gd" id="25_68qdx"]
+[ext_resource type="Script" uid="uid://coigw80n7harq" path="res://Scripts/Player/Penguin/fall.gd" id="26_ccnn6"]
 [ext_resource type="Script" uid="uid://cf8isy1axm0ev" path="res://Scripts/Camera System/Director/director.gd" id="26_dt7fs"]
+[ext_resource type="Script" uid="uid://cp7ysnme04y2u" path="res://Scripts/Player/Penguin/idle.gd" id="27_mcvyg"]
 [ext_resource type="Script" uid="uid://c8suh25xx5ay2" path="res://Scripts/Camera System/Director/camera_state_machine.gd" id="27_wqfne"]
+[ext_resource type="Script" uid="uid://owwsmqtj26rj" path="res://Scripts/Player/Penguin/landing.gd" id="28_68qdx"]
 [ext_resource type="Script" uid="uid://dq50c2245moow" path="res://Scripts/Camera System/Director/follow_player.gd" id="28_wnwbv"]
 [ext_resource type="Script" uid="uid://83xiyqey3mnc" path="res://Scripts/Camera System/Director/camera_man.gd" id="29_gl8cc"]
 [ext_resource type="Script" uid="uid://df34spxh2c31n" path="res://Scripts/Camera System/Camera Border/target_position.gd" id="29_wqfne"]
+[ext_resource type="Script" uid="uid://brsokjsk4nyul" path="res://Scripts/Player/animation.gd" id="32_dqoq3"]
+[ext_resource type="Texture2D" uid="uid://6u8yl01cox0x" path="res://assets/Penguin/Jump/Penguin0000.png" id="33_y8tjj"]
+[ext_resource type="Texture2D" uid="uid://2k45rjuriwri" path="res://assets/Penguin/Jump/Penguin0001.png" id="34_6ptwb"]
+[ext_resource type="Texture2D" uid="uid://ccx3kj13run7s" path="res://assets/Penguin/Jump/Penguin0002.png" id="35_8pj6w"]
+[ext_resource type="Texture2D" uid="uid://bmyqratgthumw" path="res://assets/Penguin/Jump/Penguin0003.png" id="36_08upi"]
+[ext_resource type="Texture2D" uid="uid://bkuq664npf3f" path="res://assets/Penguin/Jump/Penguin0004.png" id="37_4tsya"]
+[ext_resource type="Texture2D" uid="uid://cby35hr7m6p1x" path="res://assets/Penguin/Jump/Penguin0005.png" id="38_68qdx"]
+[ext_resource type="Texture2D" uid="uid://c2e7b7j4e3d6v" path="res://assets/SugarGlider/Idle/SugarGlider0001.png" id="38_tlfvf"]
+[ext_resource type="Texture2D" uid="uid://cmtqpd65813l1" path="res://assets/Penguin/Jump/Penguin0006.png" id="39_ccnn6"]
+[ext_resource type="Texture2D" uid="uid://xe65ngol1oh5" path="res://assets/Penguin/DashStart/Penguin0000.png" id="39_dnnjp"]
+[ext_resource type="Texture2D" uid="uid://dbow1v6r7nm22" path="res://assets/Penguin/Idle/Penguin0000.png" id="39_qmsq4"]
+[ext_resource type="Texture2D" uid="uid://bv5gbqoeqylue" path="res://assets/Penguin/Jump/Penguin0007.png" id="40_mcvyg"]
+[ext_resource type="Texture2D" uid="uid://br5h7q3sv8w1a" path="res://assets/Penguin/DashStart/Penguin0001.png" id="40_wqna8"]
+[ext_resource type="Texture2D" uid="uid://bbam3t5fcg828" path="res://assets/Penguin/Jump/Penguin0008.png" id="41_ealyq"]
+[ext_resource type="Texture2D" uid="uid://dwomd5ui2jso" path="res://assets/Penguin/DashStart/Penguin0002.png" id="41_l7gmo"]
+[ext_resource type="Texture2D" uid="uid://dudwfsrfajpyy" path="res://assets/Penguin/DashStart/Penguin0003.png" id="42_kft7l"]
+[ext_resource type="Texture2D" uid="uid://c1batxxuuiy6" path="res://assets/Penguin/Jump/Penguin0009.png" id="42_qms75"]
+[ext_resource type="Texture2D" uid="uid://77rdy5pdsmlg" path="res://assets/Penguin/Jump/Penguin0010.png" id="43_1lovq"]
+[ext_resource type="Texture2D" uid="uid://cixt1khc2q6bs" path="res://assets/Penguin/DashStart/Penguin0004.png" id="43_2s4os"]
+[ext_resource type="Texture2D" uid="uid://c02jxrf553rvf" path="res://assets/Penguin/DashStart/Penguin0005.png" id="44_2em0j"]
+[ext_resource type="Texture2D" uid="uid://dvefq7mujqp45" path="res://assets/Penguin/DashStart/Penguin0006.png" id="45_qe2k6"]
+[ext_resource type="Texture2D" uid="uid://b6gt6i37ri42g" path="res://assets/SugarGlider/Jump/SugarGlider0000.png" id="49_c7iw1"]
+[ext_resource type="Texture2D" uid="uid://da71umexh4ach" path="res://assets/SugarGlider/Jump/SugarGlider0001.png" id="50_fccsy"]
+[ext_resource type="Texture2D" uid="uid://d2ffb6h1y52se" path="res://assets/SugarGlider/Jump/SugarGlider0002.png" id="51_e4c5e"]
+[ext_resource type="Texture2D" uid="uid://dt3xj7m0bhbbo" path="res://assets/Penguin/JumpToFreeFall/Penguin0000.png" id="52_5ej1x"]
+[ext_resource type="Texture2D" uid="uid://cd20c3xwkurr1" path="res://assets/SugarGlider/Jump/SugarGlider0003.png" id="52_72noi"]
+[ext_resource type="Texture2D" uid="uid://pwjek88ttnsy" path="res://assets/SugarGlider/Jump/SugarGlider0004.png" id="53_0j382"]
+[ext_resource type="Texture2D" uid="uid://ckoe6cj5u3kf" path="res://assets/Penguin/JumpToFreeFall/Penguin0001.png" id="53_tlfvf"]
+[ext_resource type="Texture2D" uid="uid://cr1wpmn0akw4h" path="res://assets/SugarGlider/Jump/SugarGlider0005.png" id="54_b3jfe"]
+[ext_resource type="Texture2D" uid="uid://crgqoeceqkumf" path="res://assets/Penguin/JumpToFreeFall/Penguin0002.png" id="54_i18u8"]
+[ext_resource type="Texture2D" uid="uid://daeykw7tn8cxy" path="res://assets/Penguin/JumpToFreeFall/Penguin0003.png" id="55_46bxm"]
+[ext_resource type="Texture2D" uid="uid://dsuq7i6gykk4o" path="res://assets/SugarGlider/Jump/SugarGlider0006.png" id="55_gvigm"]
+[ext_resource type="Texture2D" uid="uid://so0m6un7jcdi" path="res://assets/Penguin/JumpToFreeFall/Penguin0004.png" id="56_llmf1"]
+[ext_resource type="Texture2D" uid="uid://36l7risb60qb" path="res://assets/Penguin/JumpToFreeFall/Penguin0005.png" id="57_qywrh"]
+[ext_resource type="Texture2D" uid="uid://demdqq78drss6" path="res://assets/Penguin/JumpToFreeFall/Penguin0006.png" id="58_jopkk"]
+[ext_resource type="Texture2D" uid="uid://geadoo4e4l2t" path="res://assets/Penguin/Land/Penguin0000.png" id="59_5l1xu"]
+[ext_resource type="Texture2D" uid="uid://cwxvm3pvk1hcm" path="res://assets/Penguin/Land/Penguin0001.png" id="60_inwxp"]
+[ext_resource type="Texture2D" uid="uid://bxo5yca7vcus2" path="res://assets/Penguin/Land/Penguin0002.png" id="61_eb62r"]
+[ext_resource type="Texture2D" uid="uid://bn40dga7xhkdl" path="res://assets/Penguin/Land/Penguin0003.png" id="62_5tfe1"]
+[ext_resource type="Texture2D" uid="uid://bjw5n37qui8jy" path="res://assets/SugarGlider/JumpToFreeFall/SugarGlider0000.png" id="63_5ej1x"]
+[ext_resource type="Texture2D" uid="uid://b7m1yexuuycrf" path="res://assets/Penguin/Land/Penguin0004.png" id="63_tfrof"]
+[ext_resource type="Texture2D" uid="uid://jler3b4te78p" path="res://assets/SugarGlider/JumpToFreeFall/SugarGlider0001.png" id="64_tlfvf"]
+[ext_resource type="Texture2D" uid="uid://dg2le6cibe7kn" path="res://assets/Penguin/Land/Penguin0005.png" id="64_vsqmb"]
+[ext_resource type="Texture2D" uid="uid://bfccgrfnh4hjx" path="res://assets/Penguin/Land/Penguin0006.png" id="65_8cesh"]
+[ext_resource type="Texture2D" uid="uid://b70iwn8x1vfqu" path="res://assets/SugarGlider/JumpToFreeFall/SugarGlider0002.png" id="65_i18u8"]
+[ext_resource type="Texture2D" uid="uid://denq1xiux5skq" path="res://assets/SugarGlider/JumpToFreeFall/SugarGlider0003.png" id="66_46bxm"]
+[ext_resource type="Texture2D" uid="uid://cu8snmg1gmpnm" path="res://assets/Penguin/Land/Penguin0007.png" id="66_uew4u"]
+[ext_resource type="Texture2D" uid="uid://babfy0pfpsldd" path="res://assets/Penguin/Land/Penguin0008.png" id="67_3thuw"]
+[ext_resource type="Texture2D" uid="uid://c01aj6cp7b7r1" path="res://assets/SugarGlider/JumpToFreeFall/SugarGlider0004.png" id="67_llmf1"]
+[ext_resource type="Texture2D" uid="uid://dlg7joogjduvw" path="res://assets/Penguin/Land/Penguin0009.png" id="68_44dms"]
+[ext_resource type="Texture2D" uid="uid://qtqnj7h22o2c" path="res://assets/SugarGlider/JumpToFreeFall/SugarGlider0005.png" id="68_qywrh"]
+[ext_resource type="Texture2D" uid="uid://c7wupkmf8lw3v" path="res://assets/Penguin/Land/Penguin0010.png" id="69_36p4m"]
+[ext_resource type="Texture2D" uid="uid://c7lsrvdr085ua" path="res://assets/SugarGlider/JumpToFreeFall/SugarGlider0006.png" id="69_jopkk"]
+[ext_resource type="Texture2D" uid="uid://ceqwusutfq8ds" path="res://assets/Penguin/Land/Penguin0011.png" id="70_1nht2"]
+[ext_resource type="Texture2D" uid="uid://cig7ir1r6pdun" path="res://assets/Penguin/Land/Penguin0012.png" id="71_kkgei"]
+[ext_resource type="Texture2D" uid="uid://budn2x6el3fx8" path="res://assets/Penguin/Land/Penguin0013.png" id="72_r8o87"]
+[ext_resource type="Texture2D" uid="uid://2jejn8fem1pr" path="res://assets/SugarGlider/Landing/SugarGlider0000.png" id="85_i18u8"]
+[ext_resource type="Texture2D" uid="uid://b2uk4776ja27h" path="res://assets/SugarGlider/Landing/SugarGlider0001.png" id="86_46bxm"]
+[ext_resource type="Texture2D" uid="uid://c0157ghvdfuq1" path="res://assets/SugarGlider/Landing/SugarGlider0002.png" id="87_llmf1"]
+[ext_resource type="Texture2D" uid="uid://o8uwag82u5r7" path="res://assets/SugarGlider/Landing/SugarGlider0003.png" id="88_qywrh"]
+[ext_resource type="Texture2D" uid="uid://b6mmsfb73mggr" path="res://assets/Penguin/walk/Penguin0000.png" id="88_tpmi1"]
+[ext_resource type="Texture2D" uid="uid://wjdddxxug22g" path="res://assets/Penguin/walk/Penguin0001.png" id="89_7ehci"]
+[ext_resource type="Texture2D" uid="uid://car6reyg1tu1y" path="res://assets/SugarGlider/Landing/SugarGlider0004.png" id="89_jopkk"]
+[ext_resource type="Texture2D" uid="uid://cceihhca7us7s" path="res://assets/SugarGlider/Landing/SugarGlider0005.png" id="90_5l1xu"]
+[ext_resource type="Texture2D" uid="uid://dtlvn004mba4a" path="res://assets/Penguin/walk/Penguin0002.png" id="90_j7i68"]
+[ext_resource type="Texture2D" uid="uid://cfnr3o4ugofjq" path="res://assets/Penguin/walk/Penguin0003.png" id="91_6nj3f"]
+[ext_resource type="Texture2D" uid="uid://dpfct085lsu7e" path="res://assets/SugarGlider/Landing/SugarGlider0006.png" id="91_inwxp"]
+[ext_resource type="Texture2D" uid="uid://2xc6dm7ff7jd" path="res://assets/Penguin/walk/Penguin0004.png" id="92_k8oxv"]
+[ext_resource type="Texture2D" uid="uid://c6v3d6ff27gu4" path="res://assets/Penguin/walk/Penguin0005.png" id="93_4cgac"]
+[ext_resource type="Texture2D" uid="uid://cnqi2yge1iyy" path="res://assets/Penguin/walk/Penguin0006.png" id="94_r7b2j"]
+[ext_resource type="Texture2D" uid="uid://b8is2dm3vwity" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0000.png" id="95_2xkbm"]
+[ext_resource type="Texture2D" uid="uid://bjqdi1mh6d84b" path="res://assets/Penguin/walk/Penguin0007.png" id="95_bjhuq"]
+[ext_resource type="Texture2D" uid="uid://bh7soyo8njedm" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0001.png" id="96_dqoq3"]
+[ext_resource type="Texture2D" uid="uid://ctu35x37bdm7q" path="res://assets/Penguin/walk/Penguin0008.png" id="96_jwvtp"]
+[ext_resource type="Texture2D" uid="uid://dpjq25vog300c" path="res://assets/Penguin/walk/Penguin0009.png" id="97_1w2jg"]
+[ext_resource type="Texture2D" uid="uid://tis1pk4derkf" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0002.png" id="97_y8tjj"]
+[ext_resource type="Texture2D" uid="uid://fn8w07q0ny1x" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0003.png" id="98_6ptwb"]
+[ext_resource type="Texture2D" uid="uid://cpv8fm3aw6v7e" path="res://assets/Penguin/walk/Penguin0010.png" id="98_c740o"]
+[ext_resource type="Texture2D" uid="uid://cifwbnrglvd1g" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0004.png" id="99_8pj6w"]
+[ext_resource type="Texture2D" uid="uid://byxbf4fiij04l" path="res://assets/Penguin/walk/Penguin0011.png" id="99_e2o4r"]
+[ext_resource type="Texture2D" uid="uid://cjfrjnrsvknxd" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0005.png" id="100_08upi"]
+[ext_resource type="Texture2D" uid="uid://cjq8fe2skt0b" path="res://assets/Penguin/walk/Penguin0012.png" id="100_tj70q"]
+[ext_resource type="Texture2D" uid="uid://klivs50oiiyj" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0006.png" id="101_4tsya"]
+[ext_resource type="Texture2D" uid="uid://4y1j40k1u8qr" path="res://assets/Penguin/walk/Penguin0013.png" id="101_wvc5d"]
+[ext_resource type="Texture2D" uid="uid://b2diqq02a8evd" path="res://assets/Penguin/walk/Penguin0014.png" id="102_27c74"]
+[ext_resource type="Texture2D" uid="uid://bft8lktdp7xtx" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0007.png" id="102_68qdx"]
+[ext_resource type="Texture2D" uid="uid://cjlu3urxv2yyq" path="res://assets/Penguin/walk/Penguin0015.png" id="103_68nro"]
+[ext_resource type="Texture2D" uid="uid://dpp7xgmjpi7eg" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0008.png" id="103_ccnn6"]
+[ext_resource type="Texture2D" uid="uid://bq5akc8mhge5h" path="res://assets/Penguin/walk/Penguin0016.png" id="104_frm6w"]
+[ext_resource type="Texture2D" uid="uid://n1kl8k4f0ubw" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0009.png" id="104_mcvyg"]
+[ext_resource type="Texture2D" uid="uid://cydw1n8q65v87" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0010.png" id="105_ealyq"]
+[ext_resource type="Texture2D" uid="uid://dn83mxcjq2p65" path="res://assets/Penguin/walk/Penguin0017.png" id="105_xdd7v"]
+[ext_resource type="Texture2D" uid="uid://c21abilaace4y" path="res://assets/Penguin/walk/Penguin0018.png" id="106_lapqr"]
+[ext_resource type="Texture2D" uid="uid://cdyx51r7o20c0" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0011.png" id="106_qms75"]
+[ext_resource type="Texture2D" uid="uid://cdqer3ji5sdui" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0012.png" id="107_1lovq"]
+[ext_resource type="Texture2D" uid="uid://bo3txvnm7kp2" path="res://assets/Penguin/walk/Penguin0019.png" id="107_dygpo"]
+[ext_resource type="Texture2D" uid="uid://d13kimt670jp5" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0013.png" id="108_0usgs"]
+[ext_resource type="Texture2D" uid="uid://cgft4gqy37jfm" path="res://assets/Penguin/walk/Penguin0020.png" id="108_vso6i"]
+[ext_resource type="Texture2D" uid="uid://c0udoapgg1rtx" path="res://assets/Penguin/walk/Penguin0021.png" id="109_20122"]
+[ext_resource type="Texture2D" uid="uid://b2inh1kk0kol1" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0014.png" id="109_c7iw1"]
+[ext_resource type="Texture2D" uid="uid://py26jefqt4o6" path="res://assets/Penguin/walk/Penguin0022.png" id="110_apmd0"]
+[ext_resource type="Texture2D" uid="uid://c6u0ai8rxjwnn" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0015.png" id="110_fccsy"]
+[ext_resource type="Texture2D" uid="uid://b7djhqaokyrpp" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0016.png" id="111_e4c5e"]
+[ext_resource type="Texture2D" uid="uid://bdiy8fo5o61is" path="res://assets/Penguin/walk/Penguin0023.png" id="111_slfds"]
+[ext_resource type="Texture2D" uid="uid://c4atlvlucmn88" path="res://assets/Penguin/walk/Penguin0024.png" id="112_7ey6w"]
+[ext_resource type="Texture2D" uid="uid://dkwcckfnhk2h3" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0017.png" id="112_72noi"]
+[ext_resource type="Texture2D" uid="uid://bcvv37rn13vaf" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0018.png" id="113_0j382"]
+[ext_resource type="Texture2D" uid="uid://jtwm5poy6d6p" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0019.png" id="114_b3jfe"]
+[ext_resource type="Texture2D" uid="uid://dhnyr383b8abc" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0020.png" id="115_gvigm"]
+[ext_resource type="Texture2D" uid="uid://bpey4cov66mx4" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0021.png" id="116_5ej1x"]
+[ext_resource type="Texture2D" uid="uid://bywwvi12q6yqs" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0022.png" id="117_tlfvf"]
+[ext_resource type="Texture2D" uid="uid://bx4f71qcv1wp" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0023.png" id="118_i18u8"]
+[ext_resource type="Texture2D" uid="uid://d4hxqg8ntwtxw" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0024.png" id="119_46bxm"]
+[ext_resource type="Texture2D" uid="uid://etlu08xjac10" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0025.png" id="120_llmf1"]
+[ext_resource type="Texture2D" uid="uid://xj5l08wx2nr0" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0026.png" id="121_qywrh"]
+[ext_resource type="Texture2D" uid="uid://cyq3ui5q0jewm" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0027.png" id="122_jopkk"]
+[ext_resource type="Texture2D" uid="uid://btch11x7hp0ds" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0028.png" id="123_5l1xu"]
+[ext_resource type="Texture2D" uid="uid://cwx0dr1sa0pvr" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0029.png" id="124_inwxp"]
+[ext_resource type="Texture2D" uid="uid://cmj10xfovpblb" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0030.png" id="125_eb62r"]
+[ext_resource type="Texture2D" uid="uid://dc60i572c1c1" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0031.png" id="126_5tfe1"]
+[ext_resource type="Texture2D" uid="uid://d0qnobl1cho5r" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0032.png" id="127_tfrof"]
 
-[sub_resource type="Resource" id="Resource_gl8cc"]
+[sub_resource type="Resource" id="Resource_gvmy4"]
 script = ExtResource("4_a8ls1")
-shape = ExtResource("7_md1ol")
+shape = ExtResource("6_gvmy4")
 metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
 
-[sub_resource type="Resource" id="Resource_qdonj"]
-script = ExtResource("4_a8ls1")
-shape = ExtResource("6_ke2ow")
-metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6h62"]
+radius = 20.0
+height = 60.0
 
-[sub_resource type="Resource" id="Resource_qfm1y"]
+[sub_resource type="Resource" id="Resource_xvevh"]
 script = ExtResource("4_a8ls1")
-shape = ExtResource("15_ujl30")
+shape = SubResource("CapsuleShape2D_n6h62")
 metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_487ah"]
 size = Vector2(640, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvevh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_dnnjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_wqna8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_l7gmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_kft7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_2s4os")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_2em0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_qe2k6")
+}],
+"loop": 0,
+"name": &"Dash-Penguin",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_qmsq4")
+}],
+"loop": 1,
+"name": &"Idle-Penguin",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("38_tlfvf")
+}],
+"loop": 1,
+"name": &"Idle-SugarGlider",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_y8tjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_6ptwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_8pj6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_08upi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_4tsya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_68qdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ccnn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_mcvyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ealyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_qms75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_1lovq")
+}],
+"loop": 0,
+"name": &"Jump-Penguin",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("49_c7iw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_fccsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_e4c5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_72noi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_0j382")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_b3jfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_gvigm")
+}],
+"loop": 0,
+"name": &"Jump-SugarGlider",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("52_5ej1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_tlfvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_i18u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_46bxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_llmf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_qywrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_jopkk")
+}],
+"loop": 0,
+"name": &"JumpToFreeFall-Penguin",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("63_5ej1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_tlfvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_i18u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_46bxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_llmf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_qywrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_jopkk")
+}],
+"loop": 0,
+"name": &"JumpToFreeFall-SugarGlider",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("59_5l1xu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_inwxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_eb62r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_5tfe1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_tfrof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_vsqmb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_8cesh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_uew4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_3thuw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_44dms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_36p4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_1nht2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_kkgei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_r8o87")
+}],
+"loop": 0,
+"name": &"Land-Penguin",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("85_i18u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_46bxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_llmf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_qywrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_jopkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_5l1xu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_inwxp")
+}],
+"loop": 0,
+"name": &"Land-SugarGlider",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("88_tpmi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_7ehci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_j7i68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_6nj3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_k8oxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_4cgac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_r7b2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_bjhuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_jwvtp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_1w2jg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_c740o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_e2o4r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_tj70q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_wvc5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_27c74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_68nro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_frm6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_xdd7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_lapqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_dygpo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_vso6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_20122")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_apmd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_slfds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_7ey6w")
+}],
+"loop": 1,
+"name": &"Walk-Penguin",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("95_2xkbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_dqoq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_y8tjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_6ptwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_8pj6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_08upi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_4tsya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_68qdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_ccnn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_mcvyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_ealyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_qms75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_1lovq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_0usgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_c7iw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_fccsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_e4c5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_72noi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_0j382")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_b3jfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_gvigm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_5ej1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_tlfvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_i18u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_46bxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_llmf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_qywrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_jopkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_5l1xu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_inwxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_eb62r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_5tfe1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_tfrof")
+}],
+"loop": 1,
+"name": &"Walk-SugarGlider",
+"speed": 30.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=139764919]
 collision_layer = 2
 script = ExtResource("1_dqkch")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=623417396]
-shape = ExtResource("15_ujl30")
 
 [node name="Player_Hurtbox" type="Area2D" parent="." unique_id=1473979664 node_paths=PackedStringArray("iframe_timer")]
 script = ExtResource("2_4ni07")
@@ -71,7 +597,6 @@ iframe_timer = NodePath("Timer")
 metadata/_custom_type_script = "uid://dulw1a8cl1ss"
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="Player_Hurtbox" unique_id=503420747]
-shape = ExtResource("15_ujl30")
 
 [node name="Timer" type="Timer" parent="Player_Hurtbox" unique_id=1129933225]
 wait_time = 3.0
@@ -80,176 +605,142 @@ one_shot = true
 [node name="ParentStateMachine" type="Node" parent="." unique_id=661096403 node_paths=PackedStringArray("debug_state_machine_label", "starting_state_machine", "animal_changer", "deactive_state", "base_state")]
 script = ExtResource("1_3vyb7")
 debug_state_machine_label = NodePath("../AnimalLabel")
-starting_state_machine = NodePath("SugarBear")
+starting_state_machine = NodePath("Penguin")
 animal_changer = NodePath("../AnimalChanger")
 deactive_state = NodePath("DeactiveStateMachine")
-base_state = NodePath("SugarBear")
+base_state = NodePath("Penguin")
 
-[node name="Penguin" type="Node" parent="ParentStateMachine" unique_id=1515474456 node_paths=PackedStringArray("debug_state_label", "starting_state", "deactive_state", "base_state")]
-script = ExtResource("5_ke2ow")
-animal_resource = SubResource("Resource_gl8cc")
+[node name="SugarGlider" type="Node" parent="ParentStateMachine" unique_id=1275720363 node_paths=PackedStringArray("penguin", "animation", "animation_requester", "debug_state_label", "starting_state", "falling_state", "walking_state", "dashing_state", "deactive_state", "base_state")]
+script = ExtResource("5_au8ao")
+penguin = NodePath("../Penguin")
+animation = NodePath("../../Animation")
+animation_requester = NodePath("../../Animation")
+animal_resource = SubResource("Resource_gvmy4")
 debug_state_label = NodePath("../../StateLabel")
 starting_state = NodePath("Idle")
+falling_state = NodePath("Falling")
+walking_state = NodePath("Walking")
+dashing_state = NodePath("Dashing")
 deactive_state = NodePath("Idle")
 base_state = NodePath("Idle")
+Jump_Fall_Time = 3.0
+Jump_Height = 100.0
+Ground_Acceleration_Time = 0.25
 
-[node name="Sliding" type="Node" parent="ParentStateMachine/Penguin" unique_id=990445690 node_paths=PackedStringArray("walking_state")]
-script = ExtResource("6_gl8cc")
-walking_state = NodePath("../Walking")
-
-[node name="Walking" type="Node" parent="ParentStateMachine/Penguin" unique_id=1012848633 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "coyote_timer")]
-script = ExtResource("7_487ah")
+[node name="Walking" type="Node" parent="ParentStateMachine/SugarGlider" unique_id=537163078 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "idle_state", "idle_timer", "coyote_timer", "sprite")]
+script = ExtResource("6_w5j5w")
 dashing_state = NodePath("../Dashing")
 jumping_state = NodePath("../Jumping")
 falling_state = NodePath("../Falling")
-coyote_timer = NodePath("Timer")
-
-[node name="Timer" type="Timer" parent="ParentStateMachine/Penguin/Walking" unique_id=555909185]
-
-[node name="Landing" type="Node" parent="ParentStateMachine/Penguin" unique_id=1424928166 node_paths=PackedStringArray("idle_timer", "idle_state", "walking_state")]
-script = ExtResource("8_md1ol")
-idle_timer = NodePath("Timer")
 idle_state = NodePath("../Idle")
-walking_state = NodePath("../Walking")
+idle_timer = NodePath("IdleTimer")
+coyote_timer = NodePath("CoyoteTimer")
+sprite = NodePath("../../../Animation/AnimatedSprite2D")
+animation_name = "Walk"
 
-[node name="Timer" type="Timer" parent="ParentStateMachine/Penguin/Landing" unique_id=710987036]
-
-[node name="Jumping" type="Node" parent="ParentStateMachine/Penguin" unique_id=1630445190 node_paths=PackedStringArray("falling_state", "dashing_state")]
-script = ExtResource("9_bj30b")
-falling_state = NodePath("../Falling")
-dashing_state = NodePath("../Dashing")
-
-[node name="Falling" type="Node" parent="ParentStateMachine/Penguin" unique_id=1909430411 node_paths=PackedStringArray("landing_state", "dashing_state")]
-script = ExtResource("10_jc3p3")
-landing_state = NodePath("../Landing")
-dashing_state = NodePath("../Dashing")
-
-[node name="Idle" type="Node" parent="ParentStateMachine/Penguin" unique_id=1095662931 node_paths=PackedStringArray("walking_state", "jumping_state")]
-script = ExtResource("11_hax0n")
-walking_state = NodePath("../Walking")
-jumping_state = NodePath("../Jumping")
-
-[node name="Dashing" type="Node" parent="ParentStateMachine/Penguin" unique_id=1870409565 node_paths=PackedStringArray("dashing_time", "walkingState", "falling_state")]
-script = ExtResource("12_t4otl")
-dashing_time = NodePath("Timer")
-walkingState = NodePath("../Walking")
-falling_state = NodePath("../Falling")
-
-[node name="Timer" type="Timer" parent="ParentStateMachine/Penguin/Dashing" unique_id=1879364334]
-wait_time = 0.1
-one_shot = true
-
-[node name="Bird" type="Node" parent="ParentStateMachine" unique_id=1290409226 node_paths=PackedStringArray("debug_state_label", "starting_state", "deactive_state", "base_state")]
-script = ExtResource("2_g2els")
-animal_resource = SubResource("Resource_qdonj")
-debug_state_label = NodePath("../../StateLabel")
-starting_state = NodePath("Jumping")
-deactive_state = NodePath("Idle")
-base_state = NodePath("Jumping")
-
-[node name="Flap Wing" type="Node" parent="ParentStateMachine/Bird" unique_id=1672023302 node_paths=PackedStringArray("falling_state")]
-script = ExtResource("7_ur7pv")
-falling_state = NodePath("../Falling")
-
-[node name="Walking" type="Node" parent="ParentStateMachine/Bird" unique_id=1249936798 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "coyote_timer")]
-script = ExtResource("7_qfm1y")
-dashing_state = NodePath("../Dashing")
-jumping_state = NodePath("../Jumping")
-falling_state = NodePath("../../SugarBear/Falling")
-coyote_timer = NodePath("Timer")
-
-[node name="Timer" type="Timer" parent="ParentStateMachine/Bird/Walking" unique_id=1651982010]
-
-[node name="Landing" type="Node" parent="ParentStateMachine/Bird" unique_id=164240551 node_paths=PackedStringArray("idle_timer", "idle_state", "walking_state")]
-script = ExtResource("8_fulsm")
-idle_timer = NodePath("Timer")
-idle_state = NodePath("../Idle")
-walking_state = NodePath("../Walking")
-
-[node name="Timer" type="Timer" parent="ParentStateMachine/Bird/Landing" unique_id=183789261]
-
-[node name="Jumping" type="Node" parent="ParentStateMachine/Bird" unique_id=630225543 node_paths=PackedStringArray("flapping_state", "falling_state", "dashing_state")]
-script = ExtResource("9_4r5pv")
-flapping_state = NodePath("../Flap Wing")
-falling_state = NodePath("../../SugarBear/Falling")
-dashing_state = NodePath("../Dashing")
-
-[node name="Falling" type="Node" parent="ParentStateMachine/Bird" unique_id=1876470443 node_paths=PackedStringArray("flapping_state", "landing_state", "dashing_state")]
-script = ExtResource("10_i4ail")
-flapping_state = NodePath("../Flap Wing")
-landing_state = NodePath("../Landing")
-dashing_state = NodePath("../Dashing")
-
-[node name="Idle" type="Node" parent="ParentStateMachine/Bird" unique_id=556276015 node_paths=PackedStringArray("walking_state", "jumping_state")]
-script = ExtResource("11_4ni07")
-walking_state = NodePath("../Walking")
-jumping_state = NodePath("../Jumping")
-
-[node name="Dashing" type="Node" parent="ParentStateMachine/Bird" unique_id=1597557432 node_paths=PackedStringArray("dashing_time", "walkingState", "falling_state")]
-script = ExtResource("11_a38lo")
-dashing_time = NodePath("Timer")
-walkingState = NodePath("../Walking")
-falling_state = NodePath("../Falling")
-
-[node name="Timer" type="Timer" parent="ParentStateMachine/Bird/Dashing" unique_id=138733014]
-wait_time = 0.1
-
-[node name="SugarBear" type="Node" parent="ParentStateMachine" unique_id=1617720625 node_paths=PackedStringArray("bird", "debug_state_label", "starting_state", "deactive_state", "base_state")]
-script = ExtResource("8_y4r1p")
-bird = NodePath("../Bird")
-animal_resource = SubResource("Resource_qfm1y")
-debug_state_label = NodePath("../../StateLabel")
-starting_state = NodePath("Walking")
-deactive_state = NodePath("Idle")
-base_state = NodePath("Jumping")
-Jump_Peak_Time = 0.75
-Jump_Fall_Time = 1.0
-Jump_Height = 40.0
-Jump_Distance = 100.0
-Ground_Past_Max_Speed_Decceleration = 3.0
-
-[node name="Walking" type="Node" parent="ParentStateMachine/SugarBear" unique_id=305116382 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "coyote_timer")]
-script = ExtResource("7_y4r1p")
-dashing_state = NodePath("../Dashing")
-jumping_state = NodePath("../Jumping")
-falling_state = NodePath("../Falling")
-coyote_timer = NodePath("Timer")
-
-[node name="Timer" type="Timer" parent="ParentStateMachine/SugarBear/Walking" unique_id=1749590410]
+[node name="CoyoteTimer" type="Timer" parent="ParentStateMachine/SugarGlider/Walking" unique_id=1787782473]
 wait_time = 0.3
 one_shot = true
 
-[node name="Dashing" type="Node" parent="ParentStateMachine/SugarBear" unique_id=861785742 node_paths=PackedStringArray("dashing_time", "walkingState", "falling_state")]
-script = ExtResource("8_d2wvv")
-dashing_time = NodePath("Timer")
-walkingState = NodePath("../Walking")
-falling_state = NodePath("../Falling")
-
-[node name="Timer" type="Timer" parent="ParentStateMachine/SugarBear/Dashing" unique_id=792141687]
+[node name="IdleTimer" type="Timer" parent="ParentStateMachine/SugarGlider/Walking" unique_id=546990285]
 wait_time = 0.1
+one_shot = true
 
-[node name="Jumping" type="Node" parent="ParentStateMachine/SugarBear" unique_id=1989321256 node_paths=PackedStringArray("falling_state", "dashing_state")]
-script = ExtResource("9_jej6c")
+[node name="Dashing" type="Node" parent="ParentStateMachine/SugarGlider" unique_id=774059487]
+script = ExtResource("7_cbf1i")
+animation_name = "Dash"
+
+[node name="Jumping" type="Node" parent="ParentStateMachine/SugarGlider" unique_id=848822262 node_paths=PackedStringArray("falling_state")]
+script = ExtResource("8_4vfid")
 falling_state = NodePath("../Falling")
-dashing_state = NodePath("../Dashing")
+animation_name = "Jump"
 
-[node name="Falling" type="Node" parent="ParentStateMachine/SugarBear" unique_id=1879153389 node_paths=PackedStringArray("landing_state", "dashing_state")]
-script = ExtResource("10_f1ej7")
+[node name="Falling" type="Node" parent="ParentStateMachine/SugarGlider" unique_id=640888123 node_paths=PackedStringArray("landing_state")]
+script = ExtResource("9_ljgr3")
 landing_state = NodePath("../Landing")
-dashing_state = NodePath("../Dashing")
+animation_name = "JumpToFreeFall"
 
-[node name="Idle" type="Node" parent="ParentStateMachine/SugarBear" unique_id=971343740 node_paths=PackedStringArray("walking_state", "jumping_state")]
-script = ExtResource("11_f1ej7")
+[node name="Idle" type="Node" parent="ParentStateMachine/SugarGlider" unique_id=2046551464 node_paths=PackedStringArray("walking_state", "jumping_state")]
+script = ExtResource("10_fr8ja")
 walking_state = NodePath("../Walking")
 jumping_state = NodePath("../Jumping")
+animation_name = "Idle"
 
-[node name="Landing" type="Node" parent="ParentStateMachine/SugarBear" unique_id=1779215012 node_paths=PackedStringArray("idle_timer", "idle_state", "walking_state")]
-script = ExtResource("12_oprun")
+[node name="Landing" type="Node" parent="ParentStateMachine/SugarGlider" unique_id=1490033888 node_paths=PackedStringArray("idle_timer", "idle_state", "walking_state")]
+script = ExtResource("11_gvmy4")
 idle_timer = NodePath("Timer")
 idle_state = NodePath("../Idle")
 walking_state = NodePath("../Walking")
+animation_name = "Land"
 
-[node name="Timer" type="Timer" parent="ParentStateMachine/SugarBear/Landing" unique_id=1157127932]
+[node name="Timer" type="Timer" parent="ParentStateMachine/SugarGlider/Landing" unique_id=639162443]
+one_shot = true
+
+[node name="Penguin" type="Node" parent="ParentStateMachine" unique_id=607612719 node_paths=PackedStringArray("sugar_glider", "animation", "animation_requester", "debug_state_label", "starting_state", "falling_state", "walking_state", "dashing_state", "deactive_state", "base_state")]
+script = ExtResource("22_dqoq3")
+sugar_glider = NodePath("../SugarGlider")
+animation = NodePath("../../Animation")
+animation_requester = NodePath("../../Animation")
+animal_resource = SubResource("Resource_xvevh")
+debug_state_label = NodePath("../../StateLabel")
+starting_state = NodePath("Jumping")
+falling_state = NodePath("Falling")
+walking_state = NodePath("Walking")
+dashing_state = NodePath("Dashing")
+deactive_state = NodePath("Idle")
+base_state = NodePath("Walking")
+Jump_Height = 60.0
+Ground_Acceleration_Time = 0.3
+Ground_Max_Speed = 250.0
+
+[node name="Walking" type="Node" parent="ParentStateMachine/Penguin" unique_id=1790666276 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "idle_state", "idle_timer", "coyote_timer", "sprite")]
+script = ExtResource("23_y8tjj")
+dashing_state = NodePath("../Dashing")
+jumping_state = NodePath("../Jumping")
+falling_state = NodePath("../Falling")
+idle_state = NodePath("../Idle")
+idle_timer = NodePath("IdleTimer")
+coyote_timer = NodePath("CoyoteTimer")
+sprite = NodePath("../../../Animation/AnimatedSprite2D")
+animation_name = "Walk"
+
+[node name="CoyoteTimer" type="Timer" parent="ParentStateMachine/Penguin/Walking" unique_id=1240877071]
+wait_time = 0.3
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="ParentStateMachine/Penguin/Walking" unique_id=285050291]
+wait_time = 0.1
+one_shot = true
+
+[node name="Dashing" type="Node" parent="ParentStateMachine/Penguin" unique_id=1651113116]
+script = ExtResource("24_4tsya")
+animation_name = "Dash"
+
+[node name="Jumping" type="Node" parent="ParentStateMachine/Penguin" unique_id=1773578696 node_paths=PackedStringArray("falling_state")]
+script = ExtResource("25_68qdx")
+falling_state = NodePath("../Falling")
+animation_name = "Jump"
+
+[node name="Falling" type="Node" parent="ParentStateMachine/Penguin" unique_id=330217940 node_paths=PackedStringArray("landing_state")]
+script = ExtResource("26_ccnn6")
+landing_state = NodePath("../Landing")
+animation_name = "JumpToFreeFall"
+
+[node name="Idle" type="Node" parent="ParentStateMachine/Penguin" unique_id=669207662 node_paths=PackedStringArray("walking_state", "jumping_state")]
+script = ExtResource("27_mcvyg")
+walking_state = NodePath("../Walking")
+jumping_state = NodePath("../Jumping")
+animation_name = "Idle"
+
+[node name="Landing" type="Node" parent="ParentStateMachine/Penguin" unique_id=1418232212 node_paths=PackedStringArray("idle_timer", "idle_state", "walking_state")]
+script = ExtResource("28_68qdx")
+idle_timer = NodePath("Timer")
+idle_state = NodePath("../Idle")
+walking_state = NodePath("../Walking")
+animation_name = "Land"
+
+[node name="Timer" type="Timer" parent="ParentStateMachine/Penguin/Landing" unique_id=1918899092]
+one_shot = true
 
 [node name="DeactiveStateMachine" type="Node" parent="ParentStateMachine" unique_id=1196446141 node_paths=PackedStringArray("debug_state_label", "starting_state", "deactive_state", "base_state")]
 script = ExtResource("12_f1ej7")
@@ -261,6 +752,7 @@ base_state = NodePath("Deactive")
 
 [node name="Deactive" type="Node" parent="ParentStateMachine/DeactiveStateMachine" unique_id=1954404007]
 script = ExtResource("13_oprun")
+custom_animation_logic = true
 
 [node name="AnimalLabel" type="Label" parent="." unique_id=502794606]
 visible = false
@@ -271,7 +763,6 @@ offset_right = 18.0
 offset_bottom = -26.0
 
 [node name="StateLabel" type="Label" parent="." unique_id=164288899]
-visible = false
 z_index = 999
 offset_left = -21.0
 offset_top = -95.0
@@ -279,6 +770,7 @@ offset_right = 19.0
 offset_bottom = -69.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1874743154]
+visible = false
 texture = ExtResource("24_wqfne")
 
 [node name="VelocityLabel" type="Label" parent="." unique_id=2068718348]
@@ -288,11 +780,9 @@ offset_top = -13.0
 offset_right = 72.0
 offset_bottom = 10.0
 
-[node name="AnimalChanger" type="Node2D" parent="." unique_id=1149322701 node_paths=PackedStringArray("animals_list", "bird", "sugar_bear", "hurtbox_collision_shape", "player_collision_shape", "right_wall_cast", "left_wall_cast", "parent")]
+[node name="AnimalChanger" type="Node2D" parent="." unique_id=1149322701 node_paths=PackedStringArray("animals_list", "hurtbox_collision_shape", "player_collision_shape", "right_wall_cast", "left_wall_cast", "parent")]
 script = ExtResource("22_a38lo")
-animals_list = [NodePath("../ParentStateMachine/Bird"), NodePath("../ParentStateMachine/SugarBear")]
-bird = NodePath("../ParentStateMachine/Bird")
-sugar_bear = NodePath("../ParentStateMachine/SugarBear")
+animals_list = [NodePath("../ParentStateMachine/Penguin")]
 hurtbox_collision_shape = NodePath("../Player_Hurtbox/HurtboxShape")
 player_collision_shape = NodePath("../CollisionShape")
 right_wall_cast = NodePath("RightWallCheck")
@@ -352,11 +842,21 @@ offset_top = 21.0
 offset_right = -82.0
 offset_bottom = 44.0
 
+[node name="Animation" type="Node2D" parent="." unique_id=1813954794 node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("32_dqoq3")
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animation" unique_id=518083453]
+sprite_frames = SubResource("SpriteFrames_xvevh")
+animation = &"Land-SugarGlider"
+autoplay = "Walk-Penguin"
+
 [connection signal="body_entered" from="Player_Hurtbox" to="Player_Hurtbox" method="_on_body_entered"]
 [connection signal="timeout" from="Player_Hurtbox/Timer" to="Player_Hurtbox" method="_on_timer_timeout"]
-[connection signal="timeout" from="ParentStateMachine/Penguin/Dashing/Timer" to="ParentStateMachine/Penguin/Dashing" method="_on_timer_timeout"]
-[connection signal="timeout" from="ParentStateMachine/Bird/Dashing/Timer" to="ParentStateMachine/Bird/Dashing" method="_on_timer_timeout"]
-[connection signal="timeout" from="ParentStateMachine/SugarBear/Walking/Timer" to="ParentStateMachine/SugarBear/Walking" method="_on_timer_timeout"]
-[connection signal="timeout" from="ParentStateMachine/SugarBear/Dashing/Timer" to="ParentStateMachine/SugarBear/Dashing" method="_on_timer_timeout"]
-[connection signal="timeout" from="ParentStateMachine/SugarBear/Landing/Timer" to="ParentStateMachine/SugarBear/Landing" method="_on_timer_timeout"]
+[connection signal="timeout" from="ParentStateMachine/SugarGlider/Walking/CoyoteTimer" to="ParentStateMachine/SugarGlider/Walking" method="_on_timer_timeout"]
+[connection signal="timeout" from="ParentStateMachine/SugarGlider/Walking/IdleTimer" to="ParentStateMachine/SugarGlider/Walking" method="_idle_timer_timeout"]
+[connection signal="timeout" from="ParentStateMachine/Penguin/Walking/CoyoteTimer" to="ParentStateMachine/Penguin/Walking" method="_on_timer_timeout"]
+[connection signal="timeout" from="ParentStateMachine/Penguin/Walking/IdleTimer" to="ParentStateMachine/Penguin/Walking" method="_idle_timer_timeout"]
+[connection signal="timeout" from="ParentStateMachine/Penguin/Landing/Timer" to="ParentStateMachine/Penguin/Landing" method="_on_timer_timeout"]
 [connection signal="change_shape" from="AnimalChanger" to="Player_Hurtbox" method="swap_form"]
+[connection signal="animation_finished" from="Animation/AnimatedSprite2D" to="Animation" method="_on_animated_sprite_2d_animation_finished"]
