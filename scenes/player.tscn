@@ -13,31 +13,6 @@
 [ext_resource type="Script" uid="uid://r13qqxqjydye" path="res://Scripts/Player/SugarGlider/idle.gd" id="10_fr8ja"]
 [ext_resource type="Script" uid="uid://bplsi4p0rjknw" path="res://Scripts/Player/SugarGlider/land.gd" id="11_gvmy4"]
 [ext_resource type="Script" uid="uid://qnmwbc3twpqd" path="res://Scripts/Player/Deactive/deactive_state_machine.gd" id="12_f1ej7"]
-[ext_resource type="Script" uid="uid://b51is7o5imsnw" path="res://Scripts/Player/Penguin/penguin_state_machine.gd" id="5_ke2ow"]
-[ext_resource type="Script" uid="uid://kftxpb6y5e64" path="res://Scripts/Player/Penguin/sliding.gd" id="6_gl8cc"]
-[ext_resource type="Shape2D" uid="uid://b3gbdf3m2n7a5" path="res://Scripts/Player/Bird/BirdCollisionShape.tres" id="6_ke2ow"]
-[ext_resource type="Script" uid="uid://damiv7vinm2si" path="res://Scripts/Player/Penguin/Walk.gd" id="7_487ah"]
-[ext_resource type="Shape2D" uid="uid://dxrfbhs7kgvea" path="res://Scripts/Player/Penguin/PenguinCollisionShape.tres" id="7_md1ol"]
-[ext_resource type="Script" uid="uid://b83weq6rd5bpa" path="res://Scripts/Player/Bird/walk.gd" id="7_qfm1y"]
-[ext_resource type="Script" uid="uid://dysklje3t01br" path="res://Scripts/Player/Bird/flap_wing.gd" id="7_ur7pv"]
-[ext_resource type="Script" uid="uid://5tdjqwwbdmx1" path="res://Scripts/Player/SugarBear/Walk.gd" id="7_y4r1p"]
-[ext_resource type="Script" uid="uid://snt05gduaxdv" path="res://Scripts/Player/SugarBear/dashing.gd" id="8_d2wvv"]
-[ext_resource type="Script" uid="uid://b8kuwukqb6kpx" path="res://Scripts/Player/Bird/landing.gd" id="8_fulsm"]
-[ext_resource type="Script" uid="uid://ddwue352uf3cn" path="res://Scripts/Player/Penguin/landing.gd" id="8_md1ol"]
-[ext_resource type="Script" uid="uid://cc5inuve0unp2" path="res://Scripts/Player/SugarBear/sugar_bear_state_machine.gd" id="8_y4r1p"]
-[ext_resource type="Script" uid="uid://xw647mn6prgr" path="res://Scripts/Player/Bird/jumping.gd" id="9_4r5pv"]
-[ext_resource type="Script" uid="uid://584wmn7qsaw3" path="res://Scripts/Player/Penguin/jumping.gd" id="9_bj30b"]
-[ext_resource type="Script" uid="uid://3jkatjcbd1hb" path="res://Scripts/Player/SugarBear/jumping.gd" id="9_jej6c"]
-[ext_resource type="Script" uid="uid://l4fgobvcx73j" path="res://Scripts/Player/SugarBear/falling.gd" id="10_f1ej7"]
-[ext_resource type="Script" uid="uid://bqlswfisxixr7" path="res://Scripts/Player/Bird/falling.gd" id="10_i4ail"]
-[ext_resource type="Script" uid="uid://cy6ptmvr05sc5" path="res://Scripts/Player/Penguin/falling.gd" id="10_jc3p3"]
-[ext_resource type="Script" uid="uid://hebwg3stvyny" path="res://Scripts/Player/Bird/idle.gd" id="11_4ni07"]
-[ext_resource type="Script" uid="uid://b7ue0y67rwff" path="res://Scripts/Player/Bird/dashing.gd" id="11_a38lo"]
-[ext_resource type="Script" uid="uid://7bb5jq47ukrj" path="res://Scripts/Player/SugarBear/idle.gd" id="11_f1ej7"]
-[ext_resource type="Script" uid="uid://c8t2bwur3ytjd" path="res://Scripts/Player/Penguin/idle.gd" id="11_hax0n"]
-[ext_resource type="Script" uid="uid://qnmwbc3twpqd" path="res://Scripts/Player/Deactive/deactive_state_machine.gd" id="12_f1ej7"]
-[ext_resource type="Script" uid="uid://cpij4htxn7v7b" path="res://Scripts/Player/SugarBear/landing.gd" id="12_oprun"]
-[ext_resource type="Script" uid="uid://ddmqqqmfvvg1w" path="res://Scripts/Player/Penguin/dashing.gd" id="12_t4otl"]
 [ext_resource type="Script" uid="uid://ek1v2tl8c2h8" path="res://Scripts/Player/Deactive/deactive.gd" id="13_oprun"]
 [ext_resource type="Script" uid="uid://bxh0gc13ppu0l" path="res://Scripts/Player/animal_changer.gd" id="22_a38lo"]
 [ext_resource type="Script" uid="uid://cpdmx1rkve6kg" path="res://Scripts/Player/Penguin/penguin_state_machine.gd" id="22_dqoq3"]
@@ -176,13 +151,6 @@
 [ext_resource type="Texture2D" uid="uid://d0qnobl1cho5r" path="res://assets/SugarGlider/WalkAttempt/SugarGlider0032.png" id="127_tfrof"]
 
 [sub_resource type="Resource" id="Resource_gvmy4"]
-
-[sub_resource type="Resource" id="Resource_gl8cc"]
-script = ExtResource("4_a8ls1")
-shape = ExtResource("7_md1ol")
-metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
-
-[sub_resource type="Resource" id="Resource_qdonj"]
 script = ExtResource("4_a8ls1")
 shape = ExtResource("6_gvmy4")
 metadata/_custom_type_script = "uid://cwjt0dqonkxtr"
@@ -648,65 +616,6 @@ penguin = NodePath("../Penguin")
 animation = NodePath("../../Animation")
 animation_requester = NodePath("../../Animation")
 animal_resource = SubResource("Resource_gvmy4")
-base_state = NodePath("SugarBear")
-
-[node name="Penguin" type="Node" parent="ParentStateMachine" unique_id=1515474456 node_paths=PackedStringArray("debug_state_label", "starting_state", "deactive_state", "base_state")]
-script = ExtResource("5_ke2ow")
-animal_resource = SubResource("Resource_gl8cc")
-debug_state_label = NodePath("../../StateLabel")
-starting_state = NodePath("Idle")
-deactive_state = NodePath("Idle")
-base_state = NodePath("Idle")
-
-[node name="Sliding" type="Node" parent="ParentStateMachine/Penguin" unique_id=990445690 node_paths=PackedStringArray("walking_state")]
-script = ExtResource("6_gl8cc")
-walking_state = NodePath("../Walking")
-
-[node name="Walking" type="Node" parent="ParentStateMachine/Penguin" unique_id=1012848633 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "coyote_timer")]
-script = ExtResource("7_487ah")
-dashing_state = NodePath("../Dashing")
-jumping_state = NodePath("../Jumping")
-falling_state = NodePath("../Falling")
-coyote_timer = NodePath("Timer")
-
-[node name="Timer" type="Timer" parent="ParentStateMachine/Penguin/Walking" unique_id=555909185]
-
-[node name="Landing" type="Node" parent="ParentStateMachine/Penguin" unique_id=1424928166 node_paths=PackedStringArray("idle_timer", "idle_state", "walking_state")]
-script = ExtResource("8_md1ol")
-idle_timer = NodePath("Timer")
-idle_state = NodePath("../Idle")
-walking_state = NodePath("../Walking")
-
-[node name="Timer" type="Timer" parent="ParentStateMachine/Penguin/Landing" unique_id=710987036]
-
-[node name="Jumping" type="Node" parent="ParentStateMachine/Penguin" unique_id=1630445190 node_paths=PackedStringArray("falling_state", "dashing_state")]
-script = ExtResource("9_bj30b")
-falling_state = NodePath("../Falling")
-dashing_state = NodePath("../Dashing")
-
-[node name="Falling" type="Node" parent="ParentStateMachine/Penguin" unique_id=1909430411 node_paths=PackedStringArray("landing_state", "dashing_state")]
-script = ExtResource("10_jc3p3")
-landing_state = NodePath("../Landing")
-dashing_state = NodePath("../Dashing")
-
-[node name="Idle" type="Node" parent="ParentStateMachine/Penguin" unique_id=1095662931 node_paths=PackedStringArray("walking_state", "jumping_state")]
-script = ExtResource("11_hax0n")
-walking_state = NodePath("../Walking")
-jumping_state = NodePath("../Jumping")
-
-[node name="Dashing" type="Node" parent="ParentStateMachine/Penguin" unique_id=1870409565 node_paths=PackedStringArray("dashing_time", "walkingState", "falling_state")]
-script = ExtResource("12_t4otl")
-dashing_time = NodePath("Timer")
-walkingState = NodePath("../Walking")
-falling_state = NodePath("../Falling")
-
-[node name="Timer" type="Timer" parent="ParentStateMachine/Penguin/Dashing" unique_id=1879364334]
-wait_time = 0.1
-one_shot = true
-
-[node name="Bird" type="Node" parent="ParentStateMachine" unique_id=1290409226 node_paths=PackedStringArray("debug_state_label", "starting_state", "deactive_state", "base_state")]
-script = ExtResource("2_g2els")
-animal_resource = SubResource("Resource_qdonj")
 debug_state_label = NodePath("../../StateLabel")
 starting_state = NodePath("Idle")
 falling_state = NodePath("Falling")
@@ -750,17 +659,6 @@ animation_name = "Jump"
 script = ExtResource("9_ljgr3")
 landing_state = NodePath("../Landing")
 animation_name = "JumpToFreeFall"
-[node name="Jumping" type="Node" parent="ParentStateMachine/Bird" unique_id=630225543 node_paths=PackedStringArray("flapping_state", "falling_state", "dashing_state")]
-script = ExtResource("9_4r5pv")
-flapping_state = NodePath("../Flap Wing")
-falling_state = NodePath("../../SugarBear/Falling")
-dashing_state = NodePath("../Dashing")
-
-[node name="Falling" type="Node" parent="ParentStateMachine/Bird" unique_id=1876470443 node_paths=PackedStringArray("flapping_state", "landing_state", "dashing_state")]
-script = ExtResource("10_i4ail")
-flapping_state = NodePath("../Flap Wing")
-landing_state = NodePath("../Landing")
-dashing_state = NodePath("../Dashing")
 
 [node name="Idle" type="Node" parent="ParentStateMachine/SugarGlider" unique_id=2046551464 node_paths=PackedStringArray("walking_state", "jumping_state")]
 script = ExtResource("10_fr8ja")
@@ -777,14 +675,6 @@ animation_name = "Land"
 
 [node name="Timer" type="Timer" parent="ParentStateMachine/SugarGlider/Landing" unique_id=639162443]
 one_shot = true
-[node name="Dashing" type="Node" parent="ParentStateMachine/Bird" unique_id=1597557432 node_paths=PackedStringArray("dashing_time", "walkingState", "falling_state")]
-script = ExtResource("11_a38lo")
-dashing_time = NodePath("Timer")
-walkingState = NodePath("../Walking")
-falling_state = NodePath("../Falling")
-
-[node name="Timer" type="Timer" parent="ParentStateMachine/Bird/Dashing" unique_id=138733014]
-wait_time = 0.1
 
 [node name="Penguin" type="Node" parent="ParentStateMachine" unique_id=607612719 node_paths=PackedStringArray("sugar_glider", "animation", "animation_requester", "debug_state_label", "starting_state", "falling_state", "walking_state", "dashing_state", "deactive_state", "base_state")]
 script = ExtResource("22_dqoq3")
@@ -835,24 +725,6 @@ animation_name = "Jump"
 script = ExtResource("26_ccnn6")
 landing_state = NodePath("../Landing")
 animation_name = "JumpToFreeFall"
-[node name="Dashing" type="Node" parent="ParentStateMachine/SugarBear" unique_id=861785742 node_paths=PackedStringArray("dashing_time", "walkingState", "falling_state")]
-script = ExtResource("8_d2wvv")
-dashing_time = NodePath("Timer")
-walkingState = NodePath("../Walking")
-falling_state = NodePath("../Falling")
-
-[node name="Timer" type="Timer" parent="ParentStateMachine/SugarBear/Dashing" unique_id=792141687]
-wait_time = 0.1
-
-[node name="Jumping" type="Node" parent="ParentStateMachine/SugarBear" unique_id=1989321256 node_paths=PackedStringArray("falling_state", "dashing_state")]
-script = ExtResource("9_jej6c")
-falling_state = NodePath("../Falling")
-dashing_state = NodePath("../Dashing")
-
-[node name="Falling" type="Node" parent="ParentStateMachine/SugarBear" unique_id=1879153389 node_paths=PackedStringArray("landing_state", "dashing_state")]
-script = ExtResource("10_f1ej7")
-landing_state = NodePath("../Landing")
-dashing_state = NodePath("../Dashing")
 
 [node name="Idle" type="Node" parent="ParentStateMachine/Penguin" unique_id=669207662 node_paths=PackedStringArray("walking_state", "jumping_state")]
 script = ExtResource("27_mcvyg")
@@ -986,10 +858,5 @@ autoplay = "Walk-Penguin"
 [connection signal="timeout" from="ParentStateMachine/Penguin/Walking/CoyoteTimer" to="ParentStateMachine/Penguin/Walking" method="_on_timer_timeout"]
 [connection signal="timeout" from="ParentStateMachine/Penguin/Walking/IdleTimer" to="ParentStateMachine/Penguin/Walking" method="_idle_timer_timeout"]
 [connection signal="timeout" from="ParentStateMachine/Penguin/Landing/Timer" to="ParentStateMachine/Penguin/Landing" method="_on_timer_timeout"]
-[connection signal="timeout" from="ParentStateMachine/Penguin/Dashing/Timer" to="ParentStateMachine/Penguin/Dashing" method="_on_timer_timeout"]
-[connection signal="timeout" from="ParentStateMachine/Bird/Dashing/Timer" to="ParentStateMachine/Bird/Dashing" method="_on_timer_timeout"]
-[connection signal="timeout" from="ParentStateMachine/SugarBear/Walking/Timer" to="ParentStateMachine/SugarBear/Walking" method="_on_timer_timeout"]
-[connection signal="timeout" from="ParentStateMachine/SugarBear/Dashing/Timer" to="ParentStateMachine/SugarBear/Dashing" method="_on_timer_timeout"]
-[connection signal="timeout" from="ParentStateMachine/SugarBear/Landing/Timer" to="ParentStateMachine/SugarBear/Landing" method="_on_timer_timeout"]
 [connection signal="change_shape" from="AnimalChanger" to="Player_Hurtbox" method="swap_form"]
 [connection signal="animation_finished" from="Animation/AnimatedSprite2D" to="Animation" method="_on_animated_sprite_2d_animation_finished"]
