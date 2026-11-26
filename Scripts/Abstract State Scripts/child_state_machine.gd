@@ -8,7 +8,7 @@ class_name ChildStateMachine extends State
 ###		Idk why but it doesnt work
 #######################
 
-
+@export var animation_requester: AnimationRequester
 @export var animal_resource: Animal_Resource
 
 @export 
@@ -22,6 +22,9 @@ var no_debug_labels: bool = false
 @export
 var starting_state: State
 
+@export var falling_state: State
+@export var walking_state: State
+@export var dashing_state: State
 @export var deactive_state: State
 @export var base_state: State
 var localOldStateMachine: ChildStateMachine
@@ -53,6 +56,7 @@ var Ground_Acceleration: float = 20.0
 
 var current_state: State
 
+
 func _ready() -> void:
 	if debug_state_label == null and no_debug_labels == true:
 		push_error(self.name + ': Hey man the debug state label or no debug label needs to be set')
@@ -79,7 +83,13 @@ func change_state(new_state: State) -> void:
 		current_state.exit(new_state)
 	var old_state = current_state
 	current_state = new_state
-	
+	if new_state.custom_animation_logic == false:
+		if new_state.animation_name == '':
+			push_error('state, ', new_state, ' is missing an animation name and custom animation is not set. Is this Intended?')
+		if animation_requester == null:
+			push_error('Animation requester is missing from animal')
+		else:
+			animation_requester.request_animation(new_state.animation_name, new_state, self)
 	if new_state == null:
 		push_error('animal: ' + self.name + 'had a new state be null. if this happened at start of the game check if starting state, deactive state and base state are set')
 	if no_debug_labels == false:
