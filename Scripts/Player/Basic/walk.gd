@@ -25,6 +25,8 @@ func process_input(event: InputEvent) -> State:
 	additional_process_input_logic(event)
 	if Input.is_action_just_pressed("jump"):
 		return jumping_state
+	if Input.is_action_just_pressed("dash"):
+		return dashing_state
 	return null
 
 func process_frame(delta: float) -> State:
