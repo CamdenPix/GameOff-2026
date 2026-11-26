@@ -15,18 +15,26 @@ func exit(newState: State) -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
+	var possible_state : State =additional_process_input_logic(event)
+	if possible_state:
+		return possible_state
 	if Input.is_action_just_pressed("dash"):
 		return dashing_state
 	additional_process_input_logic(event)
 	return null
 
 func process_frame(delta: float) -> State:
-	additional_process_frame_logic(delta)
+	var possible_state : State = additional_process_frame_logic(delta)
+	if possible_state:
+		return possible_state
 	return null
 
 
 func process_physics(delta: float) -> State:
-	additional_process_physics_logic(delta)
+	var possible_state : State = additional_process_physics_logic(delta)
+	if possible_state:
+		return possible_state
+	
 	var raw_input = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0) 
