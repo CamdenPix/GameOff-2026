@@ -3,7 +3,6 @@
 class_name JumpingState extends State
 
 @export var falling_state: FallingState
-@export var dashing_state: DashingState
 func enter(oldState: State) -> void:
 	#parent.animations.play(animation_name)
 	additional_enter_logic(oldState)
@@ -15,9 +14,15 @@ func exit(newState: State) -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
+
+	var possible_state : State = additional_process_input_logic(event)
+	if possible_state:
+		return possible_state
+
 	if Input.is_action_just_pressed("dash"):
 		return dashing_state
-	additional_process_input_logic(event)
+	
+
 	return null
 
 func process_frame(delta: float) -> State:
