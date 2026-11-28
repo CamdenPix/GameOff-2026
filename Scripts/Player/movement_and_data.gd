@@ -10,7 +10,7 @@ var idle_started: bool = false
 func move(delta: float, animal:ChildStateMachine):
 	var raw_input = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0)
+		0).limit_length(1.0)
 	#var direction = 0
 	if raw_input.length() == 0:
 		#if idle_started == false:
