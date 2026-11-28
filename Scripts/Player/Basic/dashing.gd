@@ -5,6 +5,7 @@ class_name DashingState extends State
 @export var walkingState: WalkingState
 @export var falling_state: FallingState
 @export var dash_speed: float = 350.0
+@export var movement_and_data: MovementAndData
 var direction: String
 var timerTimedout: bool
 
@@ -39,6 +40,7 @@ func process_frame(delta: float) -> State:
 	var possible_state : State = additional_process_frame_logic(delta)
 	if possible_state:
 		return possible_state
+	movement_and_data.move(delta, animal)
 
 	if(timerTimedout):
 		if parent.is_on_floor():

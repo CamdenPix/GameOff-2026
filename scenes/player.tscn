@@ -648,11 +648,12 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
-[node name="Dashing" type="Node" parent="ParentStateMachine/SugarGlider" unique_id=774059487 node_paths=PackedStringArray("dashing_time", "walkingState", "falling_state")]
+[node name="Dashing" type="Node" parent="ParentStateMachine/SugarGlider" unique_id=774059487 node_paths=PackedStringArray("dashing_time", "walkingState", "falling_state", "movement_and_data")]
 script = ExtResource("7_cbf1i")
 dashing_time = NodePath("Timer")
 walkingState = NodePath("../Walking")
 falling_state = NodePath("../Falling")
+movement_and_data = NodePath("../../../MovementAndData")
 animation_name = "Dash"
 
 [node name="Timer" type="Timer" parent="ParentStateMachine/SugarGlider/Dashing" unique_id=2137584234]
@@ -704,6 +705,7 @@ base_state = NodePath("Walking")
 Jump_Height = 60.0
 Ground_Acceleration_Time = 0.3
 Ground_Max_Speed = 250.0
+Ground_Past_Max_Speed_Decceleration = 0.1
 
 [node name="Walking" type="Node" parent="ParentStateMachine/Penguin" unique_id=1790666276 node_paths=PackedStringArray("dashing_state", "jumping_state", "falling_state", "idle_state", "idle_timer", "coyote_timer", "sprite", "movement_and_data")]
 script = ExtResource("23_y8tjj")
@@ -725,11 +727,12 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
-[node name="Dashing" type="Node" parent="ParentStateMachine/Penguin" unique_id=1651113116 node_paths=PackedStringArray("dashing_time", "walkingState", "falling_state")]
+[node name="Dashing" type="Node" parent="ParentStateMachine/Penguin" unique_id=1651113116 node_paths=PackedStringArray("dashing_time", "walkingState", "falling_state", "movement_and_data")]
 script = ExtResource("24_4tsya")
 dashing_time = NodePath("Timer")
 walkingState = NodePath("../Walking")
 falling_state = NodePath("../Falling")
+movement_and_data = NodePath("../../../MovementAndData")
 animation_name = "Dash"
 
 [node name="Timer" type="Timer" parent="ParentStateMachine/Penguin/Dashing" unique_id=295273134]

@@ -1,6 +1,7 @@
 class_name MovementAndData extends Node
 @export var sprite: AnimatedSprite2D
 @export var parent: CharacterBody2D
+#var speed_up_vector_timer: float = 0.0
 var speed_up_elapsed_time: float = 0.0
 const accelerationExponent: int = 2
 var potiental_idle_state: State
@@ -21,14 +22,26 @@ func move(delta: float, animal:ChildStateMachine):
 		#direction = 1 if parent.velocity.x > 0 else -1
 	else:
 		if raw_input.x > 0:
+			if speed_up_elapsed_time < 0:
+				speed_up_elapsed_time = 0
+			speed_up_elapsed_time += delta
+			if speed_up_elapsed_time > animal.Ground_Acceleration_Time:
+				speed_up_elapsed_time = animal.Ground_Acceleration_Time
+			#speed_up_elapsed_time = min(delta + speed_up_elapsed_time, animal.Ground_Acceleration_Time)
 			sprite.flip_h = false
 		if raw_input.x < 0:
+			if speed_up_elapsed_time > 0:
+				speed_up_elapsed_time = 0
+			speed_up_elapsed_time -= delta
+			if speed_up_elapsed_time < -animal.Ground_Acceleration_Time:
+				speed_up_elapsed_time = -animal.Ground_Acceleration_Time
+			#speed_up_elapsed_time = max(delta - speed_up_elapsed_time, -animal.Ground_Acceleration_Time)
 			sprite.flip_h = true
 		idle_started = false
 		#idle_timer.stop()
-		speed_up_elapsed_time += delta
-		if speed_up_elapsed_time > animal.Ground_Acceleration_Time:
-			speed_up_elapsed_time = animal.Ground_Acceleration_Time
+		#speed_up_elapsed_time += delta
+		#if speed_up_elapsed_time > animal.Ground_Acceleration_Time:
+			#speed_up_elapsed_time = animal.Ground_Acceleration_Time
 		#direction = 1 if raw_input.x > 0 else -1
 		
 	# Set Speed
@@ -38,11 +51,12 @@ func move(delta: float, animal:ChildStateMachine):
 		else:
 			parent.velocity.x += animal.Ground_Past_Max_Speed_Decceleration
 	else:
-		var progress = speed_up_elapsed_time/animal.Ground_Acceleration_Time
+		var progress = abs(speed_up_elapsed_time)/animal.Ground_Acceleration_Time
 		var easedProgress = easingFunctions.easeOutQuart(progress, accelerationExponent)
 		var smooth_speed = easedProgress * animal.Ground_Max_Speed
 		var difference = (smooth_speed * raw_input.x) - parent.velocity.x
 		parent.velocity.x += difference
+		#print(difference)
 		#parent.velocity.x = easedProgress * animal.Ground_Max_Speed * direction
 	
 	return
