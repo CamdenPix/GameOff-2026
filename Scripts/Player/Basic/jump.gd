@@ -4,6 +4,7 @@ class_name JumpingState extends State
 
 @export var falling_state: FallingState
 @export var dashing_state: DashingState
+@export var movement_and_data: MovementAndData
 func enter(oldState: State) -> void:
 	#parent.animations.play(animation_name)
 	additional_enter_logic(oldState)
@@ -35,7 +36,8 @@ func process_physics(delta: float) -> State:
 	var raw_input = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0)
-		
+	
+	movement_and_data.move(delta, animal)
 	parent.velocity.x += raw_input.x*animal.AirSpeed*delta
 	if raw_input.x > 0 && parent.velocity.x >= animal.MaxAirSpeed:
 		parent.velocity.x = max(animal.MaxAirSpeed, parent.velocity.x)

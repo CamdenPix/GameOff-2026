@@ -4,6 +4,7 @@ class_name FallingState extends State
 
 @export var landing_state: LandingState
 @export var dashing_state: DashingState
+@export var movement_and_data: MovementAndData
 func enter(oldState: State) -> void:
 	additional_enter_logic(oldState)
 	#parent.animations.play(animation_name)
@@ -38,14 +39,14 @@ func process_physics(delta: float) -> State:
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).limit_length(1.0) 
 	
-	parent.velocity.x += raw_input.x*animal.AirSpeed*delta
-	if raw_input.x > 0 && parent.velocity.x >= animal.MaxAirSpeed:
-		parent.velocity.x = max(animal.MaxAirSpeed, parent.velocity.x)
-		parent.velocity.x -= raw_input.x*animal.AirSpeed*delta
-	elif raw_input.x < 0 && parent.velocity.x <= (-animal.MaxAirSpeed):
-		parent.velocity.x = min(-animal.MaxAirSpeed, parent.velocity.x)
-		parent.velocity.x -= raw_input.x*animal.AirSpeed*delta
-		
+	#parent.velocity.x += raw_input.x*animal.AirSpeed*delta
+	#if raw_input.x > 0 && parent.velocity.x >= animal.MaxAirSpeed:
+		#parent.velocity.x = max(animal.MaxAirSpeed, parent.velocity.x)
+		#parent.velocity.x -= raw_input.x*animal.AirSpeed*delta
+	#elif raw_input.x < 0 && parent.velocity.x <= (-animal.MaxAirSpeed):
+		#parent.velocity.x = min(-animal.MaxAirSpeed, parent.velocity.x)
+		#parent.velocity.x -= raw_input.x*animal.AirSpeed*delta
+	movement_and_data.move(delta, animal)
 		
 	parent.velocity.y += animal.Fall_Gravity * delta
 	if parent.is_on_floor():
